@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Craft Detail Placeholder</title>
+  <desc id="desc">Premium material and craftsmanship placeholder.</desc>
+  <defs>
+    <linearGradient id="bg" x1="1" x2="0" y1="0" y2="1">
+      <stop stop-color="#1a1d1f"/>
+      <stop offset=".5" stop-color="#4a4034"/>
+      <stop offset="1" stop-color="#c0b39d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g opacity=".45">
+    <path d="M0 650c260-80 430-120 690-80 270 42 520 24 910-170v600H0z" fill="#10151c"/>
+    <path d="M210 150h460v640H210z" fill="#f6efe4" opacity=".12"/>
+    <path d="M300 230h280v460H300z" fill="#10151c" opacity=".38"/>
+  </g>
+  <g stroke="#c09a4a" stroke-width="4" opacity=".65">
+    <path d="M860 180h460v520H860z"/>
+    <path d="M900 230h380M900 310h380M900 390h380M900 470h380M900 550h380"/>
+  </g>
+  <circle cx="1290" cy="260" r="150" fill="#d2b061" opacity=".18"/>
+  <text x="96" y="870" fill="#f7f1e4" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="6">CRAFT DETAIL</text>
+</svg>

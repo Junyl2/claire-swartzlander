@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+  --color-primary: 42 52% 38%;
+  --color-secondary: 30 36% 35%;
+  --color-ink: 215 19% 10%;
+  --color-charcoal: 215 18% 15%;
+  --color-graphite: 210 13% 23%;
+  --color-slate: 211 12% 36%;
+  --color-concrete: 38 10% 68%;
+  --color-warm-gray: 36 14% 86%;
+  --color-off-white: 42 28% 95%;
+  --color-paper: 45 33% 98%;
+  --radius-sharp: 3px;
+  --radius-panel: 4px;
+  --shadow-soft: 0 24px 70px hsl(215 19% 10% / 0.14);
+  --shadow-line: inset 0 0 0 1px hsl(42 52% 38% / 0.16);
+  --container: 1400px;
+}
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+  --color-primary: hsl(var(--color-primary));
+  --color-secondary: hsl(var(--color-secondary));
+  --color-ink: hsl(var(--color-ink));
+  --color-charcoal: hsl(var(--color-charcoal));
+  --color-graphite: hsl(var(--color-graphite));
+  --color-slate: hsl(var(--color-slate));
+  --color-concrete: hsl(var(--color-concrete));
+  --color-warm-gray: hsl(var(--color-warm-gray));
+  --color-off-white: hsl(var(--color-off-white));
+  --color-paper: hsl(var(--color-paper));
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: hsl(var(--color-paper));
+}
+
+body {
+  margin: 0;
+  color: hsl(var(--color-ink));
+  background:
+    linear-gradient(90deg, hsl(var(--color-ink) / 0.035) 1px, transparent 1px),
+    hsl(var(--color-paper));
+  background-size: 10vw 10vw;
+  font-family: var(--font-body), Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: hsl(var(--color-primary));
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid hsl(var(--color-primary));
+  outline-offset: 4px;
+}
+
+.container-shell {
+  width: min(calc(100% - 32px), var(--container));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  color: hsl(var(--color-primary));
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.editorial-title {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.image-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-panel);
+  background: hsl(var(--color-charcoal));
+  box-shadow: var(--shadow-line);
+  transition:
+    transform 600ms ease,
+    box-shadow 600ms ease;
+}
+
+.image-frame img {
+  transition: transform 900ms ease;
+}
+
+.image-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.image-frame:hover img {
+  transform: scale(1.045);
+}
+
+.glass-nav {
+  background: hsl(var(--color-ink) / 0.72);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid hsl(var(--color-paper) / 0.12);
+}
+
+.section-y {
+  padding-block: clamp(5rem, 9vw, 9rem);
+}
+
+.section-y-tight {
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+.premium-link {
+  position: relative;
+}
+
+.premium-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 260ms ease;
+}
+
+.premium-link:hover::after,
+.premium-link[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}

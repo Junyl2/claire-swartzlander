@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Engineering Precision Placeholder</title>
+  <desc id="desc">Premium engineering and planning placeholder.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1">
+      <stop stop-color="#111820"/>
+      <stop offset=".55" stop-color="#30322f"/>
+      <stop offset="1" stop-color="#7f6129"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g stroke="#f4ecdc" stroke-width="2" opacity=".14">
+    <path d="M0 180h1600M0 340h1600M0 500h1600M0 660h1600M0 820h1600"/>
+    <path d="M160 0v1000M320 0v1000M480 0v1000M640 0v1000M800 0v1000M960 0v1000M1120 0v1000M1280 0v1000M1440 0v1000"/>
+  </g>
+  <g fill="none" stroke="#c09a4a" stroke-width="10" opacity=".75">
+    <path d="M280 740 680 260l300 310 190-190 190 250"/>
+    <circle cx="680" cy="260" r="54"/>
+    <circle cx="980" cy="570" r="42"/>
+  </g>
+  <rect x="100" y="160" width="340" height="520" fill="#f7f1e4" opacity=".09"/>
+  <text x="96" y="870" fill="#f7f1e4" font-family="Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="6">ENGINEERING PRECISION</text>
+</svg>
