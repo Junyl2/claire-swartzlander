@@ -1,9 +1,9 @@
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
-import { CTASection } from "@/components/ui/CTASection";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Timeline } from "@/components/ui/Timeline";
 import { PageHero } from "@/components/sections/PageHero";
+import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import { pageCopy, pageMetadata, processSteps, values } from "@/data/site";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -58,13 +58,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <CTASection
-        kicker="Achievements"
-        title="Swap placeholder milestones for verified achievements when real company data is ready."
-        description="Donec sed odio dui. Vestibulum id ligula porta felis euismod semper. No structural redesign required."
-        primaryHref="/projects"
-        primaryLabel="See The Work"
-      />
+      <SharedContactSection />
     </main>
   );
 }

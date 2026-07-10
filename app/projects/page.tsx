@@ -1,8 +1,8 @@
-import { CTASection } from "@/components/ui/CTASection";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/sections/PageHero";
 import { ProjectGallery } from "@/components/sections/ProjectGallery";
+import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import { pageCopy, pageMetadata, projects } from "@/data/site";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -32,13 +32,7 @@ export default function ProjectsPage() {
         </Container>
       </section>
 
-      <CTASection
-        kicker="Portfolio"
-        title="Project content, categories, locations, and imagery all live in replaceable data objects."
-        description="Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur blandit tempus porttitor."
-        primaryHref="/contact"
-        primaryLabel="Request Capability Deck"
-      />
+      <SharedContactSection />
     </main>
   );
 }

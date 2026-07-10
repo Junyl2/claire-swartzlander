@@ -1,11 +1,11 @@
 import { BriefcaseBusiness, Clock3, HeartHandshake } from "lucide-react";
 
-import { CTASection } from "@/components/ui/CTASection";
 import { Container } from "@/components/ui/Container";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Timeline } from "@/components/ui/Timeline";
 import { PageHero } from "@/components/sections/PageHero";
+import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import { careerRoles, pageCopy, pageMetadata, processSteps } from "@/data/site";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -86,13 +86,7 @@ export default function CareersPage() {
         </Container>
       </section>
 
-      <CTASection
-        kicker="Join The Team"
-        title="The layout is ready now, and the hiring content can evolve later without component churn."
-        description="Vestibulum id ligula porta felis euismod semper. Nulla vitae elit libero, a pharetra augue."
-        primaryHref="/contact"
-        primaryLabel="Send Your Details"
-      />
+      <SharedContactSection />
     </main>
   );
 }

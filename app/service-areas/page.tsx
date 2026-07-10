@@ -1,8 +1,8 @@
-import { CTASection } from "@/components/ui/CTASection";
 import { Container } from "@/components/ui/Container";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/sections/PageHero";
+import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import { pageCopy, pageMetadata, serviceAreas } from "@/data/site";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -51,13 +51,7 @@ export default function ServiceAreasPage() {
         </Container>
       </section>
 
-      <CTASection
-        kicker="Regional Work"
-        title="Swap in real geographic coverage details later while preserving the same architectural composition."
-        description="Donec id elit non mi porta gravida at eget metus. Curabitur blandit tempus porttitor."
-        primaryHref="/contact"
-        primaryLabel="Plan A Regional Project"
-      />
+      <SharedContactSection />
     </main>
   );
 }

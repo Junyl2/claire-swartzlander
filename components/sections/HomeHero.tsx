@@ -13,14 +13,14 @@ export function HomeHero() {
       <Container className="relative z-10 grid h-full items-end pb-10 pt-28 md:pb-14 md:pt-36">
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <StaggerGroup className="max-w-4xl" delay={0.08} stagger={0.11}>
-            <MotionItem><p className="eyebrow mb-6">{pageCopy.home.eyebrow}</p></MotionItem>
+            <MotionItem><p className="eyebrow supporting-kicker mb-6">{pageCopy.home.eyebrow}</p></MotionItem>
             <MotionItem>
-              <h1 className="editorial-title text-balance max-w-5xl text-5xl leading-[0.9] md:text-7xl lg:text-[6rem]">
+              <h1 className="editorial-title display-title text-balance max-w-5xl text-5xl leading-[0.88] md:text-7xl lg:text-[6rem]">
                 {pageCopy.home.title}
               </h1>
             </MotionItem>
             <MotionItem>
-              <p className="mt-7 max-w-2xl text-base leading-8 text-paper/78 md:text-lg">
+              <p className="supporting-copy mt-7 max-w-2xl text-base text-paper/82 md:text-lg">
                 {pageCopy.home.description}
               </p>
             </MotionItem>
@@ -35,7 +35,7 @@ export function HomeHero() {
           </StaggerGroup>
           <StaggerGroup className="grid gap-6 self-end rounded-[var(--radius-panel)] border border-white/12 bg-white/5 p-6 backdrop-blur-sm" delay={0.22} stagger={0.08}>
             <MotionItem>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-paper/60">Editorial Construction Template</p>
+              <p className="ui-title text-xs text-paper/60">Editorial Construction Template</p>
             </MotionItem>
             <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
               {heroSlides.map((slide) => (
@@ -50,7 +50,7 @@ export function HomeHero() {
           </StaggerGroup>
         </div>
         <MotionItem delay={0.45}>
-          <a href="#introduction" className="mt-12 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.16em] text-paper/75">
+          <a href="#introduction" className="ui-title mt-12 inline-flex items-center gap-3 text-xs text-paper/75">
             <span className="grid h-12 w-12 place-items-center rounded-full border border-white/15 transition-transform duration-500 hover:translate-y-1">
               <ArrowDown className="h-4 w-4" />
             </span>

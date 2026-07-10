@@ -27,7 +27,7 @@ export function Button({ href, children, variant = "primary", className, ariaLab
       href={href}
       aria-label={ariaLabel}
       className={cn(
-        "group inline-flex min-h-12 items-center justify-center gap-3 rounded-[var(--radius-sharp)] px-6 py-3 text-sm font-bold uppercase tracking-[0.1em] transition duration-300 focus-visible:outline-primary",
+        "ui-title group inline-flex min-h-12 items-center justify-center gap-3 rounded-[var(--radius-sharp)] px-6 py-3 text-sm transition duration-300 focus-visible:outline-primary",
         variants[variant],
         className,
       )}

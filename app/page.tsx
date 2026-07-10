@@ -5,6 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { HomeHero } from "@/components/sections/HomeHero";
 import { PreviewBand } from "@/components/sections/PreviewBand";
+import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import {
   homePagePreviews,
   pageMetadata,
@@ -49,15 +50,8 @@ export default function HomePage() {
 
       <section className="section-y bg-white">
         <Container>
-          <Reveal>
-            <SectionHeading
-              kicker="Navigation Order"
-              title="The homepage now follows the same sequence as the navigation bar."
-              description="After the home hero and introduction, each destination appears once, in order: Services, About, Projects, Reviews, Careers, Service Areas, and Contact."
-            />
-          </Reveal>
-          <div className="mt-10">
-            {homePagePreviews.map((page, index) => (
+          <div>
+            {homePagePreviews.filter((page) => page.href !== "/contact").map((page, index) => (
               <PreviewBand
                 key={page.href}
                 kicker={page.kicker}
@@ -74,6 +68,8 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      <SharedContactSection />
     </main>
   );
 }

@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { contactItems, serviceMenuGroups, siteConfig, type NavItem } from "@/data/site";
+import { SiteLogo } from "@/components/site/SiteLogo";
 
 type MobileMenuProps = {
   items: NavItem[];
@@ -50,7 +51,9 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
             className="ml-auto flex h-full w-[min(92vw,28rem)] max-w-[28rem] flex-col border-l border-white/10 bg-ink/96 px-5 py-5 shadow-[-20px_0_60px_hsl(215_19%_10%_/_0.34)]"
           >
             <div className="flex items-center justify-between">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-paper/62">{`[ ${items[0]?.label ? "Menu" : "Navigation"} ]`}</p>
+              <Link href="/" aria-label={`${siteConfig.tagline} ${siteConfig.name}`} onClick={onClose} className="inline-flex">
+                <SiteLogo className="w-18" priority />
+              </Link>
               <button
                 type="button"
                 onClick={onClose}
@@ -77,7 +80,7 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
                             type="button"
                             onClick={() => setServicesOpen((current) => !current)}
                             aria-expanded={servicesOpen}
-                            className="flex w-full items-center justify-between text-left text-[1.65rem] font-semibold leading-none sm:text-[1.85rem]"
+                            className="display-title flex w-full items-center justify-between text-left text-[1.65rem] leading-none sm:text-[1.85rem]"
                           >
                             <span>{item.label}</span>
                             <span className="flex items-center gap-3">
@@ -92,7 +95,7 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
                             type="button"
                             onClick={() => setAboutOpen((current) => !current)}
                             aria-expanded={aboutOpen}
-                            className="flex w-full items-center justify-between text-left text-[1.65rem] font-semibold leading-none sm:text-[1.85rem]"
+                            className="display-title flex w-full items-center justify-between text-left text-[1.65rem] leading-none sm:text-[1.85rem]"
                           >
                             <span>{item.label}</span>
                             <span className="flex items-center gap-3">
@@ -107,7 +110,7 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
                             href={item.href}
                             onClick={onClose}
                             aria-current={pathname === item.href ? "page" : undefined}
-                            className="flex items-center justify-between text-[1.65rem] font-semibold leading-none sm:text-[1.85rem]"
+                            className="display-title flex items-center justify-between text-[1.65rem] leading-none sm:text-[1.85rem]"
                           >
                             <span>{item.label}</span>
                             <span className="text-[11px] uppercase tracking-[0.18em] text-paper/45">0{index + 1}</span>
@@ -119,7 +122,7 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
                               <Link
                                 href="/services"
                                 onClick={onClose}
-                                className="flex items-center justify-between text-sm font-bold uppercase tracking-[0.16em] text-primary"
+                                className="ui-title flex items-center justify-between text-sm text-primary"
                               >
                                 <span>All Services</span>
                                 <span className="h-px w-8 bg-primary/60" />
@@ -129,7 +132,7 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
                                   <Link
                                     href={group.href}
                                     onClick={onClose}
-                                    className="flex items-center justify-between text-sm font-bold uppercase tracking-[0.16em] text-paper/88"
+                                    className="ui-title flex items-center justify-between text-sm text-paper/88"
                                   >
                                     <span>{group.title}</span>
                                     <span className="text-[11px] uppercase tracking-[0.16em] text-paper/38">
@@ -165,7 +168,7 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
                                     href={child.href}
                                     onClick={onClose}
                                     aria-current={pathname === child.href ? "page" : undefined}
-                                    className="flex items-center justify-between text-sm font-bold uppercase tracking-[0.14em] text-paper/68 transition duration-300 hover:text-paper"
+                                    className="ui-title flex items-center justify-between text-sm text-paper/68 transition duration-300 hover:text-paper"
                                   >
                                     <span>{child.label}</span>
                                     <span className="h-px w-8 bg-white/20" />

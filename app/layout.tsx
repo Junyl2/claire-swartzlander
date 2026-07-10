@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Barlow, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 
 import { LenisProvider } from "@/components/interactive/LenisProvider";
@@ -7,13 +7,13 @@ import { Navigation } from "@/components/site/Navigation";
 import { Footer } from "@/components/site/Footer";
 import { siteConfig } from "@/data/site";
 
-const display = Cormorant_Garamond({
+const display = Bebas_Neue({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400"],
 });
 
-const body = Manrope({
+const body = Barlow({
   subsets: ["latin"],
   variable: "--font-body",
   weight: ["400", "500", "600", "700", "800"],

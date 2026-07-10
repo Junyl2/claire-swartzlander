@@ -89,7 +89,7 @@ export type HomePagePreview = {
   kicker: string;
   title: string;
   description: string;
-  layout: "split" | "stacked" | "offset" | "services-bento";
+  layout: "split" | "stacked" | "offset" | "services-bento" | "projects-editorial" | "about-editorial";
   images: [ImageToken, ImageToken];
   details: string[];
 };
@@ -98,6 +98,8 @@ export type HomeServiceCategoryPreview = {
   title: string;
   href: string;
   image: ImageToken;
+  serviceCount: number;
+  previewItems: string[];
 };
 
 export const siteConfig = {
@@ -249,6 +251,8 @@ export const homeServicePreviewCategories: HomeServiceCategoryPreview[] = servic
   title: group.title,
   href: group.href,
   image: homeServicePreviewImages[index],
+  serviceCount: group.items.length,
+  previewItems: group.items.slice(0, 2).map((item) => item.label),
 }));
 
 export const heroSlides: ImageToken[] = [
@@ -567,15 +571,15 @@ export const homePagePreviews: HomePagePreview[] = [
     kicker: "About Preview",
     title: "The company story reads like a premium journal spread with leadership, values, and timeline placeholders.",
     description: "Cras mattis consectetur purus sit amet fermentum. Vestibulum id ligula porta felis euismod semper.",
-    layout: "offset",
+    layout: "about-editorial",
     images: [
       {
-        src: "/placeholders/team.svg",
+        src: "/hero/hero-2.jpeg",
         alt: "About preview placeholder",
         label: "Leadership Story",
       },
       {
-        src: "/placeholders/office.svg",
+        src: "/hero/hero-3.jpeg",
         alt: "About detail placeholder",
         label: "Studio Context",
       },
@@ -588,7 +592,7 @@ export const homePagePreviews: HomePagePreview[] = [
     kicker: "Projects Preview",
     title: "Project storytelling gets its own image-first preview language before visitors move into the full portfolio.",
     description: "Maecenas faucibus mollis interdum. Nulla vitae elit libero, a pharetra augue.",
-    layout: "stacked",
+    layout: "projects-editorial",
     images: [
       {
         src: "/placeholders/project.svg",

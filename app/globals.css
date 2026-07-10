@@ -49,6 +49,9 @@ body {
     hsl(var(--color-paper));
   background-size: 10vw 10vw;
   font-family: var(--font-body), Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.65;
   letter-spacing: 0;
 }
 
@@ -97,16 +100,54 @@ textarea {
 
 .eyebrow {
   color: hsl(var(--color-primary));
-  font-size: 0.78rem;
+  font-family: var(--font-body), Arial, sans-serif;
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .editorial-title {
   font-family: var(--font-display), Georgia, serif;
-  font-weight: 600;
-  letter-spacing: 0;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.display-title {
+  font-family: var(--font-display), Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+}
+
+.brand-title {
+  font-family: var(--font-display), Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.supporting-kicker {
+  font-family: var(--font-body), Arial, sans-serif;
+  font-size: clamp(0.78rem, 0.74rem + 0.18vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.supporting-copy {
+  font-family: var(--font-body), Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.75;
+}
+
+.ui-title {
+  font-family: var(--font-body), Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .text-balance {

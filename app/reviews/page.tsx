@@ -1,8 +1,8 @@
 import { TestimonialCarousel } from "@/components/interactive/TestimonialCarousel";
-import { CTASection } from "@/components/ui/CTASection";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/sections/PageHero";
+import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import { TestimonialCard } from "@/components/sections/TestimonialCard";
 import { pageCopy, pageMetadata, testimonials } from "@/data/site";
 import { createPageMetadata } from "@/lib/metadata";
@@ -46,13 +46,7 @@ export default function ReviewsPage() {
         </Container>
       </section>
 
-      <CTASection
-        kicker="Proof"
-        title="Replace placeholder clients, names, and quotes without touching the testimonial presentation logic."
-        description="Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Etiam porta sem malesuada magna mollis euismod."
-        primaryHref="/contact"
-        primaryLabel="Request References"
-      />
+      <SharedContactSection />
     </main>
   );
 }

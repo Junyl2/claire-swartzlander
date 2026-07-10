@@ -14,16 +14,16 @@ export function SectionHeading({ kicker, title, description, align = "left", ton
   return (
     <StaggerGroup className={cn("max-w-4xl", align === "center" && "mx-auto text-center", className)} stagger={0.08}>
       <MotionItem>
-        <p className="eyebrow mb-4">{kicker}</p>
+        <p className="eyebrow supporting-kicker mb-4">{kicker}</p>
       </MotionItem>
       <MotionItem>
-        <h2 className={cn("editorial-title text-balance text-4xl leading-[0.98] md:text-6xl", tone === "light" ? "text-paper" : "text-ink")}>
+        <h2 className={cn("editorial-title display-title text-balance text-4xl leading-[0.92] md:text-6xl", tone === "light" ? "text-paper" : "text-ink")}>
           {title}
         </h2>
       </MotionItem>
       {description ? (
         <MotionItem>
-          <p className={cn("mt-6 max-w-2xl text-base leading-8 md:text-lg", tone === "light" ? "text-paper/70" : "text-slate")}>
+          <p className={cn("supporting-copy mt-6 max-w-2xl text-base md:text-lg", tone === "light" ? "text-paper/70" : "text-slate")}>
             {description}
           </p>
         </MotionItem>

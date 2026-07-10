@@ -9,6 +9,7 @@ import { contactItems, primaryNavigation, serviceMenuGroups, siteConfig } from "
 import { Container } from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
 import { MobileMenu } from "@/components/interactive/MobileMenu";
+import { SiteLogo } from "@/components/site/SiteLogo";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -52,26 +53,52 @@ export function Navigation() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-40">
-        <div className={cn("border-b border-white/10 text-paper transition duration-300", scrolled && "glass-nav")}>
-          <Container className="hidden min-h-10 items-center justify-between text-xs font-semibold uppercase tracking-[0.12em] text-paper/72 md:flex">
-            <div className="flex items-center gap-6">
-              <a href={contactItems[0].href} className="inline-flex items-center gap-2">
-                <Phone className="h-3.5 w-3.5" />
-                <span>{siteConfig.phone}</span>
-              </a>
-              <p>{siteConfig.email}</p>
-            </div>
-            <p>{siteConfig.hours}</p>
-          </Container>
-          <Container className="flex min-h-18 items-center justify-between gap-6">
-            <Link href="/" className="flex min-w-0 flex-col">
-              <span className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Premium Construction</span>
-              <span className="truncate text-lg font-semibold text-paper md:text-xl">{siteConfig.name}</span>
-            </Link>
-            <nav aria-label="Primary navigation" className="ml-auto hidden lg:block">
-              <ul className="flex items-center justify-end gap-8">
-                {primaryNavigation.map((item) => (
-                  <li key={item.href} className="relative">
+        <div
+          data-header-shell="true"
+          className={cn(
+            scrolled ? "border-b border-primary/10 bg-white text-ink" : "border-b border-white/10 text-paper",
+          )}
+        >
+          <div
+            data-topbar="true"
+            className={cn(
+              "hidden md:block",
+              scrolled ? "bg-primary text-white" : "text-paper/72",
+            )}
+          >
+            <Container className="min-h-10 items-center justify-between text-xs font-semibold uppercase tracking-[0.12em] md:flex">
+              <div className="flex items-center gap-6">
+                <a href={contactItems[0].href} className="inline-flex items-center gap-2">
+                  <Phone className="h-3.5 w-3.5" />
+                  <span>{siteConfig.phone}</span>
+                </a>
+                <p>{siteConfig.email}</p>
+              </div>
+              <p>{siteConfig.hours}</p>
+            </Container>
+          </div>
+          <div
+            data-navbar="true"
+            className={cn(
+              scrolled && "bg-white text-ink",
+            )}
+          >
+            <Container className="flex min-h-18 items-center justify-between gap-6">
+              <Link
+                href="/"
+                aria-label={`${siteConfig.tagline} ${siteConfig.name}`}
+                className="flex min-w-0 items-center"
+              >
+                <SiteLogo
+                  className="brand-title w-16 sm:w-18 md:w-20 lg:w-20 xl:w-24"
+                  priority
+                  dataAttribute="data-nav-logo"
+                />
+              </Link>
+              <nav aria-label="Primary navigation" className="ml-auto hidden lg:block">
+                <ul className="flex items-center justify-end gap-8">
+                  {primaryNavigation.map((item) => (
+                    <li key={item.href} className="relative">
                     {item.href === "/services" ? (
                       <div
                         className="group relative"
@@ -96,7 +123,8 @@ export function Navigation() {
                           href={item.href}
                           aria-current={pathname === item.href ? "page" : undefined}
                           className={cn(
-                            "inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.12em] text-paper",
+                            "ui-title inline-flex items-center gap-2 text-[13px]",
+                            scrolled ? "text-ink" : "text-paper",
                             "transition-colors duration-300 hover:text-primary focus-visible:text-primary",
                           )}
                           onClick={() => setOpenDropdown(null)}
@@ -204,7 +232,8 @@ export function Navigation() {
                           href={item.href}
                           aria-current={isActive(item.href, item.children) ? "page" : undefined}
                           className={cn(
-                            "inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.12em] text-paper",
+                            "ui-title inline-flex items-center gap-2 text-[13px]",
+                            scrolled ? "text-ink" : "text-paper",
                             "transition-colors duration-300 hover:text-primary focus-visible:text-primary",
                           )}
                           onClick={() => setOpenDropdown(null)}
@@ -253,24 +282,28 @@ export function Navigation() {
                       <Link
                         href={item.href}
                         aria-current={pathname === item.href ? "page" : undefined}
-                        className="premium-link text-[13px] font-bold uppercase tracking-[0.12em] text-paper"
+                        className={cn("premium-link ui-title text-[13px]", scrolled ? "text-ink" : "text-paper")}
                       >
                         {item.label}
                       </Link>
                     )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <button
-              type="button"
-              aria-label="Open menu"
-              onClick={() => setMenuOpen(true)}
-              className="grid h-12 w-12 place-items-center rounded-[var(--radius-sharp)] border border-white/15 text-paper lg:hidden"
-            >
-              <Menu className="h-5 w-5" />
-            </button>
-          </Container>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              <button
+                type="button"
+                aria-label="Open menu"
+                onClick={() => setMenuOpen(true)}
+                className={cn(
+                  "grid h-12 w-12 place-items-center rounded-[var(--radius-sharp)] border lg:hidden",
+                  scrolled ? "border-primary/15 text-ink" : "border-white/15 text-paper",
+                )}
+              >
+                <Menu className="h-5 w-5" />
+              </button>
+            </Container>
+          </div>
         </div>
       </header>
       <MobileMenu items={primaryNavigation} open={menuOpen} onClose={() => setMenuOpen(false)} />

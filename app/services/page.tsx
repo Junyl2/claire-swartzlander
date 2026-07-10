@@ -1,8 +1,8 @@
-import { CTASection } from "@/components/ui/CTASection";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/sections/PageHero";
 import { ServiceCard } from "@/components/sections/ServiceCard";
+import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import { pageCopy, pageMetadata, services } from "@/data/site";
 import { createPageMetadata } from "@/lib/metadata";
 
@@ -35,13 +35,7 @@ export default function ServicesPage() {
         </Container>
       </section>
 
-      <CTASection
-        kicker="Next Step"
-        title="Translate placeholder service content into a production sales surface later without rewriting components."
-        description="Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec ullamcorper nulla non metus auctor fringilla."
-        primaryHref="/contact"
-        primaryLabel="Discuss Your Scope"
-      />
+      <SharedContactSection />
     </main>
   );
 }

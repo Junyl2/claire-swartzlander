@@ -3,6 +3,7 @@ import Link from "next/link";
 import { footerLinks, siteConfig } from "@/data/site";
 import { Container } from "@/components/ui/Container";
 import { Newsletter } from "@/components/site/Newsletter";
+import { SiteLogo } from "@/components/site/SiteLogo";
 
 export function Footer() {
   return (
@@ -10,9 +11,10 @@ export function Footer() {
       <Container>
         <div className="grid gap-10 border-b border-white/10 pb-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <p className="eyebrow mb-4">Company</p>
-            <h2 className="editorial-title max-w-xl text-4xl leading-none">{siteConfig.name}</h2>
-            <p className="mt-6 max-w-xl text-base leading-8 text-paper/68">
+            <Link href="/" aria-label={`${siteConfig.tagline} ${siteConfig.name}`} className="inline-flex">
+              <SiteLogo className="w-24 sm:w-28 lg:w-32" />
+            </Link>
+            <p className="supporting-copy mt-6 max-w-xl text-base text-paper/68">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
             </p>
           </div>
