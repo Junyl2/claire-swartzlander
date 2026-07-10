@@ -26,13 +26,13 @@ export default function CareersPage() {
         <Container className="grid gap-12 lg:grid-cols-[0.86fr_1.14fr]">
           <SectionHeading
             kicker="Culture"
-            title="A careers page that feels like a premium workplace publication rather than a list dump."
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus."
+            title="Field ownership, steady standards, and pride in the finish."
+            description="The careers page now speaks to people who care about real work: trades, equipment, maintenance routes, renovation details, and customer trust."
           />
           <div className="grid gap-6 sm:grid-cols-3">
             {[
               { title: "Ownership", icon: BriefcaseBusiness },
-              { title: "Balance", icon: Clock3 },
+              { title: "Pace", icon: Clock3 },
               { title: "Mentorship", icon: HeartHandshake },
             ].map((item) => {
               const Icon = item.icon;
@@ -40,7 +40,7 @@ export default function CareersPage() {
                 <article key={item.title} className="rounded-[var(--radius-panel)] border border-primary/12 bg-white p-6 shadow-[var(--shadow-soft)]">
                   <Icon className="h-5 w-5 text-primary" />
                   <h3 className="mt-5 text-lg font-bold">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                  <p className="mt-3 text-sm leading-7 text-slate">Built for field people who communicate clearly and leave the property better than they found it.</p>
                 </article>
               );
             })}
@@ -54,8 +54,8 @@ export default function CareersPage() {
           <div>
             <SectionHeading
               kicker="Hiring Process"
-              title="A calm and structured hiring sequence aligned with the site’s overall tone."
-              description="Cras mattis consectetur purus sit amet fermentum. Donec id elit non mi porta gravida at eget metus."
+              title="A practical hiring path, matched to trade skill and responsibility."
+              description="The sequence can support crew members, operators, project coordinators, maintenance leads, and office support without changing the page structure."
             />
             <div className="mt-10">
               <Timeline items={processSteps.slice(0, 4)} />
@@ -68,8 +68,8 @@ export default function CareersPage() {
         <Container>
           <SectionHeading
             kicker="Open Positions"
-            title="Placeholder roles are centralized and ready to replace with real openings."
-            description="Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum."
+            title="Open roles, ready for the crews behind the work."
+            description="Role cards are centralized so actual hiring needs can be added without rewriting the page."
           />
           <div className="mt-12 grid gap-5">
             {careerRoles.map((role) => (

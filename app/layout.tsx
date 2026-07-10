@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "Premium multi-page construction company website template with editorial layouts, reusable components, and production-ready structure.",
+    "Premium construction-led property services website for renovation, exterior work, grounds care, pool support, site services, and cleaning.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

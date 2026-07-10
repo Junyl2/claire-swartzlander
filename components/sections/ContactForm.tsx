@@ -11,7 +11,7 @@ export function ContactForm() {
               <input
                 type="text"
                 name="name"
-                placeholder="Lorem Ipsum"
+                placeholder="Property Owner"
                 className="supporting-copy min-h-12 rounded-[var(--radius-sharp)] border border-primary/15 bg-transparent px-4 text-sm transition duration-300 focus:border-primary focus:bg-primary/4"
               />
             </label>
@@ -33,30 +33,32 @@ export function ContactForm() {
               <input
                 type="tel"
                 name="phone"
-                placeholder="+1 (000) 000-0000"
+                placeholder="+13862372856"
                 className="supporting-copy min-h-12 rounded-[var(--radius-sharp)] border border-primary/15 bg-transparent px-4 text-sm transition duration-300 focus:border-primary focus:bg-primary/4"
               />
             </label>
           </MotionItem>
           <MotionItem>
             <label className="grid gap-2 text-sm font-semibold text-ink">
-              Project Type
+              Service Type
               <select name="type" className="supporting-copy min-h-12 rounded-[var(--radius-sharp)] border border-primary/15 bg-transparent px-4 text-sm transition duration-300 focus:border-primary focus:bg-primary/4">
-                <option>Commercial Construction</option>
-                <option>Luxury Residential</option>
-                <option>Civil Engineering</option>
-                <option>Design-Build Delivery</option>
+                <option>Construction & Exterior Systems</option>
+                <option>Renovation & Interior Trades</option>
+                <option>Pool Care & Equipment</option>
+                <option>Lawn Care & Landscaping</option>
+                <option>Site Services & Heavy Support</option>
+                <option>Residential & Commercial Cleaning</option>
               </select>
             </label>
           </MotionItem>
         </div>
         <MotionItem>
           <label className="mt-5 grid gap-2 text-sm font-semibold text-ink">
-            Project Details
+            Property Details
             <textarea
               name="message"
               rows={6}
-              placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              placeholder="Tell us what needs attention, where the property is located, and your ideal timing."
               className="supporting-copy rounded-[var(--radius-sharp)] border border-primary/15 bg-transparent px-4 py-3 text-sm transition duration-300 focus:border-primary focus:bg-primary/4"
             />
           </label>

@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { Button } from "@/components/ui/Button";
+import { MixedTitle } from "@/components/ui/MixedTitle";
 import { contactItems, pageCopy, siteConfig } from "@/data/site";
 
 export function SharedContactSection() {
@@ -11,16 +12,18 @@ export function SharedContactSection() {
       <Container className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
         <ImagePlaceholder
           src="/hero/hero-1.jpeg"
-          alt="Contact preview placeholder"
+          alt="ERE CARE contact preview image"
           label="Inquiry Desk"
           ratio="cinema"
           className="min-h-[18rem] md:min-h-[24rem] lg:min-h-[36rem]"
         />
         <div className="flex min-w-0 flex-col justify-between border-t border-primary/15 pt-6 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0">
-          <p className="eyebrow supporting-kicker">Contact</p>
-          <h2 className="editorial-title display-title mt-4 text-balance text-3xl leading-[0.92] text-ink md:text-5xl">
-            {pageCopy.contact.title}
-          </h2>
+          <p className="eyebrow supporting-kicker">Start Your Scope</p>
+          <MixedTitle
+            text={pageCopy.contact.title}
+            as="h2"
+            className="editorial-title display-title mt-4 text-balance text-3xl leading-[0.92] text-ink md:text-5xl"
+          />
           <p className="supporting-copy mt-5 max-w-2xl text-base text-slate md:text-lg">
             {pageCopy.contact.description}
           </p>

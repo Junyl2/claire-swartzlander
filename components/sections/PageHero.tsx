@@ -2,6 +2,7 @@ import { MotionItem, StaggerGroup } from "@/components/interactive/MotionSequenc
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { MixedTitle } from "@/components/ui/MixedTitle";
 
 type PageHeroProps = {
   kicker: string;
@@ -28,7 +29,9 @@ export function PageHero({ kicker, title, description, image, primaryCta, second
       <Container className="grid items-end gap-12 pb-14 lg:grid-cols-[0.85fr_1.15fr]">
         <StaggerGroup className="max-w-2xl" delay={0.06} stagger={0.1}>
           <MotionItem><p className="eyebrow mb-5">{kicker}</p></MotionItem>
-          <MotionItem><h1 className="editorial-title text-balance text-5xl leading-[0.95] md:text-7xl">{title}</h1></MotionItem>
+          <MotionItem>
+            <MixedTitle text={title} as="h1" className="editorial-title display-title text-balance text-5xl leading-[0.92] md:text-7xl" />
+          </MotionItem>
           <MotionItem><p className="mt-7 max-w-xl text-base leading-8 text-paper/72 md:text-lg">{description}</p></MotionItem>
           {(primaryCta || secondaryCta) ? (
             <MotionItem>

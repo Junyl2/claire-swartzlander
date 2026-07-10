@@ -56,14 +56,14 @@ export function Navigation() {
         <div
           data-header-shell="true"
           className={cn(
-            scrolled ? "border-b border-primary/10 bg-white text-ink" : "border-b border-white/10 text-paper",
+            scrolled ? "border-b border-primary/10 bg-white text-ink" : "bg-white text-ink",
           )}
         >
           <div
             data-topbar="true"
             className={cn(
               "hidden md:block",
-              scrolled ? "bg-primary text-white" : "text-paper/72",
+              scrolled ? "bg-primary text-white" : "bg-white text-slate",
             )}
           >
             <Container className="min-h-10 items-center justify-between text-xs font-semibold uppercase tracking-[0.12em] md:flex">
@@ -83,14 +83,17 @@ export function Navigation() {
               scrolled && "bg-white text-ink",
             )}
           >
-            <Container className="flex min-h-18 items-center justify-between gap-6">
+            <Container
+              data-navbar-inner="true"
+              className="flex min-h-18 items-center justify-between gap-6 lg:py-2"
+            >
               <Link
                 href="/"
                 aria-label={`${siteConfig.tagline} ${siteConfig.name}`}
                 className="flex min-w-0 items-center"
               >
                 <SiteLogo
-                  className="brand-title w-16 sm:w-18 md:w-20 lg:w-20 xl:w-24"
+                  className="brand-title w-16 sm:w-18 md:w-20 lg:w-18 xl:w-20"
                   priority
                   dataAttribute="data-nav-logo"
                 />
@@ -124,7 +127,7 @@ export function Navigation() {
                           aria-current={pathname === item.href ? "page" : undefined}
                           className={cn(
                             "ui-title inline-flex items-center gap-2 text-[13px]",
-                            scrolled ? "text-ink" : "text-paper",
+                            "text-ink",
                             "transition-colors duration-300 hover:text-primary focus-visible:text-primary",
                           )}
                           onClick={() => setOpenDropdown(null)}
@@ -233,7 +236,7 @@ export function Navigation() {
                           aria-current={isActive(item.href, item.children) ? "page" : undefined}
                           className={cn(
                             "ui-title inline-flex items-center gap-2 text-[13px]",
-                            scrolled ? "text-ink" : "text-paper",
+                            "text-ink",
                             "transition-colors duration-300 hover:text-primary focus-visible:text-primary",
                           )}
                           onClick={() => setOpenDropdown(null)}
@@ -282,7 +285,7 @@ export function Navigation() {
                       <Link
                         href={item.href}
                         aria-current={pathname === item.href ? "page" : undefined}
-                        className={cn("premium-link ui-title text-[13px]", scrolled ? "text-ink" : "text-paper")}
+                        className="premium-link ui-title text-[13px] text-ink"
                       >
                         {item.label}
                       </Link>
@@ -297,7 +300,7 @@ export function Navigation() {
                 onClick={() => setMenuOpen(true)}
                 className={cn(
                   "grid h-12 w-12 place-items-center rounded-[var(--radius-sharp)] border lg:hidden",
-                  scrolled ? "border-primary/15 text-ink" : "border-white/15 text-paper",
+                  "border-primary/15 text-ink",
                 )}
               >
                 <Menu className="h-5 w-5" />

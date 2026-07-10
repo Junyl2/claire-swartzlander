@@ -1,11 +1,12 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Star, UserRound } from "lucide-react";
 import Image from "next/image";
 
 import { MotionItem, StaggerGroup } from "@/components/interactive/MotionSequence";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { Button } from "@/components/ui/Button";
-import { homeServicePreviewCategories, projects } from "@/data/site";
+import { MixedTitle } from "@/components/ui/MixedTitle";
+import { homeProjectPreviewProjects, homeServicePreviewCategories } from "@/data/site";
 
 type PreviewBandProps = {
   kicker: string;
@@ -13,7 +14,7 @@ type PreviewBandProps = {
   description: string;
   href: string;
   index: number;
-  layout: "split" | "stacked" | "offset" | "services-bento" | "projects-editorial" | "about-editorial";
+  layout: "split" | "stacked" | "offset" | "services-bento" | "projects-editorial" | "about-editorial" | "review-feature";
   images: [
     {
       src: string;
@@ -29,6 +30,20 @@ type PreviewBandProps = {
   details: string[];
   mirrored?: boolean;
 };
+
+const googleReviewsUrl =
+  "https://www.google.com/maps/place/ERE+CARE+Management+%26+Maintenance/@29.5556973,-81.2696434,828m/data=!3m1!1e3!4m8!3m7!1s0x88e69592f5569731:0xb436c61d1279e0e2!8m2!3d29.5556973!4d-81.2670685!9m1!1b1!16s%2Fg%2F11rc6j079h?entry=ttu&g_ep=EgoyMDI2MDcwNy4wIKXMDSoASAFQAw%3D%3D";
+
+function GoogleIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+      <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+      <path fill="#FBBC05" d="M5.84 14.1c-.22-.66-.35-1.36-.35-2.1s.13-1.44.35-2.1V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l3.66-2.84z" />
+      <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06L5.84 9.9C6.71 7.3 9.14 5.38 12 5.38z" />
+    </svg>
+  );
+}
 
 function ServicesBentoPreview() {
   const tileClasses = [
@@ -92,16 +107,14 @@ function ServicesBentoCta({ href }: { href: string }) {
         <div className="flex min-h-[14rem] h-full flex-col justify-between p-6 md:min-h-0">
           <div>
             <p className="ui-title text-[11px] text-primary/72">Service Index</p>
-            <h4 className="editorial-title display-title mt-4 max-w-[12rem] text-3xl leading-[0.9] text-ink">
-              View All Services Category
-            </h4>
+            <MixedTitle text="Complete Service Index" as="h4" className="editorial-title display-title mt-4 max-w-[12rem] text-3xl leading-[0.9] text-ink" />
             <p className="supporting-copy mt-4 max-w-xs text-sm text-slate">
-              Explore the full service structure from one dedicated destination.
+              Review every trade, exterior service, and property support category from one destination.
             </p>
           </div>
           <div className="pt-5">
             <Button href={href} variant="secondary">
-              View All Services Category
+              View All Services
             </Button>
           </div>
         </div>
@@ -111,40 +124,54 @@ function ServicesBentoCta({ href }: { href: string }) {
 }
 
 function ProjectsEditorialPreview() {
-  const tileClasses = [
-    "md:col-span-2 md:row-span-2",
-    "md:col-span-2 md:row-span-1",
-    "md:col-span-1 md:row-span-1",
-    "md:col-span-1 md:row-span-1",
-    "md:col-span-2 md:row-span-1",
-    "md:col-span-2 md:row-span-1",
+  const rows = [
+    homeProjectPreviewProjects.slice(0, 3),
+    homeProjectPreviewProjects.slice(3, 6),
   ];
 
   return (
-    <div className="grid gap-3 md:grid-cols-4 md:grid-rows-[minmax(16rem,1.45fr)_minmax(13rem,1fr)_minmax(13rem,1fr)]">
-      {projects.slice(0, 6).map((project, index) => (
-        <MotionItem key={project.title} distance={26} className={tileClasses[index]}>
-          <article className="group relative block h-full overflow-hidden rounded-[var(--radius-panel)] bg-ink">
-            <div className="relative min-h-[14rem] md:h-full">
-              <Image
-                src={project.image.src}
-                alt={project.image.alt}
-                fill
-                sizes="(min-width: 1024px) 33vw, 100vw"
-                className="object-cover transition duration-700 group-hover:scale-[1.04]"
-              />
-              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/96 via-ink/42 to-ink/8" />
-              <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                <p className="ui-title text-[11px] text-paper/62">{project.category}</p>
-                <h4 className="editorial-title display-title mt-3 max-w-[14rem] text-3xl leading-[0.9] text-paper">
-                  {project.image.label}
-                </h4>
-              </div>
+    <MotionItem distance={26}>
+      <div className="relative overflow-hidden rounded-[var(--radius-panel)] bg-ink py-4 shadow-[var(--shadow-soft)] md:py-5">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-ink to-transparent md:w-28" />
+        <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-ink to-transparent md:w-28" />
+        <div className="grid gap-4 md:gap-5">
+          {rows.map((row, rowIndex) => (
+            <div
+              key={`project-marquee-row-${rowIndex}`}
+              className="project-marquee-row"
+              data-direction={rowIndex === 0 ? "left" : "right"}
+            >
+              {[...row, ...row].map((project, index) => {
+                const isDuplicate = index >= row.length;
+
+                return (
+                  <article
+                    key={`${project.title}-${rowIndex}-${index}`}
+                    aria-hidden={isDuplicate ? true : undefined}
+                    className="project-marquee-card group relative h-[15rem] w-[78vw] shrink-0 overflow-hidden rounded-[var(--radius-panel)] bg-charcoal sm:w-[28rem] md:h-[18rem] md:w-[34rem]"
+                  >
+                    <Image
+                      src={project.image.src}
+                      alt={isDuplicate ? "" : project.image.alt}
+                      fill
+                      sizes="(min-width: 768px) 34rem, 78vw"
+                      className="object-cover transition duration-700 group-hover:scale-[1.04]"
+                    />
+                    <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/92 via-ink/34 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-5">
+                      <p className="ui-title text-[11px] text-paper/62">{project.category}</p>
+                      <h4 className="editorial-title display-title mt-3 text-2xl leading-[0.9] text-paper md:text-3xl">
+                        {project.image.label}
+                      </h4>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
-          </article>
-        </MotionItem>
-      ))}
-    </div>
+          ))}
+        </div>
+      </div>
+    </MotionItem>
   );
 }
 
@@ -157,6 +184,12 @@ function AboutEditorialPreview({
   details,
   images,
 }: Pick<PreviewBandProps, "title" | "description" | "href" | "kicker" | "index" | "details" | "images">) {
+  const statDetails = details.map((detail) => {
+    const [value = "", ...labelParts] = detail.split(" ");
+
+    return { value, label: labelParts.join(" ") };
+  });
+
   return (
     <div className="rounded-[var(--radius-panel)] border border-primary/12 bg-ink p-5 shadow-[var(--shadow-soft)] md:p-6 lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-8">
       <div className="min-w-0 border border-white/8 bg-paper/5 p-2 lg:sticky lg:top-36 lg:self-start">
@@ -172,14 +205,19 @@ function AboutEditorialPreview({
         <StaggerGroup className="max-w-2xl" stagger={0.08}>
           <MotionItem><p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">0{index}</p></MotionItem>
           <MotionItem><p className="eyebrow supporting-kicker mt-4 text-paper/74">{kicker}</p></MotionItem>
-          <MotionItem><h3 className="editorial-title display-title mt-5 text-balance text-3xl leading-[0.92] text-paper md:text-5xl">{title}</h3></MotionItem>
-          <MotionItem><p className="supporting-copy mt-5 max-w-2xl text-base text-paper/74 md:text-lg">{description}</p></MotionItem>
-          <div className="mt-6 flex flex-wrap gap-2">
-            {details.map((detail) => (
-              <MotionItem key={detail}>
-                <span className="rounded-[var(--radius-sharp)] border border-white/12 bg-white/4 px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-paper transition-all duration-300 hover:border-primary hover:bg-primary/10">
-                  {detail}
-                </span>
+          <MotionItem><MixedTitle text={title} as="h3" className="editorial-title display-title mt-5 text-balance text-3xl leading-[0.92] text-paper md:text-5xl" /></MotionItem>
+          <MotionItem>
+            <div className="supporting-copy mt-5 grid max-w-2xl gap-5 whitespace-pre-line text-base text-paper/74 md:text-lg">
+              {description}
+            </div>
+          </MotionItem>
+          <div className="mt-7 grid gap-px overflow-hidden rounded-[var(--radius-panel)] border border-white/12 bg-white/12 sm:grid-cols-2">
+            {statDetails.map((stat) => (
+              <MotionItem key={`${stat.value}-${stat.label}`}>
+                <div className="bg-paper/6 p-4">
+                  <p className="display-title text-4xl leading-none text-primary">{stat.value}</p>
+                  <p className="ui-title mt-2 text-[11px] text-paper">{stat.label}</p>
+                </div>
               </MotionItem>
             ))}
           </div>
@@ -202,6 +240,70 @@ function AboutEditorialPreview({
   );
 }
 
+function ReviewFeaturePreview({
+  kicker,
+  title,
+  description,
+  href,
+}: Pick<PreviewBandProps, "kicker" | "title" | "description" | "href">) {
+  return (
+    <article className="border-t border-primary/15 py-10 first:border-t-0">
+      <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+        <StaggerGroup className="max-w-md" stagger={0.08}>
+          <MotionItem><p className="eyebrow supporting-kicker">{kicker}</p></MotionItem>
+          <MotionItem><MixedTitle text={title} as="h3" className="editorial-title display-title mt-4 text-balance text-3xl leading-[0.92] text-ink md:text-5xl" /></MotionItem>
+          <MotionItem>
+            <div className="mt-7 border-y border-primary/15 py-5">
+              <p className="ui-title text-[11px] text-primary">Google</p>
+              <p className="display-title text-5xl leading-none text-primary">4.8</p>
+              <p className="ui-title mt-2 text-[11px] text-slate">76 Reviews</p>
+            </div>
+          </MotionItem>
+          <StaggerGroup className="mt-7 flex flex-col gap-3 sm:flex-row lg:flex-col" delay={0.06} stagger={0.08}>
+            <MotionItem>
+              <Button href={href} variant="secondary">
+                View All Reviews
+              </Button>
+            </MotionItem>
+            <MotionItem>
+              <a
+                href={googleReviewsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ui-title inline-flex min-h-12 items-center justify-center gap-3 rounded-[var(--radius-sharp)] border border-primary/15 bg-white px-5 py-3 text-sm text-ink transition duration-300 hover:-translate-y-0.5 hover:border-primary"
+              >
+                <GoogleIcon className="h-5 w-5" />
+                Google Reviews
+              </a>
+            </MotionItem>
+          </StaggerGroup>
+        </StaggerGroup>
+        <MotionItem distance={26}>
+          <figure className="relative border-l border-primary/18 pl-6 md:pl-8 lg:pl-10">
+            <div className="flex items-center gap-4">
+              <div className="grid h-14 w-14 place-items-center rounded-full bg-primary/10 text-primary">
+                <UserRound className="h-7 w-7" />
+              </div>
+              <div>
+                <figcaption className="ui-title text-sm text-ink">Martin Shell</figcaption>
+                <p className="supporting-copy mt-1 text-xs text-slate">4 reviews · 3 photos</p>
+              </div>
+            </div>
+            <div className="mt-6 flex gap-1 text-[#fbbc04]" aria-label="5 star review">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={index} className="h-5 w-5 fill-current" />
+              ))}
+            </div>
+            <blockquote className="supporting-copy mt-7 max-w-4xl text-2xl leading-10 text-ink md:text-3xl md:leading-[1.45]">
+              “{description}”
+            </blockquote>
+          </figure>
+        </MotionItem>
+      </div>
+    </article>
+  );
+}
+
 function PreviewMedia({
   layout,
   images,
@@ -213,8 +315,8 @@ function PreviewMedia({
         <div className="grid gap-4 md:grid-cols-[1.15fr_0.85fr]">
           <ImagePlaceholder src={images[1].src} alt={images[1].alt} label={images[1].label} ratio="wide" />
           <div className="rounded-[var(--radius-panel)] border border-primary/12 bg-ink p-6 text-paper">
-            <p className="eyebrow">Editorial Layout</p>
-            <p className="editorial-title mt-4 text-3xl leading-tight">A layered preview that reads closer to a project spread.</p>
+            <p className="eyebrow">Local Control</p>
+            <MixedTitle text="A layered view of field teams, routes, and response coverage." as="h4" className="editorial-title display-title mt-4 text-3xl leading-[0.92]" />
           </div>
         </div>
       </div>
@@ -240,8 +342,8 @@ function PreviewMedia({
       <div className="grid gap-4">
         <ImagePlaceholder src={images[1].src} alt={images[1].alt} label={images[1].label} ratio="wide" />
         <div className="rounded-[var(--radius-panel)] border border-primary/12 bg-primary/6 p-5">
-          <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">Composed Preview</p>
-          <p className="mt-3 text-sm leading-7 text-slate">Multiple image moments help each destination feel intentional instead of repeated.</p>
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">Property Scope</p>
+          <p className="mt-3 text-sm leading-7 text-slate">Exterior, interior, and site details stay connected under one service standard.</p>
         </div>
       </div>
     </div>
@@ -254,7 +356,7 @@ export function PreviewBand({ kicker, title, description, href, index, layout, i
       <article className="border-t border-primary/15 py-10 first:border-t-0">
         <StaggerGroup className="mb-8 max-w-5xl" stagger={0.08}>
           <MotionItem><p className="eyebrow supporting-kicker">{kicker}</p></MotionItem>
-          <MotionItem><h3 className="editorial-title display-title mt-4 text-balance text-3xl leading-[0.92] text-ink md:text-5xl">{title}</h3></MotionItem>
+          <MotionItem><MixedTitle text={title} as="h3" className="editorial-title display-title mt-4 text-balance text-3xl leading-[0.92] text-ink md:text-5xl" /></MotionItem>
           <MotionItem>
             <p className="supporting-copy mt-4 max-w-3xl text-base text-slate md:text-lg">
               {description}
@@ -272,15 +374,18 @@ export function PreviewBand({ kicker, title, description, href, index, layout, i
   if (layout === "projects-editorial") {
     return (
       <article className="border-t border-primary/15 py-10 first:border-t-0">
-        <StaggerGroup className="mb-8 max-w-4xl" stagger={0.08}>
-          <MotionItem><h3 className="editorial-title display-title text-balance text-3xl leading-[0.92] text-ink md:text-5xl">{title}</h3></MotionItem>
-          <MotionItem><p className="supporting-copy mt-4 max-w-3xl text-base text-slate md:text-lg">{description}</p></MotionItem>
-          <MotionItem className="mt-7">
+        <div className="mb-8 gap-8 md:flex md:items-end md:justify-between">
+          <StaggerGroup className="max-w-4xl" stagger={0.08}>
+            <MotionItem><p className="eyebrow supporting-kicker">{kicker}</p></MotionItem>
+            <MotionItem><MixedTitle text={title} as="h3" className="editorial-title display-title mt-4 text-balance text-3xl leading-[0.92] text-ink md:text-5xl" /></MotionItem>
+            <MotionItem><p className="supporting-copy mt-4 max-w-3xl text-base text-slate md:text-lg">{description}</p></MotionItem>
+          </StaggerGroup>
+          <MotionItem distance={18} className="mt-7 shrink-0 md:mt-0">
             <Button href={href} variant="secondary">
               View Projects
             </Button>
           </MotionItem>
-        </StaggerGroup>
+        </div>
         <div className="rounded-[var(--radius-panel)] border border-primary/12 bg-white p-4 shadow-[var(--shadow-soft)] md:p-5">
           <ProjectsEditorialPreview />
         </div>
@@ -304,6 +409,17 @@ export function PreviewBand({ kicker, title, description, href, index, layout, i
     );
   }
 
+  if (layout === "review-feature") {
+    return (
+      <ReviewFeaturePreview
+        kicker={kicker}
+        title={title}
+        description={description}
+        href={href}
+      />
+    );
+  }
+
   return (
     <article className="border-t border-primary/15 py-10 first:border-t-0">
       <div
@@ -315,7 +431,7 @@ export function PreviewBand({ kicker, title, description, href, index, layout, i
         <StaggerGroup className="mt-8 max-w-2xl lg:mt-0" stagger={0.08}>
           <MotionItem><p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">0{index}</p></MotionItem>
           <MotionItem><p className="eyebrow mt-4">{kicker}</p></MotionItem>
-          <MotionItem><h3 className="editorial-title mt-5 text-balance text-3xl leading-tight text-ink md:text-5xl">{title}</h3></MotionItem>
+          <MotionItem><MixedTitle text={title} as="h3" className="editorial-title display-title mt-5 text-balance text-3xl leading-[0.92] text-ink md:text-5xl" /></MotionItem>
           <MotionItem><p className="mt-5 text-base leading-8 text-slate">{description}</p></MotionItem>
           <div className="mt-6 flex flex-wrap gap-2">
             {details.map((detail) => (

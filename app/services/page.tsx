@@ -23,9 +23,9 @@ export default function ServicesPage() {
       <section className="section-y bg-paper">
         <Container>
           <SectionHeading
-            kicker="Editorial Grid"
-            title="Distinct service presentations arranged with alternating image-first rhythm."
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur."
+            kicker="Service Matrix"
+            title="Trade categories, arranged for quick owner decisions."
+            description="Each section is written around the actual service menu, so visitors can move from a property problem to the right crew category without decoding template language."
           />
           <div className="mt-12">
             {services.map((service, index) => (

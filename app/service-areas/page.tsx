@@ -21,12 +21,12 @@ export default function ServiceAreasPage() {
 
       <section className="section-y bg-paper">
         <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
-          <ImagePlaceholder src="/placeholders/map.svg" alt="Regional map placeholder" label="Interactive Map Placeholder" ratio="cinema" />
+          <ImagePlaceholder src="/placeholders/map.svg" alt="Regional service map" label="Regional Service Map" ratio="cinema" />
           <div>
             <SectionHeading
               kicker="Coverage"
-              title="A premium map placeholder and coverage matrix designed to feel complete from day one."
-              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed posuere consectetur est at lobortis."
+              title="Routes, response windows, and local property knowledge."
+              description="Coverage language now supports real availability: recurring care zones, project scheduling, equipment access, and service calls by area."
             />
           </div>
         </Container>
@@ -36,8 +36,8 @@ export default function ServiceAreasPage() {
         <Container>
           <SectionHeading
             kicker="Region List"
-            title="Coverage cards that can expand or contract as the real business footprint changes."
-            description="Praesent commodo cursus magna, vel scelerisque nisl consectetur. Aenean eu leo quam."
+            title="Service areas, grouped for owners and property managers."
+            description="Each coverage card can grow with actual city names, neighborhoods, communities, or HOA service routes."
           />
           <div className="mt-12 grid gap-px overflow-hidden rounded-[var(--radius-panel)] border border-primary/15 bg-primary/15 lg:grid-cols-4 sm:grid-cols-2">
             {serviceAreas.map((area) => (

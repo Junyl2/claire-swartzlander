@@ -2,6 +2,7 @@ import type { Service } from "@/data/site";
 import { MotionItem, StaggerGroup } from "@/components/interactive/MotionSequence";
 import { Button } from "@/components/ui/Button";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { MixedTitle } from "@/components/ui/MixedTitle";
 
 type ServiceCardProps = {
   service: Service;
@@ -26,7 +27,7 @@ export function ServiceCard({ service, mirrored = false }: ServiceCardProps) {
             <p className="eyebrow">{service.eyebrow}</p>
           </div>
         </MotionItem>
-        <MotionItem><h3 className="editorial-title mt-6 text-3xl leading-tight text-ink md:text-4xl">{service.title}</h3></MotionItem>
+        <MotionItem><MixedTitle text={service.title} as="h3" className="editorial-title display-title mt-6 text-3xl leading-[0.92] text-ink md:text-4xl" /></MotionItem>
         <MotionItem><p className="mt-5 text-base leading-8 text-slate">{service.description}</p></MotionItem>
         <div className="mt-6 grid gap-3 text-sm leading-7 text-slate sm:grid-cols-2">
           {service.details.map((detail) => (

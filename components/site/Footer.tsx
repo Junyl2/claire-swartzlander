@@ -15,7 +15,7 @@ export function Footer() {
               <SiteLogo className="w-24 sm:w-28 lg:w-32" />
             </Link>
             <p className="supporting-copy mt-6 max-w-xl text-base text-paper/68">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.
+              Construction-led property services for owners who need renovation, exterior work, grounds care, pool support, site services, and cleaning handled with one standard.
             </p>
           </div>
           <Newsletter />
@@ -48,7 +48,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs font-medium uppercase tracking-[0.12em] text-paper/44 sm:flex-row sm:justify-between">
           <p>Copyright 2026 {siteConfig.name}</p>
-          <p>Premium construction website template</p>
+          <p>Construction-led property services</p>
         </div>
       </Container>
     </footer>

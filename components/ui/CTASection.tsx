@@ -1,6 +1,7 @@
 import { MotionItem, StaggerGroup } from "@/components/interactive/MotionSequence";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { MixedTitle } from "@/components/ui/MixedTitle";
 
 type CTASectionProps = {
   kicker: string;
@@ -18,7 +19,7 @@ export function CTASection({ kicker, title, description, primaryHref, primaryLab
       <Container className="grid items-end gap-10 md:grid-cols-[1.1fr_0.7fr]">
         <StaggerGroup className="max-w-3xl" stagger={0.09}>
           <MotionItem><p className="eyebrow mb-4">{kicker}</p></MotionItem>
-          <MotionItem><h2 className="editorial-title text-balance text-4xl leading-none md:text-6xl">{title}</h2></MotionItem>
+          <MotionItem><MixedTitle text={title} as="h2" className="editorial-title display-title text-balance text-4xl leading-[0.92] md:text-6xl" /></MotionItem>
           <MotionItem><p className="mt-6 max-w-2xl text-base leading-8 text-paper/70">{description}</p></MotionItem>
         </StaggerGroup>
         <StaggerGroup className="flex flex-col gap-3 sm:flex-row md:justify-end" delay={0.12} stagger={0.08}>

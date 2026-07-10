@@ -18,7 +18,14 @@ import ServicesPage from "@/app/services/page";
 import { Button } from "@/components/ui/Button";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { heroSlides, pageCopy, primaryNavigation, projects, siteConfig } from "@/data/site";
+import {
+  heroSlides,
+  homeProjectPreviewProjects,
+  homeServicePreviewCategories,
+  pageCopy,
+  primaryNavigation,
+  siteConfig,
+} from "@/data/site";
 
 describe("core UI components", () => {
   it("renders accessible call-to-action links", () => {
@@ -59,7 +66,7 @@ describe("core UI components", () => {
 
     const heroHeading = screen.getByRole("heading", { name: pageCopy.home.title });
     const sectionHeading = screen.getByRole("heading", { name: "Premium Construction" });
-    const heroDescription = screen.getByText(pageCopy.home.description);
+    const heroDescription = screen.getAllByText(pageCopy.home.description)[0];
     const navLink = screen.getByRole("link", { name: /^services$/i });
     const ctaLink = screen.getAllByRole("link", { name: "Start A Project" })[0];
     const wordmark = screen
@@ -97,11 +104,39 @@ describe("core UI components", () => {
     const heroHeading = screen.getByRole("heading", { name: pageCopy.home.title });
     const heroSection = heroHeading.closest("section");
     const heroShell = container.querySelector(".container-shell");
+    const desktopHeroGrid = heroShell?.firstElementChild;
+    const desktopLeadImage = screen.getAllByAltText(heroSlides[0].alt)[1];
+    const desktopDetailImage = screen.getAllByAltText(heroSlides[1].alt)[1];
+    const googleBadges = screen.getAllByRole("link", { name: /view ere care 4\.8 star rating on google maps/i });
 
     expect(heroSection).toHaveClass("h-screen");
+    expect(heroSection).toHaveClass("lg:mt-32");
+    expect(heroSection).toHaveClass("lg:h-[calc(100vh-8rem)]");
+    expect(heroSection).toHaveClass("lg:items-start");
     expect(heroSection).toHaveClass("overflow-hidden");
     expect(heroShell).toHaveClass("h-full");
+    expect(heroShell).toHaveClass("py-4");
+    expect(heroShell).toHaveClass("xl:py-6");
     expect(heroShell).not.toHaveClass("min-h-screen");
+    expect(desktopHeroGrid).toHaveClass("h-full");
+    expect(desktopHeroGrid).toHaveClass("gap-4");
+    expect(desktopHeroGrid).toHaveClass("xl:gap-6");
+    expect(desktopLeadImage.parentElement).toHaveClass("h-full");
+    expect(desktopLeadImage.parentElement).toHaveClass("rounded-[8px]");
+    expect(desktopDetailImage.parentElement).toHaveClass("min-h-0");
+    expect(desktopDetailImage.parentElement).toHaveClass("rounded-[8px]");
+    expect(googleBadges).toHaveLength(2);
+    expect(googleBadges[0]).toHaveAttribute("href", expect.stringContaining("google.com/maps/place/ERE+CARE"));
+    expect(googleBadges[0]).toHaveClass("border-white/24");
+    expect(googleBadges[0].parentElement).toHaveClass("bottom-6");
+    expect(googleBadges[0].parentElement).toHaveClass("right-6");
+    expect(googleBadges[1]).toHaveClass("bg-white/92");
+    expect(screen.getAllByText("4.8")).toHaveLength(2);
+    expect(screen.getAllByText("(76) Google Reviews")).toHaveLength(2);
+    expect(screen.queryByText("Full Property Services")).not.toBeInTheDocument();
+    expect(screen.queryByText("Structural Works")).not.toBeInTheDocument();
+    expect(screen.queryByText("Craft Detail")).not.toBeInTheDocument();
+    expect(screen.queryByText("Engineering Precision")).not.toBeInTheDocument();
   });
 
   it("keeps all hero slides mounted for seamless crossfades", () => {
@@ -182,8 +217,8 @@ describe("core UI components", () => {
     expect(scrollRegion).toHaveClass("min-h-0");
 
     expect(footerDetails).not.toBeNull();
-    expect(screen.getByText("+1 (000) 000-0000")).toBeInTheDocument();
-    expect(screen.getByText("hello@companyname.com")).toBeInTheDocument();
+    expect(screen.getByText("+13862372856")).toBeInTheDocument();
+    expect(screen.getByText("erecapital@gmail.com")).toBeInTheDocument();
     expect(screen.getByText("Mon-Fri 08:00-18:00")).toBeInTheDocument();
 
     expect(screen.getByRole("button", { name: /about/i })).toBeInTheDocument();
@@ -233,6 +268,7 @@ describe("core UI components", () => {
     const headerShell = container.querySelector('[data-header-shell="true"]');
     const topbar = container.querySelector('[data-topbar="true"]');
     const navbar = container.querySelector('[data-navbar="true"]');
+    const navbarInner = container.querySelector('[data-navbar-inner="true"]');
     const logoWrap = container.querySelector('[data-nav-logo="true"]');
 
     expect(headerShell).toHaveClass("bg-white");
@@ -241,8 +277,9 @@ describe("core UI components", () => {
     expect(topbar).toHaveClass("bg-primary");
     expect(topbar).toHaveClass("text-white");
     expect(navbar).toHaveClass("bg-white");
-    expect(logoWrap).toHaveClass("lg:w-20");
-    expect(logoWrap).toHaveClass("xl:w-24");
+    expect(navbarInner).toHaveClass("lg:py-2");
+    expect(logoWrap).toHaveClass("lg:w-18");
+    expect(logoWrap).toHaveClass("xl:w-20");
   });
 
   it("broadcasts mobile menu lock state when opening and closing the drawer", () => {
@@ -273,24 +310,27 @@ describe("core UI components", () => {
     render(<HomePage />);
 
     expect(screen.queryByRole("heading", { name: /the homepage now follows the same sequence as the navigation bar/i })).not.toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /service-led editorial layouts preview/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /one property team, structured across the trades that matter/i })).toBeInTheDocument();
     expect(
-      screen.getAllByText(/integer posuere erat a ante venenatis dapibus posuere velit aliquet/i).some((node) =>
+      screen.getAllByText(/pool care, lawn maintenance, renovation, construction, landscaping, site support, and cleaning/i).some((node) =>
         node.className.includes("max-w-3xl"),
       ),
     ).toBe(true);
-    expect(screen.getByText("Pool Care")).toBeInTheDocument();
-    expect(screen.getByText("Lawn Care")).toBeInTheDocument();
-    expect(screen.getByText("Renovation")).toBeInTheDocument();
-    expect(screen.getByText("Construction")).toBeInTheDocument();
-    expect(screen.getByText("Landscaping")).toBeInTheDocument();
+    expect(screen.getAllByText("Pool Care").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Lawn Care").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Renovation").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Construction").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Landscaping").length).toBeGreaterThan(0);
+    for (const category of homeServicePreviewCategories) {
+      expect(screen.getByAltText(category.image.alt)).toHaveAttribute("src", category.image.src);
+    }
     expect(screen.queryByRole("link", { name: "Pool Care" })).not.toBeInTheDocument();
-    const servicesCta = screen.getByRole("link", { name: "View All Services Category" });
+    const servicesCta = screen.getByRole("link", { name: "View All Services" });
     expect(servicesCta).toHaveAttribute("href", "/services");
 
-    const leadTile = screen.getByText("Pool Care").closest("article");
-    const bridgeTile = screen.getByText("Construction").closest("article");
-    const wideTile = screen.getByText("Landscaping").closest("article");
+    const leadTile = screen.getAllByText("Pool Care")[0].closest("article");
+    const bridgeTile = screen.getAllByText("Construction")[0].closest("article");
+    const wideTile = screen.getAllByText("Landscaping")[0].closest("article");
     const ctaGridItem = servicesCta.closest("article")?.parentElement;
     const leadGridItem = leadTile?.parentElement;
     const bridgeGridItem = bridgeTile?.parentElement;
@@ -306,28 +346,28 @@ describe("core UI components", () => {
     expect(wideGridItem).toHaveClass("md:col-span-2");
     expect(ctaGridItem).toHaveClass("md:col-span-2");
     expect(ctaGridItem).toHaveClass("md:row-span-1");
-    expect(screen.getByText("Renovation").closest("article")?.parentElement).toHaveClass("md:row-span-1");
+    expect(screen.getAllByText("Renovation")[0].closest("article")?.parentElement).toHaveClass("md:row-span-1");
   });
 
   it("renders the homepage about preview as a cinematic split layout with a separate context image", () => {
     render(<HomePage />);
 
     const aboutHeading = screen.getByRole("heading", {
-      name: /the company story reads like a premium journal spread with leadership, values, and timeline placeholders/i,
+      name: /refined property care with unwavering dedication/i,
     });
     const aboutSection = aboutHeading.closest("article");
 
     expect(aboutSection).not.toBeNull();
     expect(within(aboutSection as HTMLElement).getByRole("link", { name: "Explore Page" })).toHaveAttribute("href", "/about");
     expect(within(aboutSection as HTMLElement).queryByRole("link", { name: /view destination/i })).not.toBeInTheDocument();
-    expect(within(aboutSection as HTMLElement).getByAltText("About preview placeholder")).toBeInTheDocument();
-    expect(within(aboutSection as HTMLElement).getByAltText("About detail placeholder")).toBeInTheDocument();
+    expect(within(aboutSection as HTMLElement).getByAltText("ERE CARE about preview image")).toBeInTheDocument();
+    expect(within(aboutSection as HTMLElement).getByAltText("ERE CARE about detail image")).toBeInTheDocument();
 
     const aboutLayout = aboutSection?.firstElementChild;
     const aboutLeadWrap = aboutLayout?.firstElementChild as HTMLElement | null;
     const aboutCopyWrap = aboutLayout?.lastElementChild as HTMLElement | null;
-    const aboutLeadImage = within(aboutSection as HTMLElement).getByAltText("About preview placeholder").closest("figure");
-    const aboutContextImage = within(aboutSection as HTMLElement).getByAltText("About detail placeholder").closest("figure");
+    const aboutLeadImage = within(aboutSection as HTMLElement).getByAltText("ERE CARE about preview image").closest("figure");
+    const aboutContextImage = within(aboutSection as HTMLElement).getByAltText("ERE CARE about detail image").closest("figure");
 
     expect(aboutLayout).toHaveClass("lg:grid");
     expect(aboutLayout).toHaveClass("lg:grid-cols-[1.2fr_0.8fr]");
@@ -340,38 +380,87 @@ describe("core UI components", () => {
     expect(aboutLeadImage).toHaveClass("min-h-[16rem]");
     expect(aboutLeadImage).toHaveClass("aspect-[16/9]");
     expect(aboutContextImage).toHaveClass("aspect-[4/3]");
-    expect(within(aboutSection as HTMLElement).getByAltText("About preview placeholder")).toHaveAttribute("src", "/hero/hero-2.jpeg");
-    expect(within(aboutSection as HTMLElement).getByAltText("About detail placeholder")).toHaveAttribute("src", "/hero/hero-3.jpeg");
+    expect(within(aboutSection as HTMLElement).getByAltText("ERE CARE about preview image")).toHaveAttribute("src", "/hero/hero-2.jpeg");
+    expect(within(aboutSection as HTMLElement).getByAltText("ERE CARE about detail image")).toHaveAttribute("src", "/hero/hero-3.jpeg");
+    expect(within(aboutSection as HTMLElement).getByText("Years Serving")).toBeInTheDocument();
+    expect(within(aboutSection as HTMLElement).getByText("Days In Business")).toBeInTheDocument();
+    expect(within(aboutSection as HTMLElement).getByText("Completed Projects")).toBeInTheDocument();
+    expect(within(aboutSection as HTMLElement).getByText("Team Members")).toBeInTheDocument();
   });
 
-  it("renders the homepage projects preview as a six-image editorial spread", () => {
+  it("renders the homepage projects preview as a two-row marquee", () => {
     render(<HomePage />);
 
     expect(
       screen.getByRole("heading", {
-        name: /project storytelling gets its own image-first preview language before visitors move into the full portfolio/i,
+        name: /real property improvements, shown by scope and condition/i,
       }),
     ).toBeInTheDocument();
     const projectsHeading = screen.getByRole("heading", {
-      name: /project storytelling gets its own image-first preview language before visitors move into the full portfolio/i,
+      name: /real property improvements, shown by scope and condition/i,
     });
     const projectsSection = projectsHeading.closest("article");
+    const projectsKicker = within(projectsSection as HTMLElement).getByText("Field Work Examples");
+    const projectsCta = within(projectsSection as HTMLElement).getByRole("link", { name: "View Projects" });
+    const projectsHeader = projectsCta.parentElement?.parentElement;
 
-    expect(within(projectsSection as HTMLElement).getByRole("link", { name: "View Projects" })).toHaveAttribute("href", "/projects");
+    expect(projectsKicker).toHaveClass("supporting-kicker");
+    expect(projectsHeader).toHaveClass("md:flex");
+    expect(projectsHeader).toHaveClass("md:items-end");
+    expect(projectsHeader).toHaveClass("md:justify-between");
+    expect(projectsCta).toHaveAttribute("href", "/projects");
+    expect(projectsCta.parentElement).toHaveClass("md:mt-0");
+    expect(projectsCta.parentElement).toHaveClass("shrink-0");
     expect(within(projectsSection as HTMLElement).queryByRole("link", { name: /explore portfolio/i })).not.toBeInTheDocument();
 
-    for (const project of projects) {
+    for (const project of homeProjectPreviewProjects) {
       expect(screen.getByAltText(project.image.alt)).toBeInTheDocument();
     }
 
-    const projectsHeroImage = screen.getByAltText(projects[0].image.alt);
-    const projectsPreviewSection = projectsHeroImage.closest("article");
-    const projectsGridItem = projectsHeroImage.closest("article")?.parentElement;
-    const projectsGrid = projectsGridItem?.parentElement;
+    const projectsHeroImage = screen.getByAltText(homeProjectPreviewProjects[0].image.alt);
+    const marqueeCard = projectsHeroImage.closest("article");
+    const marqueeRow = marqueeCard?.parentElement;
+    const marqueeStage = marqueeRow?.parentElement?.parentElement;
+    const marqueeRows = projectsSection?.querySelectorAll(".project-marquee-row");
 
-    expect(projectsGrid).toHaveClass("md:grid-cols-4");
-    expect(projectsPreviewSection?.parentElement).toHaveClass("md:col-span-2");
-    expect(projectsPreviewSection?.parentElement).toHaveClass("md:row-span-2");
+    expect(marqueeRows).toHaveLength(2);
+    expect(marqueeRows?.[0]).toHaveAttribute("data-direction", "left");
+    expect(marqueeRows?.[1]).toHaveAttribute("data-direction", "right");
+    expect(marqueeRow).toHaveClass("project-marquee-row");
+    expect(marqueeStage).toHaveClass("overflow-hidden");
+    expect(marqueeCard).toHaveClass("project-marquee-card");
+  });
+
+  it("renders the homepage reviews preview as a single elegant Google review feature", () => {
+    render(<HomePage />);
+
+    const reviewHeading = screen.getByRole("heading", {
+      name: /a homeowner’s words after ere care fence work/i,
+    });
+    const reviewSection = reviewHeading.closest("article");
+    const reviewLayout = reviewSection?.firstElementChild;
+    const reviewFigure = within(reviewSection as HTMLElement).getByText("Martin Shell").closest("figure");
+
+    expect(within(reviewSection as HTMLElement).getByText("Trusted By Property Owners")).toHaveClass("supporting-kicker");
+    expect(reviewLayout).not.toHaveClass("bg-ink");
+    expect(reviewLayout).not.toHaveClass("shadow-[var(--shadow-soft)]");
+    expect(reviewFigure).toHaveClass("border-l");
+    expect(reviewFigure).not.toHaveClass("bg-paper");
+    expect(within(reviewSection as HTMLElement).getByText("Martin Shell")).toBeInTheDocument();
+    expect(within(reviewSection as HTMLElement).getByText("4 reviews · 3 photos")).toBeInTheDocument();
+    expect(within(reviewSection as HTMLElement).getByText("Google")).toBeInTheDocument();
+    expect(within(reviewSection as HTMLElement).getByText("4.8")).toBeInTheDocument();
+    expect(within(reviewSection as HTMLElement).getByText("76 Reviews")).toBeInTheDocument();
+    expect(within(reviewSection as HTMLElement).getByLabelText("5 star review").querySelectorAll("svg")).toHaveLength(5);
+    expect(
+      within(reviewSection as HTMLElement).getByText(/pablo and his team did a great job installing a vinyl fence around my home/i),
+    ).toBeInTheDocument();
+    expect(within(reviewSection as HTMLElement).getByRole("link", { name: "View All Reviews" })).toHaveAttribute("href", "/reviews");
+    expect(within(reviewSection as HTMLElement).getByRole("link", { name: /google reviews/i })).toHaveAttribute(
+      "href",
+      expect.stringContaining("google.com/maps/place/ERE+CARE"),
+    );
+    expect(within(reviewSection as HTMLElement).queryByAltText("ERE CARE reviews preview image")).not.toBeInTheDocument();
   });
 
   it("renders the shared contact endcap on every non-contact page and skips it on the contact page", () => {
@@ -388,10 +477,10 @@ describe("core UI components", () => {
     for (const page of pages) {
       const { unmount } = render(page);
 
-      const contactImage = screen.getByAltText("Contact preview placeholder");
+      const contactImage = screen.getByAltText("ERE CARE contact preview image");
       const contactSection = contactImage.closest("section");
       const contactHeading = within(contactSection as HTMLElement).getByRole("heading", {
-        name: /start a conversation about your next construction project/i,
+        name: /start with the property, then build the right scope/i,
       });
       const contactLayout = contactSection?.querySelector(".container-shell");
       const contactCopyPanel = contactHeading.parentElement;
@@ -399,8 +488,8 @@ describe("core UI components", () => {
 
       expect(contactSection).not.toBeNull();
       expect(contactHeading).toBeInTheDocument();
-      expect(within(contactSection as HTMLElement).getByAltText("Contact preview placeholder")).toBeInTheDocument();
-      expect(within(contactSection as HTMLElement).queryByAltText("Contact map placeholder")).not.toBeInTheDocument();
+      expect(within(contactSection as HTMLElement).getByAltText("ERE CARE contact preview image")).toBeInTheDocument();
+      expect(within(contactSection as HTMLElement).queryByAltText("ERE CARE contact map image")).not.toBeInTheDocument();
       expect(within(contactSection as HTMLElement).getByRole("link", { name: "Send An Inquiry" })).toHaveAttribute("href", "/contact");
       expect(contactLayout).toHaveClass("lg:grid-cols-[1.08fr_0.92fr]");
       expect(contactLayout).toHaveClass("lg:items-stretch");
@@ -412,6 +501,6 @@ describe("core UI components", () => {
     }
 
     render(<ContactPage />);
-    expect(screen.queryByAltText("Contact preview placeholder")).not.toBeInTheDocument();
+    expect(screen.queryByAltText("ERE CARE contact preview image")).not.toBeInTheDocument();
   });
 });

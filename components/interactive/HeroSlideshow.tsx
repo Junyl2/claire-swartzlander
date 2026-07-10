@@ -45,8 +45,8 @@ export function HeroSlideshow({ slides }: HeroSlideshowProps) {
           />
         </motion.div>
       ))}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(42_52%_38%_/_0.18),transparent_38%)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-ink/35 via-ink/52 to-ink/88" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(43_49%_39%_/_0.08),transparent_42%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/8 via-ink/20 to-ink/46" />
     </div>
   );
 }

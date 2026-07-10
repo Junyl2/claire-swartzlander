@@ -1,5 +1,6 @@
 import { MotionItem, StaggerGroup } from "@/components/interactive/MotionSequence";
 import { cn } from "@/lib/utils";
+import { MixedTitle } from "@/components/ui/MixedTitle";
 
 type SectionHeadingProps = {
   kicker: string;
@@ -17,9 +18,12 @@ export function SectionHeading({ kicker, title, description, align = "left", ton
         <p className="eyebrow supporting-kicker mb-4">{kicker}</p>
       </MotionItem>
       <MotionItem>
-        <h2 className={cn("editorial-title display-title text-balance text-4xl leading-[0.92] md:text-6xl", tone === "light" ? "text-paper" : "text-ink")}>
-          {title}
-        </h2>
+        <MixedTitle
+          text={title}
+          as="h2"
+          className={cn("editorial-title display-title text-balance text-4xl leading-[0.92] md:text-6xl", tone === "light" ? "text-paper" : "text-ink")}
+          accentClassName={tone === "light" ? "text-primary" : undefined}
+        />
       </MotionItem>
       {description ? (
         <MotionItem>

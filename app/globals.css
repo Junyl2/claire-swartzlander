@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: 42 52% 38%;
+  --color-primary: 43 49% 39%;
   --color-secondary: 30 36% 35%;
   --color-ink: 215 19% 10%;
   --color-charcoal: 215 18% 15%;
@@ -14,7 +14,7 @@
   --radius-sharp: 3px;
   --radius-panel: 4px;
   --shadow-soft: 0 24px 70px hsl(215 19% 10% / 0.14);
-  --shadow-line: inset 0 0 0 1px hsl(42 52% 38% / 0.16);
+  --shadow-line: inset 0 0 0 1px hsl(43 49% 39% / 0.16);
   --container: 1400px;
 }
 
@@ -121,6 +121,14 @@ textarea {
   text-transform: uppercase;
 }
 
+.mixed-title-accent {
+  display: inline;
+  color: hsl(var(--color-primary));
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
 .brand-title {
   font-family: var(--font-display), Impact, sans-serif;
   font-weight: 400;
@@ -176,6 +184,56 @@ textarea {
 
 .image-frame:hover img {
   transform: scale(1.045);
+}
+
+.project-marquee-row {
+  --marquee-distance: calc(-50% - 0.5rem);
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  padding-inline: 1rem;
+  animation: project-marquee-left 34s linear infinite;
+  will-change: transform;
+}
+
+.project-marquee-row[data-direction="right"] {
+  animation-name: project-marquee-right;
+  animation-duration: 40s;
+}
+
+.project-marquee-row:hover {
+  animation-play-state: paused;
+}
+
+@keyframes project-marquee-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(var(--marquee-distance));
+  }
+}
+
+@keyframes project-marquee-right {
+  from {
+    transform: translateX(var(--marquee-distance));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-marquee-row {
+    width: auto;
+    overflow-x: auto;
+    animation: none;
+    scroll-snap-type: x proximity;
+  }
+
+  .project-marquee-card {
+    scroll-snap-align: start;
+  }
 }
 
 .glass-nav {

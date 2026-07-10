@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/Button";
+import { MixedTitle } from "@/components/ui/MixedTitle";
 
 export function Newsletter() {
   return (
     <div className="rounded-[var(--radius-panel)] border border-white/10 bg-white/4 p-6">
       <p className="eyebrow mb-3">Newsletter</p>
-      <h3 className="editorial-title text-2xl text-paper">Receive project notes, insights, and studio updates.</h3>
+      <MixedTitle text="Receive field notes, service updates, and property care insights." as="h3" className="editorial-title display-title text-2xl leading-[0.95] text-paper" />
       <p className="mt-4 max-w-md text-sm leading-7 text-paper/68">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.
+        Practical updates for owners, managers, and teams planning repairs, recurring care, or larger property upgrades.
       </p>
       <div className="mt-6 flex flex-col gap-3 sm:flex-row">
         <input

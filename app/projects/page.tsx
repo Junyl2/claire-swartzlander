@@ -22,9 +22,9 @@ export default function ProjectsPage() {
       <section className="section-y bg-paper">
         <Container>
           <SectionHeading
-            kicker="Masonry Showcase"
-            title="Large editorial project cards with varied proportions and category cues."
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum."
+            kicker="Work Gallery"
+            title="Property scopes, shown with the weight they deserve."
+            description="Project cards now support the full range of services: repairs, renovation, pool systems, grounds care, exterior construction, cleaning, and site preparation."
           />
           <div className="mt-12">
             <ProjectGallery projects={projects} />
