@@ -364,15 +364,20 @@ describe("core UI components", () => {
     expect(within(aboutSection as HTMLElement).getByAltText("ERE CARE about detail image")).toBeInTheDocument();
 
     const aboutLayout = aboutSection?.firstElementChild;
-    const aboutLeadWrap = aboutLayout?.firstElementChild as HTMLElement | null;
-    const aboutCopyWrap = aboutLayout?.lastElementChild as HTMLElement | null;
+    const aboutLeadWrap = aboutSection?.querySelector('[data-about-image-column="true"]');
+    const aboutCopyWrap = aboutSection?.querySelector('[data-about-copy-column="true"]');
+    const aboutTexture = aboutSection?.querySelector('[data-about-texture="true"]');
     const aboutLeadImage = within(aboutSection as HTMLElement).getByAltText("ERE CARE about preview image").closest("figure");
     const aboutContextImage = within(aboutSection as HTMLElement).getByAltText("ERE CARE about detail image").closest("figure");
 
     expect(aboutLayout).toHaveClass("lg:grid");
     expect(aboutLayout).toHaveClass("lg:grid-cols-[1.2fr_0.8fr]");
-    expect(aboutLayout).toHaveClass("lg:gap-8");
+    expect(aboutLayout).toHaveClass("lg:gap-10");
     expect(aboutLayout).toHaveClass("lg:items-start");
+    expect(aboutLayout).not.toHaveClass("bg-ink");
+    expect(aboutLayout).not.toHaveClass("shadow-[var(--shadow-soft)]");
+    expect(aboutLayout).toHaveClass("about-preview-texture");
+    expect(aboutTexture).toBe(aboutLayout);
     expect(aboutLeadWrap).toHaveClass("min-w-0");
     expect(aboutCopyWrap).toHaveClass("min-w-0");
     expect(aboutLeadWrap).toHaveClass("lg:sticky");
@@ -428,6 +433,7 @@ describe("core UI components", () => {
     expect(marqueeRows?.[1]).toHaveAttribute("data-direction", "right");
     expect(marqueeRow).toHaveClass("project-marquee-row");
     expect(marqueeStage).toHaveClass("overflow-hidden");
+    expect(marqueeStage).not.toHaveClass("shadow-[var(--shadow-soft)]");
     expect(marqueeCard).toHaveClass("project-marquee-card");
   });
 

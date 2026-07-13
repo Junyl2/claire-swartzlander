@@ -72,14 +72,14 @@ export function OneCallValuesSection() {
               </p>
             </div>
 
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <div className="mt-10 grid gap-px border-y border-primary/15 bg-primary/15 md:grid-cols-3">
               {pillars.map((pillar, index) => {
                 const Icon = pillar.icon;
 
                 return (
                   <Reveal key={pillar.title} delay={index * 0.06}>
-                    <article className="group h-full border-t border-primary/18 bg-white p-6 shadow-[var(--shadow-soft)] transition duration-500 hover:-translate-y-1">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-[var(--radius-sharp)] bg-primary/10 text-primary transition duration-500 group-hover:bg-primary group-hover:text-white">
+                    <article className="group h-full bg-paper p-6 transition duration-500 hover:bg-white">
+                      <div className="flex h-12 w-12 items-center justify-center border border-primary/18 text-primary transition duration-500 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
                         <Icon className="h-5 w-5" />
                       </div>
                       <h3 className="mt-5 text-xl font-bold text-ink">{pillar.title}</h3>

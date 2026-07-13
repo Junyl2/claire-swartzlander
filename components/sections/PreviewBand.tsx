@@ -131,7 +131,7 @@ function ProjectsEditorialPreview() {
 
   return (
     <MotionItem distance={26}>
-      <div className="relative overflow-hidden rounded-[var(--radius-panel)] bg-ink py-4 shadow-[var(--shadow-soft)] md:py-5">
+      <div className="relative overflow-hidden bg-ink py-4 md:py-5">
         <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-ink to-transparent md:w-28" />
         <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-ink to-transparent md:w-28" />
         <div className="grid gap-4 md:gap-5">
@@ -191,8 +191,11 @@ function AboutEditorialPreview({
   });
 
   return (
-    <div className="rounded-[var(--radius-panel)] border border-primary/12 bg-ink p-5 shadow-[var(--shadow-soft)] md:p-6 lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-8">
-      <div className="min-w-0 border border-white/8 bg-paper/5 p-2 lg:sticky lg:top-36 lg:self-start">
+    <div
+      data-about-texture="true"
+      className="about-preview-texture py-6 lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-10"
+    >
+      <div data-about-image-column="true" className="min-w-0 border-y border-primary/15 py-2 lg:sticky lg:top-36 lg:self-start">
         <ImagePlaceholder
           src={images[0].src}
           alt={images[0].alt}
@@ -201,22 +204,22 @@ function AboutEditorialPreview({
           className="min-h-[16rem] bg-ink md:min-h-[24rem] lg:min-h-[30rem]"
         />
       </div>
-      <div className="mt-6 flex min-w-0 h-full flex-col lg:mt-0">
-        <StaggerGroup className="max-w-2xl" stagger={0.08}>
+      <div data-about-copy-column="true" className="mt-6 flex min-w-0 h-full flex-col lg:mt-0">
+        <StaggerGroup className="relative max-w-2xl" stagger={0.08}>
           <MotionItem><p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">0{index}</p></MotionItem>
-          <MotionItem><p className="eyebrow supporting-kicker mt-4 text-paper/74">{kicker}</p></MotionItem>
-          <MotionItem><MixedTitle text={title} as="h3" className="editorial-title display-title mt-5 text-balance text-3xl leading-[0.92] text-paper md:text-5xl" /></MotionItem>
+          <MotionItem><p className="eyebrow supporting-kicker mt-4">{kicker}</p></MotionItem>
+          <MotionItem><MixedTitle text={title} as="h3" className="editorial-title display-title mt-5 text-balance text-3xl leading-[0.92] text-ink md:text-5xl" /></MotionItem>
           <MotionItem>
-            <div className="supporting-copy mt-5 grid max-w-2xl gap-5 whitespace-pre-line text-base text-paper/74 md:text-lg">
+            <div className="supporting-copy mt-5 grid max-w-2xl gap-5 whitespace-pre-line text-base text-slate md:text-lg">
               {description}
             </div>
           </MotionItem>
-          <div className="mt-7 grid gap-px overflow-hidden rounded-[var(--radius-panel)] border border-white/12 bg-white/12 sm:grid-cols-2">
+          <div className="mt-7 grid gap-px border-y border-primary/15 bg-primary/15 sm:grid-cols-2">
             {statDetails.map((stat) => (
               <MotionItem key={`${stat.value}-${stat.label}`}>
-                <div className="bg-paper/6 p-4">
+                <div className="bg-paper p-4">
                   <p className="display-title text-4xl leading-none text-primary">{stat.value}</p>
-                  <p className="ui-title mt-2 text-[11px] text-paper">{stat.label}</p>
+                  <p className="ui-title mt-2 text-[11px] text-ink">{stat.label}</p>
                 </div>
               </MotionItem>
             ))}
@@ -227,7 +230,7 @@ function AboutEditorialPreview({
             </Button>
           </MotionItem>
         </StaggerGroup>
-        <div className="mt-6 border-t border-white/10 pt-6">
+        <div className="mt-6 border-t border-primary/15 pt-6">
           <ImagePlaceholder
             src={images[1].src}
             alt={images[1].alt}
@@ -386,9 +389,7 @@ export function PreviewBand({ kicker, title, description, href, index, layout, i
             </Button>
           </MotionItem>
         </div>
-        <div className="rounded-[var(--radius-panel)] border border-primary/12 bg-white p-4 shadow-[var(--shadow-soft)] md:p-5">
-          <ProjectsEditorialPreview />
-        </div>
+        <ProjectsEditorialPreview />
       </article>
     );
   }
@@ -423,7 +424,7 @@ export function PreviewBand({ kicker, title, description, href, index, layout, i
   return (
     <article className="border-t border-primary/15 py-10 first:border-t-0">
       <div
-        className={`rounded-[var(--radius-panel)] border border-primary/12 bg-white p-6 shadow-[var(--shadow-soft)] md:p-8 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-8 ${
+        className={`border-y border-primary/15 py-8 lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-10 ${
           mirrored ? "lg:[&>*:first-child]:order-2" : ""
         }`}
       >

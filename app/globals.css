@@ -186,6 +186,25 @@ textarea {
   transform: scale(1.045);
 }
 
+.about-preview-texture {
+  background-color: hsl(var(--color-paper));
+  background-image:
+    linear-gradient(hsl(var(--color-primary) / 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--color-primary) / 0.09) 1px, transparent 1px),
+    linear-gradient(hsl(var(--color-ink) / 0.026) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--color-ink) / 0.026) 1px, transparent 1px);
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0;
+  background-size:
+    120px 120px,
+    120px 120px,
+    40px 40px,
+    40px 40px;
+}
+
 .project-marquee-row {
   --marquee-distance: calc(-50% - 0.5rem);
   display: flex;
