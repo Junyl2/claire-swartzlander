@@ -16,7 +16,7 @@ export const metadata = createPageMetadata(pageMetadata.sell);
 const sellPaths = [
   { title: "Cash Offer", href: "/sell/cash-offer", icon: Banknote, description: "Request a no-obligation cash offer and skip the showings entirely." },
   { title: "Sell My Home", href: "/sell/sell-my-home", icon: HomeIcon, description: "A fully marketed listing built for maximum buyer exposure." },
-  { title: "What's My Home Worth?", href: "/sell/whats-my-home-worth", icon: Calculator, description: "Get a current, no-obligation estimate of your home's value." },
+  { title: "Home Valuation", href: "/sell/whats-my-home-worth", icon: Calculator, description: "Get a current, no-obligation estimate of your home's value." },
   { title: "Top Dollar Tips", href: "/sell/top-dollar-tips", icon: TrendingUp, description: "Practical steps to get the strongest possible price for your home." },
 ];
 

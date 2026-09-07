@@ -29,6 +29,21 @@ export type Tip = {
   description: string;
 };
 
+export type Neighborhood = {
+  name: string;
+  slug: string;
+  sections: string[];
+  overview: string;
+  landmarks: string[];
+};
+
+export type CommunityDirectoryItem = {
+  name: string;
+  slug: string;
+  href: string;
+  parent?: string;
+};
+
 export type Testimonial = {
   quote: string;
   name: string;
@@ -67,13 +82,26 @@ export type HomeListingPreview = {
   image: ImageToken;
 };
 
+export type Listing = {
+  slug: string;
+  title: string;
+  community: string;
+  price: number;
+  beds: number;
+  baths: number;
+  sqft: number;
+  status: "Active" | "Pending" | "New";
+  image: ImageToken;
+};
+
 export const siteConfig = {
   name: "Claire Swartzlander",
   tagline: "Coastal Property Specialist",
   brokerage: "RE/MAX Signature",
   url: "https://example.com",
-  phone: "+13865550142",
-  email: "hello@clairesellsthecoast.com",
+  phone: "+17249542787",
+  email: "clairesellsthecoast@gmail.com",
+  web3FormsAccessKey: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "",
   address: "000 Ocean Palm Way, Palm Coast, FL 32137",
   hours: "By Appointment — 7 Days A Week",
   socials: [
@@ -86,6 +114,8 @@ export const siteConfig = {
 export const navigation: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Buy", href: "/buy" },
+  { label: "Communities", href: "/communities" },
+  { label: "Neighborhoods", href: "/neighborhoods" },
   { label: "About", href: "/about" },
   { label: "Sell", href: "/sell" },
   { label: "Contact", href: "/contact" },
@@ -93,19 +123,8 @@ export const navigation: NavItem[] = [
 
 export const primaryNavigation: NavItem[] = [
   { label: "Home", href: "/" },
-  {
-    label: "Buy",
-    href: "/buy",
-    children: [
-      { label: "Top Buyer Tips", href: "/buy/top-buyer-tips" },
-      { label: "Marina Del Palma", href: "/buy/marina-del-palma" },
-      { label: "Palm Harbor", href: "/buy/palm-harbor" },
-      { label: "Grand Haven", href: "/buy/grand-haven" },
-      { label: "The Conservatory at Hammock Beach", href: "/buy/the-conservatory-at-hammock-beach" },
-      { label: "Hammock Dunes", href: "/buy/hammock-dunes" },
-      { label: "Tidelands", href: "/buy/tidelands" },
-    ],
-  },
+  { label: "Communities", href: "/communities" },
+  { label: "Neighborhoods", href: "/neighborhoods" },
   {
     label: "About",
     href: "/about",
@@ -116,13 +135,25 @@ export const primaryNavigation: NavItem[] = [
     ],
   },
   {
+    label: "Buy",
+    href: "/buy",
+    children: [
+      { label: "Featured Listings", href: "/buy/listings" },
+      { label: "Top Buyer Tips", href: "/buy/top-buyer-tips" },
+      { label: "Marina Del Palma", href: "/buy/marina-del-palma" },
+      { label: "Palm Harbor", href: "/buy/palm-harbor" },
+      { label: "Grand Haven", href: "/buy/grand-haven" },
+      { label: "The Conservatory at Hammock Beach", href: "/buy/the-conservatory-at-hammock-beach" },
+      { label: "Hammock Dunes", href: "/buy/hammock-dunes" },
+      { label: "Tidelands", href: "/buy/tidelands" },
+    ],
+  },
+  {
     label: "Sell",
     href: "/sell",
     children: [
-      { label: "Cash Offer", href: "/sell/cash-offer" },
       { label: "Sell My Home", href: "/sell/sell-my-home" },
-      { label: "What's My Home Worth?", href: "/sell/whats-my-home-worth" },
-      { label: "Top Dollar Tips", href: "/sell/top-dollar-tips" },
+      { label: "Home Valuation", href: "/sell/whats-my-home-worth" },
     ],
   },
   { label: "Contact", href: "/contact" },
@@ -199,6 +230,142 @@ export const communities: Community[] = [
     image: { src: "/placeholders/community.svg", alt: "Tidelands community placeholder", label: "Tidelands" },
     highlights: ["Marsh & water views", "Quieter setting", "Easy access"],
   },
+];
+
+export const neighborhoods: Neighborhood[] = [
+  {
+    name: "Belle Terre",
+    slug: "belle-terre",
+    sections: ["P North"],
+    overview:
+      "Belle Terre is centered on Belle Terre Parkway, one of Palm Coast's main north-south corridors, which keeps the neighborhood well connected to schools, healthcare, and recreation across the city. It draws a mix of long-time residents and young families, and it's home to some of the city's better-maintained recreational facilities.",
+    landmarks: ["Belle Terre Park", "Palm Coast Aquatic Center", "Belle Terre Swim & Racquet Facility", "Island Walk Shopping Center", "European Village"],
+  },
+  {
+    name: "Cypress Knoll",
+    slug: "cypress-knoll",
+    sections: ["E"],
+    overview:
+      "Cypress Knoll is a non-gated neighborhood built around Cypress Knoll Golf & Country Club, a public course originally designed by Gary Player that opened in 1989. Of Palm Coast's neighborhoods, it sits closest to Flagler Beach, and U.S. Census data puts the population at roughly 5,700 residents.",
+    landmarks: ["Cypress Knoll Golf & Country Club (Gary Player design, 1989)", "Closest neighborhood to Flagler Beach"],
+  },
+  {
+    name: "Indian Trails",
+    slug: "indian-trails",
+    sections: ["B"],
+    overview:
+      "Indian Trails runs along the western end of Palm Coast Parkway, bordered by Belle Terre Parkway on one side and Matanzas Woods Parkway on the other, with Matanzas Woods just to the north and Pine Lakes to the southeast. Its location close to the Interstate 95 interchange, and the shopping and dining clustered around it, keeps it consistently one of the city's most in-demand neighborhoods.",
+    landmarks: ["Indian Trails Sports Complex (14 athletic fields)", "Bird of Paradise Lake passive park", "Flagler County Public Library", "Palm Coast Landing Shopping Center"],
+  },
+  {
+    name: "Lehigh Woods",
+    slug: "lehigh-woods",
+    sections: ["R"],
+    overview:
+      "Lehigh Woods sits on the south side of Palm Coast, backing up to the Graham Swamp Conservation Area and connecting to the Lehigh Trail, a paved path built along the bed of an old railroad spur that once served the Lehigh Portland Cement Company.",
+    landmarks: ["Ralph Carter Park", "Lehigh Trailhead & dog park", "Lehigh Trail (6.7 miles)", "Graham Swamp Conservation Area"],
+  },
+  {
+    name: "Matanzas Woods",
+    slug: "matanzas-woods",
+    sections: ["L"],
+    overview:
+      "Matanzas Woods is anchored by Matanzas Woods Parkway, which connects residents to schools, shopping, and neighboring areas like Palm Harbor and Indian Trails. The neighborhood is home to Matanzas Woods Golf Club, an Arnold Palmer signature course that opened in the late 1980s, and U.S. Census data counts roughly 4,800 residents here.",
+    landmarks: ["Matanzas Woods Golf Club (Arnold Palmer design)", "Matanzas Woods Park"],
+  },
+  {
+    name: "Palm Harbor",
+    slug: "palm-harbor",
+    sections: ["C", "F"],
+    overview:
+      "Palm Harbor is one of Palm Coast's earliest and most established neighborhoods, built along a network of saltwater canals that connect directly to the Intracoastal Waterway — a draw for boaters and waterfront buyers. It's also home to some of the city's longest-standing shopping and dining, including the European Village complex.",
+    landmarks: ["Direct Intracoastal Waterway canal access", "European Village", "Waterfront Park", "Palm Coast Linear Park & St. Joe's Walkway"],
+  },
+  {
+    name: "Pine Grove",
+    slug: "pine-grove",
+    sections: ["P South"],
+    overview:
+      "Pine Grove makes up the southern half of Palm Coast's original \"P\" Section, with Belle Terre forming the northern half. It sits closer to Town Center than any other Palm Coast neighborhood, putting Flagler Hospital, Flagler Palm Coast High School, and the Flagler County Municipal Airport within easy reach.",
+    landmarks: ["Closest neighborhood to Town Center", "Near Flagler Hospital & Flagler Palm Coast High School"],
+  },
+  {
+    name: "Pine Lakes",
+    slug: "pine-lakes",
+    sections: ["W"],
+    overview:
+      "Pine Lakes is built around Pine Lakes Golf Club, a public, par-72 course designed in 1980 by Arnold Palmer, Ed Seay, and Robert Walker, with an 18,000-square-foot clubhouse and a full-service restaurant overlooking the fairways.",
+    landmarks: ["Pine Lakes Golf Club (Arnold Palmer design, 1980)"],
+  },
+  {
+    name: "Quail Hollow",
+    slug: "quail-hollow",
+    sections: ["K", "Z", "LL"],
+    overview:
+      "Quail Hollow spans three sections — K, Z, and LL — south of State Road 100 near U.S. Route 1, and is known for its spring-fed lakes and a quieter, old-Florida feel despite being close to shopping and schools.",
+    landmarks: ["Heroes Memorial Park (built 2006)", "Birds of Paradise Nature Preserve"],
+  },
+  {
+    name: "Seminole Woods",
+    slug: "seminole-woods",
+    sections: ["S", "U"],
+    overview:
+      "Seminole Woods is anchored by Seminole Woods Neighborhood Park, one of the newer neighborhood parks built in Palm Coast, with a half-mile perimeter walking trail, a lighted tennis court, and a multi-purpose sports field.",
+    landmarks: ["Seminole Woods Neighborhood Park", "Half-mile perimeter walking trail"],
+  },
+  {
+    name: "Woodlands",
+    slug: "woodlands",
+    sections: ["BL"],
+    overview:
+      "Woodlands was one of the first sections built in Palm Coast, with many homes dating to the 1970s and '80s, sandwiched between Old Kings Road and Colbert Lane. It borders the roughly 3,500-acre Woodlands Conservation Area and has convenient access to Old Kings Road, Interstate 95, and the Hammock Dunes Bridge to the beach.",
+    landmarks: ["Woodlands Conservation Area (~3,500 acres)", "One of Palm Coast's original sections (1970s-80s)"],
+  },
+];
+
+export const neighborhoodSections = neighborhoods
+  .flatMap((neighborhood) => neighborhood.sections.map((section) => ({ section, slug: neighborhood.slug, name: neighborhood.name })))
+  .sort((a, b) => a.section.localeCompare(b.section));
+
+export const communityDirectory: CommunityDirectoryItem[] = [
+  { name: "American Village", slug: "american-village", href: "/communities/american-village" },
+  { name: "Beach Haven", slug: "beach-haven", href: "/communities/beach-haven" },
+  { name: "The Conservatory", slug: "the-conservatory", href: "/buy/the-conservatory-at-hammock-beach" },
+  { name: "Country Club Harbor", slug: "country-club-harbor", href: "/communities/country-club-harbor" },
+  { name: "Eagle Lakes", slug: "eagle-lakes", href: "/communities/eagle-lakes" },
+  { name: "Fairchild Oaks", slug: "fairchild-oaks", href: "/communities/fairchild-oaks" },
+  {
+    name: "Flagler Beach Polo Club (East)",
+    slug: "flagler-beach-polo-club-east",
+    href: "/communities/flagler-beach-polo-club-east",
+  },
+  {
+    name: "Flagler Beach Polo Club (West)",
+    slug: "flagler-beach-polo-club-west",
+    href: "/communities/flagler-beach-polo-club-west",
+  },
+  { name: "Grand Haven", slug: "grand-haven-directory", href: "/buy/grand-haven" },
+  { name: "The Crossings", slug: "the-crossings", href: "/communities/the-crossings", parent: "Grand Haven" },
+  { name: "Wild Oaks", slug: "wild-oaks", href: "/communities/wild-oaks", parent: "Grand Haven" },
+  { name: "Grand Landings", slug: "grand-landings", href: "/communities/grand-landings" },
+  { name: "Grand Reserve", slug: "grand-reserve", href: "/communities/grand-reserve" },
+  { name: "Halifax Plantation", slug: "halifax-plantation", href: "/communities/halifax-plantation" },
+  { name: "Hammock Beach", slug: "hammock-beach", href: "/communities/hammock-beach" },
+  { name: "Hammock Dunes", slug: "hammock-dunes-directory", href: "/buy/hammock-dunes" },
+  { name: "Island Estates", slug: "island-estates", href: "/communities/island-estates", parent: "Hammock Dunes" },
+  { name: "Hidden Lakes", slug: "hidden-lakes", href: "/communities/hidden-lakes" },
+  { name: "Marina Del Palma", slug: "marina-del-palma-directory", href: "/buy/marina-del-palma" },
+  { name: "Matanzas Lakes", slug: "matanzas-lakes", href: "/communities/matanzas-lakes" },
+  { name: "Ocean Hammock", slug: "ocean-hammock", href: "/communities/ocean-hammock" },
+  { name: "Palm Coast Plantation", slug: "palm-coast-plantation", href: "/communities/palm-coast-plantation" },
+  { name: "Park Place", slug: "park-place", href: "/communities/park-place" },
+  { name: "RiverGate", slug: "rivergate", href: "/communities/rivergate" },
+  { name: "The Sanctuary", slug: "the-sanctuary", href: "/communities/the-sanctuary" },
+  { name: "Sea Colony", slug: "sea-colony", href: "/communities/sea-colony" },
+  { name: "Sawmill Creek", slug: "sawmill-creek", href: "/communities/sawmill-creek" },
+  { name: "Sugar Mill Plantation", slug: "sugar-mill-plantation", href: "/communities/sugar-mill-plantation" },
+  { name: "Tidelands", slug: "tidelands-directory", href: "/buy/tidelands" },
+  { name: "Toscana", slug: "toscana", href: "/communities/toscana" },
 ];
 
 export const topBuyerTips: Tip[] = [
@@ -300,10 +467,8 @@ export const footerLinks: FooterGroup[] = [
   {
     title: "Sell",
     links: [
-      { label: "Cash Offer", href: "/sell/cash-offer" },
       { label: "Sell My Home", href: "/sell/sell-my-home" },
-      { label: "What's My Home Worth?", href: "/sell/whats-my-home-worth" },
-      { label: "Top Dollar Tips", href: "/sell/top-dollar-tips" },
+      { label: "Home Valuation", href: "/sell/whats-my-home-worth" },
     ],
   },
   { title: "Social", links: siteConfig.socials },
@@ -353,14 +518,80 @@ export const homeCommunityPreviews: HomeCommunityPreview[] = communities.slice(0
   highlights: community.highlights.slice(0, 2),
 }));
 
-export const homeListingPreviews: HomeListingPreview[] = [
-  { title: "Waterfront Estate", category: "Marina Del Palma", image: { src: "/placeholders/listing.svg", alt: "Placeholder waterfront estate listing", label: "Waterfront Estate" } },
-  { title: "Golf Course Retreat", category: "Grand Haven", image: { src: "/placeholders/listing.svg", alt: "Placeholder golf course retreat listing", label: "Golf Course Retreat" } },
-  { title: "Oceanfront Residence", category: "Hammock Dunes", image: { src: "/placeholders/listing.svg", alt: "Placeholder oceanfront residence listing", label: "Oceanfront Residence" } },
-  { title: "Coastal Family Home", category: "Palm Harbor", image: { src: "/placeholders/listing.svg", alt: "Placeholder coastal family home listing", label: "Coastal Family Home" } },
-  { title: "Gated Golf Villa", category: "The Conservatory at Hammock Beach", image: { src: "/placeholders/listing.svg", alt: "Placeholder gated golf villa listing", label: "Gated Golf Villa" } },
-  { title: "Marsh-View Cottage", category: "Tidelands", image: { src: "/placeholders/listing.svg", alt: "Placeholder marsh-view cottage listing", label: "Marsh-View Cottage" } },
+export const listings: Listing[] = [
+  {
+    slug: "waterfront-estate-marina-del-palma",
+    title: "Waterfront Estate",
+    community: "Marina Del Palma",
+    price: 1595000,
+    beds: 4,
+    baths: 4,
+    sqft: 3800,
+    status: "Active",
+    image: { src: "/placeholders/listing.svg", alt: "Placeholder waterfront estate listing", label: "Waterfront Estate" },
+  },
+  {
+    slug: "golf-course-retreat-grand-haven",
+    title: "Golf Course Retreat",
+    community: "Grand Haven",
+    price: 725000,
+    beds: 3,
+    baths: 3,
+    sqft: 2600,
+    status: "Active",
+    image: { src: "/placeholders/listing.svg", alt: "Placeholder golf course retreat listing", label: "Golf Course Retreat" },
+  },
+  {
+    slug: "oceanfront-residence-hammock-dunes",
+    title: "Oceanfront Residence",
+    community: "Hammock Dunes",
+    price: 2450000,
+    beds: 5,
+    baths: 5,
+    sqft: 4900,
+    status: "New",
+    image: { src: "/placeholders/listing.svg", alt: "Placeholder oceanfront residence listing", label: "Oceanfront Residence" },
+  },
+  {
+    slug: "coastal-family-home-palm-harbor",
+    title: "Coastal Family Home",
+    community: "Palm Harbor",
+    price: 459000,
+    beds: 4,
+    baths: 2,
+    sqft: 2100,
+    status: "Active",
+    image: { src: "/placeholders/listing.svg", alt: "Placeholder coastal family home listing", label: "Coastal Family Home" },
+  },
+  {
+    slug: "gated-golf-villa-the-conservatory-at-hammock-beach",
+    title: "Gated Golf Villa",
+    community: "The Conservatory at Hammock Beach",
+    price: 615000,
+    beds: 3,
+    baths: 3,
+    sqft: 2300,
+    status: "Pending",
+    image: { src: "/placeholders/listing.svg", alt: "Placeholder gated golf villa listing", label: "Gated Golf Villa" },
+  },
+  {
+    slug: "marsh-view-cottage-tidelands",
+    title: "Marsh-View Cottage",
+    community: "Tidelands",
+    price: 389000,
+    beds: 3,
+    baths: 2,
+    sqft: 1750,
+    status: "Active",
+    image: { src: "/placeholders/listing.svg", alt: "Placeholder marsh-view cottage listing", label: "Marsh-View Cottage" },
+  },
 ];
+
+export const homeListingPreviews: HomeListingPreview[] = listings.map((listing) => ({
+  title: listing.title,
+  category: listing.community,
+  image: listing.image,
+}));
 
 export const homePagePreviews: HomePagePreview[] = [
   {
@@ -393,7 +624,7 @@ export const homePagePreviews: HomePagePreview[] = [
   },
   {
     label: "Featured Listings",
-    href: "/buy",
+    href: "/buy/listings",
     kicker: "Placeholder Listings",
     title: "A first look at the kind of homes Claire places buyers in.",
     description:
@@ -445,6 +676,11 @@ export const pageMetadata = {
     description:
       "Explore Palm Coast communities including Marina Del Palma, Palm Harbor, Grand Haven, The Conservatory at Hammock Beach, Hammock Dunes, and Tidelands.",
     path: "/buy",
+  },
+  listings: {
+    title: "Featured Listings",
+    description: "A look at the kind of Palm Coast homes Claire places buyers in, across waterfront, golf, and family communities.",
+    path: "/buy/listings",
   },
   about: {
     title: "About Claire Swartzlander",

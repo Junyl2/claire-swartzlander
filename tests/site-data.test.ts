@@ -3,9 +3,11 @@ import { describe, expect, it } from "vitest";
 import {
   aboutHighlights,
   communities,
+  communityDirectory,
   contactItems,
   footerLinks,
   navigation,
+  neighborhoods,
   pageMetadata,
   primaryNavigation,
   siteConfig,
@@ -16,17 +18,31 @@ import {
 
 describe("centralized site content", () => {
   it("defines every required top-level route", () => {
-    expect(navigation.map((item) => item.href)).toEqual(["/", "/buy", "/about", "/sell", "/contact"]);
+    expect(navigation.map((item) => item.href)).toEqual([
+      "/",
+      "/buy",
+      "/communities",
+      "/neighborhoods",
+      "/about",
+      "/sell",
+      "/contact",
+    ]);
   });
 
-  it("builds the primary navigation with the required Home / Buy / About / Sell / Contact hierarchy", () => {
-    expect(primaryNavigation.map((item) => item.label)).toEqual(["Home", "Buy", "About", "Sell", "Contact"]);
-
-    const home = primaryNavigation.find((item) => item.label === "Home");
-    expect(home?.children).toBeUndefined();
+  it("builds the primary navigation with the required hierarchy", () => {
+    expect(primaryNavigation.map((item) => item.label)).toEqual([
+      "Home",
+      "Communities",
+      "Neighborhoods",
+      "About",
+      "Buy",
+      "Sell",
+      "Contact",
+    ]);
 
     const buy = primaryNavigation.find((item) => item.label === "Buy");
     expect(buy?.children?.map((item) => item.label)).toEqual([
+      "Featured Listings",
       "Top Buyer Tips",
       "Marina Del Palma",
       "Palm Harbor",
@@ -36,19 +52,36 @@ describe("centralized site content", () => {
       "Tidelands",
     ]);
 
+    const communitiesNav = primaryNavigation.find((item) => item.label === "Communities");
+    expect(communitiesNav?.href).toBe("/communities");
+    expect(communitiesNav?.children).toBeUndefined();
+
+    const neighborhoodsNav = primaryNavigation.find((item) => item.label === "Neighborhoods");
+    expect(neighborhoodsNav?.href).toBe("/neighborhoods");
+    expect(neighborhoodsNav?.children).toBeUndefined();
+
     const about = primaryNavigation.find((item) => item.label === "About");
     expect(about?.children?.map((item) => item.label)).toEqual(["Contact", "Book an Appointment", "Reviews"]);
 
     const sell = primaryNavigation.find((item) => item.label === "Sell");
-    expect(sell?.children?.map((item) => item.label)).toEqual([
-      "Cash Offer",
-      "Sell My Home",
-      "What's My Home Worth?",
-      "Top Dollar Tips",
-    ]);
+    expect(sell?.children?.map((item) => item.label)).toEqual(["Sell My Home", "Home Valuation"]);
 
     const contactEntries = primaryNavigation.filter((item) => item.href === "/contact");
     expect(contactEntries.some((item) => !item.children)).toBe(true);
+  });
+
+  it("defines the neighborhoods and communities directories", () => {
+    expect(neighborhoods.length).toBeGreaterThanOrEqual(11);
+    for (const neighborhood of neighborhoods) {
+      expect(neighborhood.sections.length).toBeGreaterThan(0);
+    }
+
+    expect(communityDirectory.length).toBeGreaterThanOrEqual(25);
+    const grandHaven = communityDirectory.find((item) => item.name === "Grand Haven");
+    expect(grandHaven?.href).toBe("/buy/grand-haven");
+
+    const subItems = communityDirectory.filter((item) => item.parent === "Grand Haven");
+    expect(subItems.map((item) => item.name)).toEqual(["The Crossings", "Wild Oaks"]);
   });
 
   it("keeps community pages in sync with the Buy dropdown", () => {

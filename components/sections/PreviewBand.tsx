@@ -349,7 +349,7 @@ export function PreviewBand({ kicker, title, description, href, index, layout, i
           </StaggerGroup>
           <MotionItem distance={18} className="mt-7 shrink-0 md:mt-0">
             <Button href={href} variant="secondary">
-              View Communities
+              View Listings
             </Button>
           </MotionItem>
         </div>

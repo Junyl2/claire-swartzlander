@@ -12,7 +12,13 @@ import { createPageMetadata } from "@/lib/metadata";
 
 export const metadata = createPageMetadata(pageMetadata.contact);
 
-export default function ContactPage() {
+type ContactPageProps = {
+  searchParams: Promise<{ interest?: string; message?: string }>;
+};
+
+export default async function ContactPage({ searchParams }: ContactPageProps) {
+  const { interest, message } = await searchParams;
+
   return (
     <main>
       <PageHero
@@ -49,7 +55,7 @@ export default function ContactPage() {
               })}
             </div>
           </div>
-          <ContactForm />
+          <ContactForm defaultInterest={interest} defaultMessage={message} />
         </Container>
       </section>
 

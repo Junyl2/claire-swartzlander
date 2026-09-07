@@ -62,10 +62,9 @@ describe("core UI components", () => {
     expect(screen.getAllByText(siteConfig.name).length).toBeGreaterThanOrEqual(3);
   });
 
-  it("renders Home and Contact as direct links with no dropdown", () => {
+  it("renders Contact as a direct link with no dropdown", () => {
     render(<Navigation />);
 
-    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
     const contactLinks = screen.getAllByRole("link", { name: "Contact" });
     expect(contactLinks.some((link) => link.getAttribute("href") === "/contact")).toBe(true);
   });
@@ -100,7 +99,7 @@ describe("core UI components", () => {
     expect(screen.getByRole("link", { name: "Reviews" })).toHaveAttribute("href", "/reviews");
   });
 
-  it("opens the Sell dropdown and lists all four seller paths", () => {
+  it("opens the Sell dropdown and lists Sell My Home and Home Valuation", () => {
     const { container } = render(<Navigation />);
 
     const sellTrigger = container.querySelector('[data-nav-dropdown="sell"] > a');
@@ -109,8 +108,8 @@ describe("core UI components", () => {
     fireEvent.mouseEnter(sellTrigger!);
     expect(sellDropdown).toHaveAttribute("data-state", "open");
 
-    expect(screen.getByRole("link", { name: "Cash Offer" })).toHaveAttribute("href", "/sell/cash-offer");
-    expect(screen.getByRole("link", { name: "What's My Home Worth?" })).toHaveAttribute("href", "/sell/whats-my-home-worth");
+    expect(screen.getByRole("link", { name: "Sell My Home" })).toHaveAttribute("href", "/sell/sell-my-home");
+    expect(screen.getByRole("link", { name: "Home Valuation" })).toHaveAttribute("href", "/sell/whats-my-home-worth");
   });
 
   it("renders the standalone Contact item as a plain nav link, not a CTA button", () => {
@@ -139,7 +138,7 @@ describe("core UI components", () => {
     expect(screen.getByText("Marina Del Palma")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /sell/i }));
-    expect(screen.getByText("Cash Offer")).toBeInTheDocument();
+    expect(screen.getByText("Home Valuation")).toBeInTheDocument();
   });
 
   it("renders the mobile Contact item as a plain nav link, not a CTA button", () => {
@@ -212,7 +211,7 @@ describe("page rendering", () => {
 
     expect(screen.getByRole("heading", { name: pageCopy.sell.title })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Cash Offer" }).closest("a")).toHaveAttribute("href", "/sell/cash-offer");
-    expect(screen.getByRole("heading", { name: "What's My Home Worth?" }).closest("a")).toHaveAttribute(
+    expect(screen.getByRole("heading", { name: "Home Valuation" }).closest("a")).toHaveAttribute(
       "href",
       "/sell/whats-my-home-worth",
     );
@@ -245,8 +244,8 @@ describe("page rendering", () => {
     expect(screen.getByRole("heading", { name: pageCopy.reviews.title })).toBeInTheDocument();
   });
 
-  it("renders the Contact page and omits the shared contact endcap", () => {
-    render(<ContactPage />);
+  it("renders the Contact page and omits the shared contact endcap", async () => {
+    render(await ContactPage({ searchParams: Promise.resolve({}) }));
 
     expect(screen.getByRole("heading", { name: pageCopy.contact.title })).toBeInTheDocument();
     expect(screen.queryByAltText("Claire Swartzlander contact preview image")).not.toBeInTheDocument();
