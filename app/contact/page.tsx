@@ -19,7 +19,7 @@ export default function ContactPage() {
         kicker="Contact"
         title={pageCopy.contact.title}
         description={pageCopy.contact.description}
-        image={{ src: "/placeholders/office.svg", alt: "Contact page placeholder", label: "Contact & Inquiry" }}
+        image={{ src: "/placeholders/office.svg", alt: "Contact Claire Swartzlander placeholder", label: "Contact & Inquiry" }}
         primaryCta={{ href: "#contact-form", label: "Send An Inquiry" }}
       />
 
@@ -27,9 +27,9 @@ export default function ContactPage() {
         <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <SectionHeading
-              kicker="Business Information"
-              title="Clear contact paths, for repairs, routes, and larger scopes."
-              description="The inquiry area is written for real property needs: urgent issues, maintenance plans, walkthroughs, and construction-led improvements."
+              kicker="Get In Touch"
+              title="Clear contact paths, for buying, selling, or just exploring."
+              description="The inquiry area is written for real coastal property needs: buying, selling, valuations, appointments, and general questions."
             />
             <div className="mt-10 grid gap-5">
               {contactItems.map((item) => {
@@ -55,11 +55,11 @@ export default function ContactPage() {
 
       <section className="section-y bg-white">
         <Container className="grid gap-12 lg:grid-cols-[1.06fr_0.94fr]">
-          <ImagePlaceholder src="/placeholders/map.svg" alt="Service area map" label="Service Area Map" ratio="cinema" />
+          <ImagePlaceholder src="/placeholders/map.svg" alt="Palm Coast coverage map" label="Coastal Coverage Map" ratio="cinema" />
           <div className="rounded-[var(--radius-panel)] border border-primary/12 bg-paper p-8 shadow-[var(--shadow-soft)]">
-            <p className="eyebrow">Visit</p>
+            <p className="eyebrow">Meet</p>
             <MixedTitle
-              text="Visit, plan, and coordinate the next site walk."
+              text="Visit, plan, or schedule your next conversation."
               as="h2"
               className="editorial-title display-title mt-4 text-4xl leading-[0.92]"
             />
@@ -71,10 +71,10 @@ export default function ContactPage() {
 
       <CTASection
         kicker="Ready"
-        title="Bring the property need, we will shape the scope."
-        description="Use the service index to identify the right category, or send the issue directly and let the team route it."
-        primaryHref="/services"
-        primaryLabel="Review Services"
+        title="Bring the goal, we will shape the plan."
+        description="Use the community index to explore where you might want to live, or send your question directly and Claire will route it."
+        primaryHref="/buy"
+        primaryLabel="Explore Communities"
       />
     </main>
   );

@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: 43 49% 39%;
-  --color-secondary: 30 36% 35%;
+  --color-primary: 25 27% 59%;
+  --color-secondary: 22 24% 42%;
   --color-ink: 215 19% 10%;
   --color-charcoal: 215 18% 15%;
   --color-graphite: 210 13% 23%;
@@ -11,10 +11,10 @@
   --color-warm-gray: 36 14% 86%;
   --color-off-white: 42 28% 95%;
   --color-paper: 45 33% 98%;
-  --radius-sharp: 3px;
-  --radius-panel: 4px;
+  --radius-sharp: 0px;
+  --radius-panel: 0px;
   --shadow-soft: 0 24px 70px hsl(215 19% 10% / 0.14);
-  --shadow-line: inset 0 0 0 1px hsl(43 49% 39% / 0.16);
+  --shadow-line: inset 0 0 0 1px hsl(25 27% 59% / 0.16);
   --container: 1400px;
 }
 
@@ -98,6 +98,18 @@ textarea {
   margin-inline: auto;
 }
 
+@media (min-width: 1024px) {
+  .container-shell {
+    width: min(calc(100% - 96px), var(--container));
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-shell {
+    width: min(calc(100% - 128px), var(--container));
+  }
+}
+
 .eyebrow {
   color: hsl(var(--color-primary));
   font-family: var(--font-body), Arial, sans-serif;
@@ -108,32 +120,31 @@ textarea {
 }
 
 .editorial-title {
-  font-family: var(--font-display), Georgia, serif;
-  font-weight: 400;
-  letter-spacing: 0.025em;
-  text-transform: uppercase;
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-transform: none;
 }
 
 .display-title {
-  font-family: var(--font-display), Impact, sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.025em;
-  text-transform: uppercase;
-}
-
-.mixed-title-accent {
-  display: inline;
-  color: hsl(var(--color-primary));
-  font: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-transform: none;
 }
 
 .brand-title {
-  font-family: var(--font-display), Impact, sans-serif;
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.brand-title-script {
+  font-family: var(--font-script), "Brush Script MT", cursive;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
 }
 
 .supporting-kicker {
@@ -184,25 +195,6 @@ textarea {
 
 .image-frame:hover img {
   transform: scale(1.045);
-}
-
-.about-preview-texture {
-  background-color: hsl(var(--color-paper));
-  background-image:
-    linear-gradient(hsl(var(--color-primary) / 0.09) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--color-primary) / 0.09) 1px, transparent 1px),
-    linear-gradient(hsl(var(--color-ink) / 0.026) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(var(--color-ink) / 0.026) 1px, transparent 1px);
-  background-position:
-    0 0,
-    0 0,
-    0 0,
-    0 0;
-  background-size:
-    120px 120px,
-    120px 120px,
-    40px 40px,
-    40px 40px;
 }
 
 .project-marquee-row {

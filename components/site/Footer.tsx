@@ -12,10 +12,10 @@ export function Footer() {
         <div className="grid gap-10 border-b border-white/10 pb-12 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <Link href="/" aria-label={`${siteConfig.tagline} ${siteConfig.name}`} className="inline-flex">
-              <SiteLogo className="w-24 sm:w-28 lg:w-32" />
+              <SiteLogo className="text-2xl sm:text-3xl lg:text-4xl" />
             </Link>
             <p className="supporting-copy mt-6 max-w-xl text-base text-paper/68">
-              Construction-led property services for owners who need renovation, exterior work, grounds care, pool support, site services, and cleaning handled with one standard.
+              {siteConfig.tagline}, {siteConfig.brokerage}. Guiding buyers and sellers through Palm Coast&apos;s waterfront and golf communities from first showing to closing day.
             </p>
           </div>
           <Newsletter />
@@ -48,7 +48,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-3 border-t border-white/10 pt-6 text-xs font-medium uppercase tracking-[0.12em] text-paper/44 sm:flex-row sm:justify-between">
           <p>Copyright 2026 {siteConfig.name}</p>
-          <p>Construction-led property services</p>
+          <p>{siteConfig.tagline}, {siteConfig.brokerage}</p>
         </div>
       </Container>
     </footer>

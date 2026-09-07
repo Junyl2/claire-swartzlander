@@ -22,12 +22,11 @@ export function SectionHeading({ kicker, title, description, align = "left", ton
           text={title}
           as="h2"
           className={cn("editorial-title display-title text-balance text-4xl leading-[0.92] md:text-6xl", tone === "light" ? "text-paper" : "text-ink")}
-          accentClassName={tone === "light" ? "text-primary" : undefined}
         />
       </MotionItem>
       {description ? (
         <MotionItem>
-          <p className={cn("supporting-copy mt-6 max-w-2xl text-base md:text-lg", tone === "light" ? "text-paper/70" : "text-slate")}>
+          <p className={cn("supporting-copy mt-6 max-w-2xl text-base md:text-lg", align === "center" && "mx-auto", tone === "light" ? "text-paper/70" : "text-slate")}>
             {description}
           </p>
         </MotionItem>

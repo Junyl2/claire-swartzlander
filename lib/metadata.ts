@@ -26,10 +26,10 @@ export function createPageMetadata(page: PageMetadataInput): Metadata {
       type: "website",
       images: [
         {
-          url: "/placeholders/hero-structure.svg",
+          url: "/placeholders/hero-1.svg",
           width: 1200,
           height: 630,
-          alt: `${siteConfig.name} construction placeholder`,
+          alt: `${siteConfig.name} placeholder`,
         },
       ],
     },
@@ -37,7 +37,7 @@ export function createPageMetadata(page: PageMetadataInput): Metadata {
       card: "summary_large_image",
       title,
       description: page.description,
-      images: ["/placeholders/hero-structure.svg"],
+      images: ["/placeholders/hero-1.svg"],
     },
   };
 }

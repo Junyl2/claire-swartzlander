@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Barlow, Bebas_Neue } from "next/font/google";
+import { Alex_Brush, Jost, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 import { LenisProvider } from "@/components/interactive/LenisProvider";
@@ -7,16 +7,23 @@ import { Navigation } from "@/components/site/Navigation";
 import { Footer } from "@/components/site/Footer";
 import { siteConfig } from "@/data/site";
 
-const display = Bebas_Neue({
+const display = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["400"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
-const body = Barlow({
+const body = Jost({
   subsets: ["latin"],
   variable: "--font-body",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const script = Alex_Brush({
+  subsets: ["latin"],
+  variable: "--font-script",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -26,13 +33,13 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "Premium construction-led property services website for renovation, exterior work, grounds care, pool support, site services, and cleaning.",
+    "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature, helps buyers and sellers navigate Palm Coast's waterfront and golf communities.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${display.variable} ${body.variable} antialiased`}>
+      <body className={`${display.variable} ${body.variable} ${script.variable} antialiased`}>
         <LenisProvider>
           <Navigation />
           {children}

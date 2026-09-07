@@ -6,7 +6,7 @@ import { ChevronDown, Mail, MapPin, Phone, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { contactItems, serviceMenuGroups, siteConfig, type NavItem } from "@/data/site";
+import { contactItems, siteConfig, type NavItem } from "@/data/site";
 import { SiteLogo } from "@/components/site/SiteLogo";
 
 type MobileMenuProps = {
@@ -17,19 +17,28 @@ type MobileMenuProps = {
 
 export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
   const pathname = usePathname();
-  const [aboutOpen, setAboutOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [openSections, setOpenSections] = useState<Set<string>>(new Set());
+
+  const toggleSection = (href: string) => {
+    setOpenSections((current) => {
+      const next = new Set(current);
+      if (next.has(href)) {
+        next.delete(href);
+      } else {
+        next.add(href);
+      }
+      return next;
+    });
+  };
 
   useEffect(() => {
     if (!open) {
-      setAboutOpen(false);
-      setServicesOpen(false);
+      setOpenSections(new Set());
     }
   }, [open]);
 
   useEffect(() => {
-    setAboutOpen(false);
-    setServicesOpen(false);
+    setOpenSections(new Set());
   }, [pathname]);
 
   return (
@@ -52,7 +61,7 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
           >
             <div className="flex items-center justify-between">
               <Link href="/" aria-label={`${siteConfig.tagline} ${siteConfig.name}`} onClick={onClose} className="inline-flex">
-                <SiteLogo className="w-18" priority />
+                <SiteLogo className="text-xl" />
               </Link>
               <button
                 type="button"
@@ -66,121 +75,65 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
             <div data-mobile-menu-scroll="true" className="mt-8 min-h-0 flex-1 overflow-y-auto pr-1">
               <nav aria-label="Mobile navigation">
                 <ul className="space-y-4">
-                  {items.map((item, index) => (
-                    <motion.li
-                      key={item.href}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 12 }}
-                      transition={{ delay: index * 0.05 }}
-                    >
-                      <div className="border-b border-white/10 pb-4">
-                        {item.href === "/services" ? (
-                          <button
-                            type="button"
-                            onClick={() => setServicesOpen((current) => !current)}
-                            aria-expanded={servicesOpen}
-                            className="display-title flex w-full items-center justify-between text-left text-[1.65rem] leading-none sm:text-[1.85rem]"
-                          >
-                            <span>{item.label}</span>
-                            <span className="flex items-center gap-3">
+                  {items.map((item, index) => {
+                    const isSectionOpen = openSections.has(item.href);
+
+                    return (
+                      <motion.li
+                        key={item.href}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 12 }}
+                        transition={{ delay: index * 0.05 }}
+                      >
+                        <div className="border-b border-white/10 pb-4">
+                          {item.children ? (
+                            <button
+                              type="button"
+                              onClick={() => toggleSection(item.href)}
+                              aria-expanded={isSectionOpen}
+                              className="display-title flex w-full items-center justify-between text-left text-[1.65rem] leading-none sm:text-[1.85rem]"
+                            >
+                              <span>{item.label}</span>
+                              <span className="flex items-center gap-3">
+                                <span className="text-[11px] uppercase tracking-[0.18em] text-paper/45">0{index + 1}</span>
+                                <ChevronDown
+                                  className={`h-4 w-4 transition-transform duration-300 ${isSectionOpen ? "rotate-180" : ""}`}
+                                />
+                              </span>
+                            </button>
+                          ) : (
+                            <Link
+                              href={item.href}
+                              onClick={onClose}
+                              aria-current={pathname === item.href ? "page" : undefined}
+                              className="display-title flex items-center justify-between text-[1.65rem] leading-none sm:text-[1.85rem]"
+                            >
+                              <span>{item.label}</span>
                               <span className="text-[11px] uppercase tracking-[0.18em] text-paper/45">0{index + 1}</span>
-                              <ChevronDown
-                                className={`h-4 w-4 transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`}
-                              />
-                            </span>
-                          </button>
-                        ) : item.children ? (
-                          <button
-                            type="button"
-                            onClick={() => setAboutOpen((current) => !current)}
-                            aria-expanded={aboutOpen}
-                            className="display-title flex w-full items-center justify-between text-left text-[1.65rem] leading-none sm:text-[1.85rem]"
-                          >
-                            <span>{item.label}</span>
-                            <span className="flex items-center gap-3">
-                              <span className="text-[11px] uppercase tracking-[0.18em] text-paper/45">0{index + 1}</span>
-                              <ChevronDown
-                                className={`h-4 w-4 transition-transform duration-300 ${aboutOpen ? "rotate-180" : ""}`}
-                              />
-                            </span>
-                          </button>
-                        ) : (
-                          <Link
-                            href={item.href}
-                            onClick={onClose}
-                            aria-current={pathname === item.href ? "page" : undefined}
-                            className="display-title flex items-center justify-between text-[1.65rem] leading-none sm:text-[1.85rem]"
-                          >
-                            <span>{item.label}</span>
-                            <span className="text-[11px] uppercase tracking-[0.18em] text-paper/45">0{index + 1}</span>
-                          </Link>
-                        )}
-                        {item.href === "/services" ? (
-                          servicesOpen ? (
-                            <div className="mt-5 grid gap-5 pl-1">
-                              <Link
-                                href="/services"
-                                onClick={onClose}
-                                className="ui-title flex items-center justify-between text-sm text-primary"
-                              >
-                                <span>All Services</span>
-                                <span className="h-px w-8 bg-primary/60" />
-                              </Link>
-                              {serviceMenuGroups.map((group) => (
-                                <div key={group.title} className="grid gap-3">
-                                  <Link
-                                    href={group.href}
-                                    onClick={onClose}
-                                    className="ui-title flex items-center justify-between text-sm text-paper/88"
-                                  >
-                                    <span>{group.title}</span>
-                                    <span className="text-[11px] uppercase tracking-[0.16em] text-paper/38">
-                                      {String(group.items.length).padStart(2, "0")}
-                                    </span>
-                                  </Link>
-                                  <ul className="grid gap-3 pl-3">
-                                    {group.items.map((service) => (
-                                      <li key={service.href}>
-                                        <Link
-                                          href={service.href}
-                                          onClick={onClose}
-                                          className="flex items-center justify-between text-[13px] font-semibold tracking-[0.02em] text-paper/66 transition duration-300 hover:text-paper"
-                                        >
-                                          <span>{service.label}</span>
-                                          <span className="h-px w-7 bg-white/18" />
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              ))}
-                            </div>
-                          ) : null
-                        ) : item.children ? (
-                          aboutOpen ? (
-                          <ul className="mt-4 grid gap-3 pl-1">
-                            {item.children
-                              .filter((child) => child.href !== item.href)
-                              .map((child) => (
+                            </Link>
+                          )}
+                          {item.children && isSectionOpen ? (
+                            <ul className="mt-5 grid gap-4 pl-1">
+                              {item.children.map((child) => (
                                 <li key={child.href}>
                                   <Link
                                     href={child.href}
                                     onClick={onClose}
                                     aria-current={pathname === child.href ? "page" : undefined}
-                                    className="ui-title flex items-center justify-between text-sm text-paper/68 transition duration-300 hover:text-paper"
+                                    className="ui-title flex items-center justify-between gap-4 text-sm text-paper/78 transition duration-300 hover:text-paper"
                                   >
                                     <span>{child.label}</span>
-                                    <span className="h-px w-8 bg-white/20" />
+                                    <span className="h-px w-8 shrink-0 bg-white/20" />
                                   </Link>
                                 </li>
                               ))}
-                          </ul>
-                          ) : null
-                        ) : null}
-                      </div>
-                    </motion.li>
-                  ))}
+                            </ul>
+                          ) : null}
+                        </div>
+                      </motion.li>
+                    );
+                  })}
                 </ul>
               </nav>
             </div>
@@ -200,7 +153,7 @@ export function MobileMenu({ items, open, onClose }: MobileMenuProps) {
                 <div className="flex items-start gap-3">
                   <MapPin className="mt-0.5 h-4 w-4 text-primary" />
                   <div className="grid gap-1">
-                    <span>{siteConfig.hours}</span>
+                    <span>{siteConfig.brokerage}</span>
                     <span className="text-paper/44">{siteConfig.address}</span>
                   </div>
                 </div>

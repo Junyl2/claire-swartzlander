@@ -16,16 +16,16 @@ export default function ReviewsPage() {
         kicker="Reviews"
         title={pageCopy.reviews.title}
         description={pageCopy.reviews.description}
-        image={{ src: "/placeholders/team.svg", alt: "Client reviews placeholder", label: "Client Confidence" }}
+        image={{ src: "/placeholders/agent.svg", alt: "Client reviews placeholder", label: "Client Confidence" }}
         primaryCta={{ href: "/contact", label: "Start A Conversation" }}
       />
 
       <section className="section-y bg-paper">
         <Container className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr]">
           <SectionHeading
-            kicker="Owner Feedback"
-            title="Service that feels organized, from first call to final sweep."
-            description="The lead review area is shaped around the details owners remember: punctual crews, protected surfaces, clear updates, and complete closeout."
+            kicker="Client Feedback"
+            title="Service that feels organized, from first showing to closing."
+            description="The lead review area is shaped around the details buyers and sellers remember: fast responses, clear updates, and steady follow-through."
           />
           <TestimonialCarousel items={testimonials} />
         </Container>
@@ -35,12 +35,12 @@ export default function ReviewsPage() {
         <Container>
           <SectionHeading
             kicker="Review Grid"
-            title="Trust signals, ready for every service category."
-            description="Additional reviews can be grouped around renovation, landscaping, pool care, site services, cleaning, and recurring maintenance."
+            title="Trust signals, ready for buyers and sellers alike."
+            description="Additional reviews can be grouped around buying, selling, valuations, and long-term coastal relocation."
           />
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {testimonials.slice(0, 6).map((testimonial) => (
-              <TestimonialCard key={`${testimonial.name}-${testimonial.company}`} testimonial={testimonial} />
+            {testimonials.slice(0, 6).map((testimonial, index) => (
+              <TestimonialCard key={`${testimonial.name}-${testimonial.company}-${index}`} testimonial={testimonial} />
             ))}
           </div>
         </Container>

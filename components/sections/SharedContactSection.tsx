@@ -11,14 +11,14 @@ export function SharedContactSection() {
     <section className="section-y bg-paper">
       <Container className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
         <ImagePlaceholder
-          src="/hero/hero-1.jpeg"
-          alt="ERE CARE contact preview image"
-          label="Inquiry Desk"
+          src="/placeholders/office.svg"
+          alt="Claire Swartzlander contact preview image"
+          label="Reach Claire"
           ratio="cinema"
           className="min-h-[18rem] md:min-h-[24rem] lg:min-h-[36rem]"
         />
         <div className="flex min-w-0 flex-col justify-between border-t border-primary/15 pt-6 lg:border-t-0 lg:border-l lg:pl-8 lg:pt-0">
-          <p className="eyebrow supporting-kicker">Start Your Scope</p>
+          <p className="eyebrow supporting-kicker">Start The Conversation</p>
           <MixedTitle
             text={pageCopy.contact.title}
             as="h2"

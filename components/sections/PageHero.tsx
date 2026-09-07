@@ -1,7 +1,8 @@
+import Image from "next/image";
+
 import { MotionItem, StaggerGroup } from "@/components/interactive/MotionSequence";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { MixedTitle } from "@/components/ui/MixedTitle";
 
 type PageHeroProps = {
@@ -25,17 +26,27 @@ type PageHeroProps = {
 
 export function PageHero({ kicker, title, description, image, primaryCta, secondaryCta }: PageHeroProps) {
   return (
-    <section className="bg-ink pt-40 text-paper">
-      <Container className="grid items-end gap-12 pb-14 lg:grid-cols-[0.85fr_1.15fr]">
-        <StaggerGroup className="max-w-2xl" delay={0.06} stagger={0.1}>
+    <section className="relative flex h-[64vh] min-h-[480px] items-center justify-center overflow-hidden bg-ink text-paper md:h-[70vh] md:min-h-[560px]">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
+      <div aria-hidden="true" className="absolute inset-0 bg-ink/45" />
+
+      <Container className="relative z-10">
+        <StaggerGroup className="mx-auto max-w-3xl text-center" delay={0.06} stagger={0.1}>
           <MotionItem><p className="eyebrow mb-5">{kicker}</p></MotionItem>
           <MotionItem>
-            <MixedTitle text={title} as="h1" className="editorial-title display-title text-balance text-5xl leading-[0.92] md:text-7xl" />
+            <MixedTitle text={title} as="h1" className="editorial-title display-title text-balance text-4xl leading-[1.05] md:text-6xl" />
           </MotionItem>
-          <MotionItem><p className="mt-7 max-w-xl text-base leading-8 text-paper/72 md:text-lg">{description}</p></MotionItem>
+          <MotionItem><p className="mx-auto mt-7 max-w-xl text-base leading-8 text-paper/80 md:text-lg">{description}</p></MotionItem>
           {(primaryCta || secondaryCta) ? (
             <MotionItem>
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 {primaryCta ? <Button href={primaryCta.href}>{primaryCta.label}</Button> : null}
                 {secondaryCta ? (
                   <Button href={secondaryCta.href} variant="ghost">
@@ -46,7 +57,6 @@ export function PageHero({ kicker, title, description, image, primaryCta, second
             </MotionItem>
           ) : null}
         </StaggerGroup>
-        <ImagePlaceholder src={image.src} alt={image.alt} label={image.label} ratio="cinema" priority className="shadow-[var(--shadow-soft)]" />
       </Container>
     </section>
   );

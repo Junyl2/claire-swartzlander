@@ -1,17 +1,4 @@
-import {
-  Award,
-  Building2,
-  Compass,
-  Factory,
-  Hammer,
-  Home,
-  Landmark,
-  Mail,
-  MapPin,
-  Phone,
-  ShieldCheck,
-  Users,
-} from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 export type NavItem = {
@@ -20,35 +7,26 @@ export type NavItem = {
   children?: NavItem[];
 };
 
-export type ServiceMenuGroup = {
-  title: string;
-  href: string;
-  items: NavItem[];
-};
-
 export type ImageToken = {
   src: string;
   alt: string;
   label: string;
 };
 
-export type Service = {
-  title: string;
+export type Community = {
   slug: string;
-  eyebrow: string;
+  name: string;
+  href: string;
+  region: string;
+  tagline: string;
   description: string;
   image: ImageToken;
-  icon: LucideIcon;
-  details: string[];
+  highlights: string[];
 };
 
-export type Project = {
+export type Tip = {
   title: string;
-  category: string;
-  location: string;
-  year: string;
   description: string;
-  image: ImageToken;
 };
 
 export type Testimonial = {
@@ -57,25 +35,6 @@ export type Testimonial = {
   company: string;
   role: string;
   rating: number;
-};
-
-export type Statistic = {
-  value: string;
-  label: string;
-  description: string;
-};
-
-export type CareerRole = {
-  title: string;
-  location: string;
-  type: string;
-  description: string;
-};
-
-export type ServiceArea = {
-  city: string;
-  region: string;
-  description: string;
 };
 
 export type FooterGroup = {
@@ -89,33 +48,34 @@ export type HomePagePreview = {
   kicker: string;
   title: string;
   description: string;
-  layout: "split" | "stacked" | "offset" | "services-bento" | "projects-editorial" | "about-editorial" | "review-feature";
+  layout: "split" | "stacked" | "offset" | "communities-bento" | "listings-editorial" | "about-editorial" | "review-feature";
   images: [ImageToken, ImageToken];
   details: string[];
 };
 
-export type HomeServiceCategoryPreview = {
+export type HomeCommunityPreview = {
   title: string;
   href: string;
   image: ImageToken;
-  serviceCount: number;
-  previewItems: string[];
+  region: string;
+  highlights: string[];
 };
 
-export type HomeProjectPreview = {
+export type HomeListingPreview = {
   title: string;
   category: string;
   image: ImageToken;
 };
 
 export const siteConfig = {
-  name: "Company Name",
-  tagline: "Premium Construction Company",
+  name: "Claire Swartzlander",
+  tagline: "Coastal Property Specialist",
+  brokerage: "RE/MAX Signature",
   url: "https://example.com",
-  phone: "+13862372856",
-  email: "erecapital@gmail.com",
-  address: "000 Landmark Avenue, City, Region 00000",
-  hours: "Mon-Fri 08:00-18:00",
+  phone: "+13865550142",
+  email: "hello@clairesellsthecoast.com",
+  address: "000 Ocean Palm Way, Palm Coast, FL 32137",
+  hours: "By Appointment — 7 Days A Week",
   socials: [
     { label: "LinkedIn", href: "https://example.com" },
     { label: "Instagram", href: "https://example.com" },
@@ -125,661 +85,390 @@ export const siteConfig = {
 
 export const navigation: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
+  { label: "Buy", href: "/buy" },
   { label: "About", href: "/about" },
-  { label: "Projects", href: "/projects" },
-  { label: "Reviews", href: "/reviews" },
-  { label: "Careers", href: "/careers" },
-  { label: "Service Areas", href: "/service-areas" },
+  { label: "Sell", href: "/sell" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const primaryNavigation: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
+  {
+    label: "Buy",
+    href: "/buy",
+    children: [
+      { label: "Top Buyer Tips", href: "/buy/top-buyer-tips" },
+      { label: "Marina Del Palma", href: "/buy/marina-del-palma" },
+      { label: "Palm Harbor", href: "/buy/palm-harbor" },
+      { label: "Grand Haven", href: "/buy/grand-haven" },
+      { label: "The Conservatory at Hammock Beach", href: "/buy/the-conservatory-at-hammock-beach" },
+      { label: "Hammock Dunes", href: "/buy/hammock-dunes" },
+      { label: "Tidelands", href: "/buy/tidelands" },
+    ],
+  },
   {
     label: "About",
     href: "/about",
     children: [
-      { label: "About", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Book an Appointment", href: "/book-an-appointment" },
       { label: "Reviews", href: "/reviews" },
-      { label: "Careers", href: "/careers" },
     ],
   },
-  { label: "Projects", href: "/projects" },
-  { label: "Service Areas", href: "/service-areas" },
+  {
+    label: "Sell",
+    href: "/sell",
+    children: [
+      { label: "Cash Offer", href: "/sell/cash-offer" },
+      { label: "Sell My Home", href: "/sell/sell-my-home" },
+      { label: "What's My Home Worth?", href: "/sell/whats-my-home-worth" },
+      { label: "Top Dollar Tips", href: "/sell/top-dollar-tips" },
+    ],
+  },
   { label: "Contact", href: "/contact" },
 ];
 
-const toServiceHref = (group: string, item: string) =>
-  `/services#${`${group}-${item}`.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`;
-
-export const serviceMenuGroups: ServiceMenuGroup[] = [
+export const communities: Community[] = [
   {
-    title: "Pool Care",
-    href: "/services#pool-care",
-    items: [
-      { label: "Maintenance", href: toServiceHref("pool-care", "maintenance") },
-      { label: "Resurfacing", href: toServiceHref("pool-care", "resurfacing") },
-      { label: "Design", href: toServiceHref("pool-care", "design") },
-      { label: "Motor Repair", href: toServiceHref("pool-care", "motor-repair") },
-      { label: "Pump Installation", href: toServiceHref("pool-care", "pump-installation") },
-    ],
+    slug: "marina-del-palma",
+    name: "Marina Del Palma",
+    href: "/buy/marina-del-palma",
+    region: "Palm Coast, FL",
+    tagline: "Waterfront living with private marina access.",
+    description:
+      "Marina Del Palma is built around deep-water canal and marina access, drawing buyers who want their boat close to home and quick reach to the Intracoastal Waterway. Homesites here favor open water views and a quieter, residential coastal pace.",
+    image: { src: "/placeholders/community.svg", alt: "Marina Del Palma community placeholder", label: "Marina Del Palma" },
+    highlights: ["Deep-water access", "Boater-friendly", "Coastal residential"],
   },
   {
-    title: "Lawn Care",
-    href: "/services#lawn-care",
-    items: [
-      { label: "Lawn Maintenance", href: toServiceHref("lawn-care", "lawn-maintenance") },
-      { label: "Gardening", href: toServiceHref("lawn-care", "gardening") },
-      { label: "Landscaping", href: toServiceHref("lawn-care", "landscaping") },
-      { label: "Irrigation", href: toServiceHref("lawn-care", "irrigation") },
-      { label: "Insecticide", href: toServiceHref("lawn-care", "insecticide") },
-      { label: "Herbicide", href: toServiceHref("lawn-care", "herbicide") },
-      { label: "Fertilizing", href: toServiceHref("lawn-care", "fertilizing") },
-    ],
+    slug: "palm-harbor",
+    name: "Palm Harbor",
+    href: "/buy/palm-harbor",
+    region: "Palm Coast, FL",
+    tagline: "Established coastal neighborhoods close to everyday conveniences.",
+    description:
+      "Palm Harbor offers a mix of established and newer construction close to shopping, schools, and the coast. It's a strong fit for buyers who want easy access to daily conveniences without giving up a coastal address.",
+    image: { src: "/placeholders/community.svg", alt: "Palm Harbor community placeholder", label: "Palm Harbor" },
+    highlights: ["Convenient location", "Mixed inventory", "Family-friendly"],
   },
   {
-    title: "Renovation",
-    href: "/services#renovation",
-    items: [
-      { label: "Flooring", href: toServiceHref("renovation", "flooring") },
-      { label: "Cabinets", href: toServiceHref("renovation", "cabinets") },
-      { label: "Painting", href: toServiceHref("renovation", "painting") },
-      { label: "Bathrooms", href: toServiceHref("renovation", "bathrooms") },
-      { label: "Kitchens", href: toServiceHref("renovation", "kitchens") },
-      { label: "Carpentry", href: toServiceHref("renovation", "carpentry") },
-    ],
+    slug: "grand-haven",
+    name: "Grand Haven",
+    href: "/buy/grand-haven",
+    region: "Palm Coast, FL",
+    tagline: "A master-planned riverfront and golf community.",
+    description:
+      "Grand Haven is a master-planned community centered on a signature golf course and the Intracoastal Waterway, with a clubhouse-driven lifestyle and a range of home styles across its neighborhoods.",
+    image: { src: "/placeholders/community.svg", alt: "Grand Haven community placeholder", label: "Grand Haven" },
+    highlights: ["Golf course living", "Riverfront setting", "Amenity clubhouse"],
   },
   {
-    title: "Construction",
-    href: "/services#construction",
-    items: [
-      { label: "Dry Wall", href: toServiceHref("construction", "dry-wall") },
-      { label: "Insulation", href: toServiceHref("construction", "insulation") },
-      { label: "Soffit & Fascia", href: toServiceHref("construction", "soffit-fascia") },
-      { label: "Stucco", href: toServiceHref("construction", "stucco") },
-      { label: "Concrete", href: toServiceHref("construction", "concrete") },
-      { label: "Screen Enclosures", href: toServiceHref("construction", "screen-enclosures") },
-    ],
+    slug: "the-conservatory-at-hammock-beach",
+    name: "The Conservatory at Hammock Beach",
+    href: "/buy/the-conservatory-at-hammock-beach",
+    region: "Palm Coast, FL",
+    tagline: "Gated golf living beside the Hammock Beach resort.",
+    description:
+      "The Conservatory at Hammock Beach sits alongside the Hammock Beach Resort, offering gated golf-course living with proximity to resort-style amenities and the beach.",
+    image: {
+      src: "/placeholders/community.svg",
+      alt: "The Conservatory at Hammock Beach community placeholder",
+      label: "The Conservatory At Hammock Beach",
+    },
+    highlights: ["Gated community", "Golf course access", "Resort-adjacent"],
   },
   {
-    title: "Landscaping",
-    href: "/services#landscaping",
-    items: [
-      { label: "Custom Design", href: toServiceHref("landscaping", "custom-design") },
-      { label: "Rocks, Mulch & Sod", href: toServiceHref("landscaping", "rocks-mulch-sod") },
-      { label: "Tree Cutting", href: toServiceHref("landscaping", "tree-cutting") },
-      { label: "Plants", href: toServiceHref("landscaping", "plants") },
-      { label: "Pruning", href: toServiceHref("landscaping", "pruning") },
-      { label: "Pavers", href: toServiceHref("landscaping", "pavers") },
-      { label: "Wells", href: toServiceHref("landscaping", "wells") },
-      { label: "Lighting", href: toServiceHref("landscaping", "lighting") },
-      { label: "Fences", href: toServiceHref("landscaping", "fences") },
-      { label: "Pressure Washing", href: toServiceHref("landscaping", "pressure-washing") },
-    ],
+    slug: "hammock-dunes",
+    name: "Hammock Dunes",
+    href: "/buy/hammock-dunes",
+    region: "Palm Coast, FL",
+    tagline: "Oceanfront and Intracoastal living behind private gates.",
+    description:
+      "Hammock Dunes is one of the area's premier gated communities, spanning oceanfront and Intracoastal-facing homesites with private club amenities for owners who want a fully coastal, guard-gated address.",
+    image: { src: "/placeholders/community.svg", alt: "Hammock Dunes community placeholder", label: "Hammock Dunes" },
+    highlights: ["Oceanfront access", "Guard-gated", "Private club lifestyle"],
   },
   {
-    title: "Site Services",
-    href: "/services#site-services",
-    items: [
-      { label: "Skid Steers", href: toServiceHref("site-services", "skid-steers") },
-      { label: "Dump Trucks", href: toServiceHref("site-services", "dump-trucks") },
-      { label: "Dump Trailers", href: toServiceHref("site-services", "dump-trailers") },
-      { label: "Logistics", href: toServiceHref("site-services", "logistics") },
-      { label: "John Deere Tractor", href: toServiceHref("site-services", "john-deere-tractor") },
-      { label: "Lot Clearing", href: toServiceHref("site-services", "lot-clearing") },
-      { label: "Demolition", href: toServiceHref("site-services", "demolition") },
-      { label: "Land Grading", href: toServiceHref("site-services", "land-grading") },
-      { label: "Land Mulching", href: toServiceHref("site-services", "land-mulching") },
-    ],
-  },
-  {
-    title: "Cleaning",
-    href: "/services#cleaning",
-    items: [
-      { label: "Residential Homes", href: toServiceHref("cleaning", "residential-homes") },
-      { label: "Commercial Properties", href: toServiceHref("cleaning", "commercial-properties") },
-      { label: "Offices & HOA Common Areas", href: toServiceHref("cleaning", "offices-hoa-common-areas") },
-    ],
+    slug: "tidelands",
+    name: "Tidelands",
+    href: "/buy/tidelands",
+    region: "Palm Coast, FL",
+    tagline: "A quieter marsh-front pocket of the coast.",
+    description:
+      "Tidelands offers a quieter, marsh- and water-adjacent setting for buyers who want a coastal lifestyle away from the busier corridors, with easy access back to Palm Coast's main routes.",
+    image: { src: "/placeholders/community.svg", alt: "Tidelands community placeholder", label: "Tidelands" },
+    highlights: ["Marsh & water views", "Quieter setting", "Easy access"],
   },
 ];
 
-const homeServicePreviewImages: ImageToken[] = [
-  { src: "/project/erecare-project-01.jpeg", alt: "ERE CARE service preview image for pool care", label: "Pool Care" },
-  { src: "/project/erecare-project-02.jpeg", alt: "ERE CARE service preview image for lawn care", label: "Lawn Care" },
-  { src: "/project/erecare-project-03.jpeg", alt: "ERE CARE service preview image for renovation", label: "Renovation" },
-  { src: "/project/erecare-project-04.jpeg", alt: "ERE CARE service preview image for construction", label: "Construction" },
-  { src: "/project/erecare-project-05.jpeg", alt: "ERE CARE service preview image for landscaping", label: "Landscaping" },
+export const topBuyerTips: Tip[] = [
+  { title: "Get Pre-Approved Before You Shop", description: "A lender pre-approval tells you your real budget and makes every offer you write stronger." },
+  { title: "Understand The True Cost Of Ownership", description: "Taxes, insurance, HOA dues, and flood zone requirements vary a lot by community — factor them in early." },
+  { title: "Prioritize Location Over Finishes", description: "Finishes are easy to change later. Waterfront access, lot orientation, and community fit are not." },
+  { title: "Work With A Local Agent Who Knows The Coast", description: "Community-level knowledge helps you avoid wasted showings and spot the right home faster." },
+  { title: "Order A Full Inspection, Every Time", description: "Especially in coastal markets, a thorough inspection protects you from costly surprises after closing." },
+  { title: "Move Quickly When The Right Home Appears", description: "Well-priced homes in sought-after communities can move fast — have your team and paperwork ready." },
 ];
 
-export const homeServicePreviewCategories: HomeServiceCategoryPreview[] = serviceMenuGroups.slice(0, 5).map((group, index) => ({
-  title: group.title,
-  href: group.href,
-  image: homeServicePreviewImages[index],
-  serviceCount: group.items.length,
-  previewItems: group.items.slice(0, 2).map((item) => item.label),
-}));
-
-export const homeProjectPreviewProjects: HomeProjectPreview[] = [
-  {
-    title: "Property Work 01",
-    category: "Construction",
-    image: { src: "/project/erecare-project-01.jpeg", alt: "ERE CARE construction project image one", label: "Field Work" },
-  },
-  {
-    title: "Property Work 02",
-    category: "Construction",
-    image: { src: "/project/erecare-project-02.jpeg", alt: "ERE CARE construction project image two", label: "Site Progress" },
-  },
-  {
-    title: "Property Work 03",
-    category: "Construction",
-    image: { src: "/project/erecare-project-03.jpeg", alt: "ERE CARE construction project image three", label: "Structural Work" },
-  },
-  {
-    title: "Property Work 04",
-    category: "Construction",
-    image: { src: "/project/erecare-project-04.jpeg", alt: "ERE CARE construction project image four", label: "Field Detail" },
-  },
-  {
-    title: "Property Work 05",
-    category: "Construction",
-    image: { src: "/project/erecare-project-05.jpeg", alt: "ERE CARE construction project image five", label: "Active Site" },
-  },
-  {
-    title: "Property Work 06",
-    category: "Construction",
-    image: { src: "/project/erecare-project-06.jpeg", alt: "ERE CARE construction project image six", label: "Coastal Work" },
-  },
+export const topDollarTips: Tip[] = [
+  { title: "Price It Right From Day One", description: "Overpricing costs you momentum. A well-researched launch price attracts serious buyers immediately." },
+  { title: "Lead With Professional Photography", description: "Most buyers decide whether to book a showing based on photos alone — make the first impression count." },
+  { title: "Handle Small Repairs Before You List", description: "Minor issues left unaddressed can undermine buyer confidence and invite lower offers." },
+  { title: "Stage For How Buyers Live Today", description: "Clean, neutral, and well-lit spaces help buyers picture themselves in the home." },
+  { title: "Time Your Listing To Local Demand", description: "Coastal markets have seasonal rhythms — timing your listing well can mean a faster, stronger sale." },
+  { title: "Negotiate With A Full Picture, Not Just The Number", description: "Terms, timelines, and contingencies matter as much as price when comparing offers." },
 ];
 
 export const heroSlides: ImageToken[] = [
-  {
-    src: "/hero/hero-1.jpeg",
-    alt: "Construction hero image one",
-    label: "Structural Works",
-  },
-  {
-    src: "/hero/hero-2.jpeg",
-    alt: "Construction hero image two",
-    label: "Craft Detail",
-  },
-  {
-    src: "/hero/hero-3.jpeg",
-    alt: "Construction hero image three",
-    label: "Engineering Precision",
-  },
-];
-
-export const services: Service[] = [
-  {
-    title: "Pool Care & Equipment",
-    slug: "pool-care-equipment",
-    eyebrow: "Pool Care",
-    description: "Maintenance, resurfacing, design support, pump installation, and motor repair delivered with clean scheduling and trade-level follow-through.",
-    image: { src: "/placeholders/site.svg", alt: "Pool care service placeholder", label: "Pool Care" },
-    icon: Building2,
-    details: ["Maintenance routes", "Resurfacing", "Pumps & motors"],
-  },
-  {
-    title: "Lawn Care & Grounds",
-    slug: "lawn-care-grounds",
-    eyebrow: "Lawn Care",
-    description: "Reliable mowing, gardening, irrigation, fertilizing, herbicide, insecticide, and landscape upkeep for properties that need steady curb appeal.",
-    image: { src: "/placeholders/equipment.svg", alt: "Lawn care service placeholder", label: "Grounds Care" },
-    icon: Home,
-    details: ["Lawn maintenance", "Irrigation", "Fertilizing"],
-  },
-  {
-    title: "Renovation & Interior Trades",
-    slug: "renovation-interior-trades",
-    eyebrow: "Renovation",
-    description: "Flooring, cabinets, painting, bathrooms, kitchens, and carpentry managed with the fit, sequencing, and finish control expected on lived-in properties.",
-    image: { src: "/placeholders/interior.svg", alt: "Renovation service placeholder", label: "Interior Trades" },
-    icon: Landmark,
-    details: ["Kitchens & baths", "Cabinets", "Finish carpentry"],
-  },
-  {
-    title: "Construction & Exterior Systems",
-    slug: "construction-exterior-systems",
-    eyebrow: "Construction",
-    description: "Drywall, insulation, soffit, fascia, stucco, concrete, and screen enclosures handled by coordinated crews who understand structure and weather exposure.",
-    image: { src: "/placeholders/project.svg", alt: "Construction service placeholder", label: "Exterior Systems" },
-    icon: Compass,
-    details: ["Concrete", "Stucco", "Screen enclosures"],
-  },
-  {
-    title: "Landscape Design & Hardscape",
-    slug: "landscape-design-hardscape",
-    eyebrow: "Landscaping",
-    description: "Custom planting, rocks, mulch, sod, pruning, pavers, wells, lighting, fences, tree cutting, and pressure washing shaped around the full exterior.",
-    image: { src: "/placeholders/office.svg", alt: "Landscaping service placeholder", label: "Landscape Works" },
-    icon: Hammer,
-    details: ["Pavers & lighting", "Tree work", "Pressure washing"],
-  },
-  {
-    title: "Site Services & Heavy Support",
-    slug: "site-services-heavy-support",
-    eyebrow: "Site Services",
-    description: "Skid steers, dump trucks, dump trailers, logistics, tractor work, lot clearing, demolition, grading, and mulching for serious property preparation.",
-    image: { src: "/placeholders/hero-engineering.svg", alt: "Site service equipment placeholder", label: "Site Services" },
-    icon: Factory,
-    details: ["Lot clearing", "Demolition", "Land grading"],
-  },
-  {
-    title: "Residential & Commercial Cleaning",
-    slug: "residential-commercial-cleaning",
-    eyebrow: "Cleaning",
-    description: "Interior cleaning for homes, commercial properties, offices, and HOA common areas, with the same discipline applied to construction punch lists.",
-    image: { src: "/placeholders/office.svg", alt: "Cleaning service placeholder", label: "Cleaning" },
-    icon: ShieldCheck,
-    details: ["Homes", "Commercial spaces", "HOA common areas"],
-  },
-];
-
-export const projects: Project[] = [
-  {
-    title: "Complete Exterior Renewal",
-    category: "Exterior",
-    location: "Residential Estate",
-    year: "2026",
-    description: "Landscape refresh, pressure washing, paver repair, lighting updates, and final cleaning brought under one property plan.",
-    image: { src: "/placeholders/project.svg", alt: "Exterior renewal placeholder", label: "Exterior Renewal" },
-  },
-  {
-    title: "Kitchen & Bath Finish Package",
-    category: "Renovation",
-    location: "Private Home",
-    year: "2025",
-    description: "Cabinets, flooring, carpentry, painting, and bathroom detailing delivered as a coordinated interior scope.",
-    image: { src: "/placeholders/interior.svg", alt: "Interior renovation placeholder", label: "Interior Renewal" },
-  },
-  {
-    title: "Pool Deck & Equipment Reset",
-    category: "Pool Care",
-    location: "HOA Community",
-    year: "2025",
-    description: "Pump installation, equipment service, resurfacing coordination, screen enclosure repairs, and cleaning.",
-    image: { src: "/placeholders/site.svg", alt: "Pool deck placeholder", label: "Pool Upgrade" },
-  },
-  {
-    title: "Lot Clearing & Grade Prep",
-    category: "Site Services",
-    location: "Future Build Site",
-    year: "2024",
-    description: "Skid steer work, dump trailer support, vegetation clearing, mulching, and grading prepared the property for construction.",
-    image: { src: "/placeholders/equipment.svg", alt: "Lot clearing placeholder", label: "Site Prep" },
-  },
-  {
-    title: "Stucco, Soffit & Fascia Repair",
-    category: "Construction",
-    location: "Coastal Property",
-    year: "2024",
-    description: "Weather-facing exterior systems were repaired, sealed, painted, and cleaned for a sharper, longer-lasting envelope.",
-    image: { src: "/placeholders/hero-craft.svg", alt: "Exterior construction placeholder", label: "Exterior Systems" },
-  },
-  {
-    title: "Lawn, Irrigation & Planting Program",
-    category: "Grounds Care",
-    location: "Commercial Property",
-    year: "2023",
-    description: "Recurring maintenance, fertilizing, irrigation checks, pruning, and seasonal planting kept the exterior consistent.",
-    image: { src: "/placeholders/hero-engineering.svg", alt: "Grounds care placeholder", label: "Grounds Program" },
-  },
+  { src: "/placeholders/hero-1.svg", alt: "Palm Coast waterfront at dusk placeholder", label: "Coastal Living" },
+  { src: "/placeholders/hero-2.svg", alt: "Palm Coast Intracoastal waterway placeholder", label: "The Intracoastal" },
+  { src: "/placeholders/hero-3.svg", alt: "Palm Coast coastal dunes placeholder", label: "The Dunes" },
 ];
 
 export const testimonials: Testimonial[] = [
   {
-    quote: "The crew treated the property like a coordinated construction site, even though the scope included cleaning, repairs, and landscape work.",
+    quote: "Claire made the whole process feel manageable. She was clear about timing, realistic about pricing, and available whenever we had questions.",
     name: "Client Name",
-    company: "Property Holdings",
-    role: "Owner Representative",
+    company: "Buyer",
+    role: "Home Buyer",
     rating: 5,
   },
   {
-    quote: "They separated the urgent work from the upgrades, scheduled the right crews, and kept communication clear the entire time.",
+    quote: "She knew the communities we were considering inside and out, which saved us from wasting weekends on the wrong showings.",
     name: "Client Name",
-    company: "Estate Group",
-    role: "Property Manager",
+    company: "Buyer",
+    role: "Home Buyer",
     rating: 5,
   },
   {
-    quote: "The finish quality was strong, but what stood out was how cleanly they moved from exterior repairs to final site cleanup.",
+    quote: "From listing to closing, communication never slowed down. We always knew where things stood.",
     name: "Client Name",
-    company: "Coastal Capital",
-    role: "Asset Manager",
+    company: "Seller",
+    role: "Home Seller",
     rating: 5,
   },
   {
-    quote: "Pool equipment, pavers, lawn care, and pressure washing were handled as one organized property plan.",
+    quote: "Her pricing strategy was on point. We had strong interest in the first week and closed above what we expected.",
     name: "Client Name",
-    company: "Harbor Studio",
-    role: "Facilities Lead",
+    company: "Seller",
+    role: "Home Seller",
     rating: 5,
   },
   {
-    quote: "The project cadence stayed transparent from walkthrough to closeout, with no guessing about who was coming next.",
+    quote: "As out-of-state buyers, we needed someone we could trust completely. Claire walked us through every detail remotely and in person.",
     name: "Client Name",
-    company: "Porta Partners",
-    role: "Operations Director",
+    company: "Buyer",
+    role: "Relocation Buyer",
     rating: 5,
   },
   {
-    quote: "Their craftsmanship reads in the visible details, and their maintenance mindset shows in the way the property was left.",
+    quote: "She handled a complicated negotiation with a level head and got us a result we were happy with.",
     name: "Client Name",
-    company: "Magna Estates",
-    role: "Owner Representative",
+    company: "Seller",
+    role: "Home Seller",
     rating: 5,
   },
 ];
 
-export const statistics: Statistic[] = [
-  { value: "00+", label: "Years In The Field", description: "Property service experience across exterior, interior, and site work." },
-  { value: "000", label: "Scopes Coordinated", description: "Small repairs, recurring care, and multi-trade upgrades." },
-  { value: "00", label: "Service Categories", description: "Construction, renovation, landscaping, pool, lawn, site, and cleaning." },
-  { value: "00%", label: "Repeat Service Focus", description: "Built for owners who need reliable long-term property support." },
-];
-
-export const values = [
-  { title: "Field Precision", icon: Compass, description: "Clear scopes, clean scheduling, and crews that arrive ready to solve the actual site condition." },
-  { title: "Property Stewardship", icon: ShieldCheck, description: "Every repair, route, and renovation is treated as part of the long-term property value." },
-  { title: "Trade Craft", icon: Award, description: "Finish details matter, whether the work is drywall, pavers, pool equipment, or pressure washing." },
-  { title: "Owner Partnership", icon: Users, description: "We keep communication direct so owners, managers, and HOAs know what is happening next." },
+export const aboutHighlights: string[] = [
+  "Multimillion-Dollar Sales Volume",
+  "Northeast Florida Coastal Region",
+  "RE/MAX Signature",
+  "Lives & Works Locally",
 ];
 
 export const processSteps = [
-  { title: "Walkthrough", description: "We confirm the condition, priorities, access, and service category before pricing the work." },
-  { title: "Scope", description: "The plan separates urgent repairs, recurring care, and upgrade work so decisions stay clean." },
-  { title: "Scheduling", description: "Crews, materials, equipment, and site access are coordinated before work begins." },
-  { title: "Field Work", description: "Construction, grounds, pool, cleaning, or site tasks are executed with documented progress." },
-  { title: "Closeout", description: "We review finish quality, clean the work area, and confirm any next maintenance steps." },
-];
-
-export const careerRoles: CareerRole[] = [
-  {
-    title: "Property Services Manager",
-    location: "Local Service Area",
-    type: "Full Time",
-    description: "Coordinate crews across renovation, exterior work, cleaning, pool care, landscaping, and recurring property routes.",
-  },
-  {
-    title: "Field Crew Lead",
-    location: "Local Service Area",
-    type: "Full Time",
-    description: "Lead day-to-day service work, protect jobsite standards, and keep owners informed as scopes move forward.",
-  },
-  {
-    title: "Estimator & Scope Coordinator",
-    location: "Hybrid",
-    type: "Full Time",
-    description: "Translate walkthrough notes into clear scopes for repairs, upgrades, maintenance programs, and multi-trade projects.",
-  },
-];
-
-export const serviceAreas: ServiceArea[] = [
-  { city: "North Route", region: "North", description: "Recurring lawn, pool, cleaning, and exterior maintenance for residential communities." },
-  { city: "North Estates", region: "North", description: "Coordinated renovation and landscape support for private properties and HOAs." },
-  { city: "East Corridor", region: "East", description: "Site services, grading, demolition, and equipment access for active property work." },
-  { city: "East Waterfront", region: "East", description: "Exterior systems, pool care, cleaning, and weather-facing repair scopes." },
-  { city: "South Residential", region: "South", description: "Kitchen, bath, flooring, carpentry, painting, and routine property care." },
-  { city: "South Commercial", region: "South", description: "Office, common-area, exterior, landscaping, and cleaning support for managed assets." },
-  { city: "West Route", region: "West", description: "Pressure washing, pavers, pruning, lighting, fences, and maintenance programs." },
-  { city: "West Properties", region: "West", description: "Long-term service support for owners who need one accountable property team." },
+  { title: "Consultation", description: "We start with your goals, timeline, and budget, whether you're buying, selling, or both." },
+  { title: "Strategy", description: "A tailored plan for pricing, search criteria, or marketing is built around your specific situation." },
+  { title: "Showings & Marketing", description: "Buyers tour the right homes; sellers get professional marketing and coordinated showings." },
+  { title: "Negotiation", description: "Offers, counteroffers, and contract terms are handled with a clear view of your priorities." },
+  { title: "Closing", description: "We track every deadline and document through closing, so nothing catches you off guard." },
 ];
 
 export const contactItems = [
-  { label: "Phone", value: siteConfig.phone, href: `tel:${siteConfig.phone.replace(/[^+\d]/g, "")}`, icon: Phone },
-  { label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}`, icon: Mail },
-  { label: "Address", value: siteConfig.address, href: "/contact", icon: MapPin },
+  { label: "Phone", value: siteConfig.phone, href: `tel:${siteConfig.phone.replace(/[^+\d]/g, "")}`, icon: Phone as LucideIcon },
+  { label: "Email", value: siteConfig.email, href: `mailto:${siteConfig.email}`, icon: Mail as LucideIcon },
+  { label: "Address", value: siteConfig.address, href: "/contact", icon: MapPin as LucideIcon },
 ];
 
 export const footerLinks: FooterGroup[] = [
   { title: "Pages", links: navigation },
   {
-    title: "Services",
-    links: services.slice(0, 6).map((service) => ({ label: service.title, href: `/services#${service.slug}` })),
+    title: "Communities",
+    links: communities.map((community) => ({ label: community.name, href: community.href })),
   },
   {
-    title: "Company",
+    title: "Sell",
     links: [
-      { label: "Process", href: "/about#process" },
-      { label: "Careers", href: "/careers" },
-      { label: "Reviews", href: "/reviews" },
-      { label: "Contact", href: "/contact" },
+      { label: "Cash Offer", href: "/sell/cash-offer" },
+      { label: "Sell My Home", href: "/sell/sell-my-home" },
+      { label: "What's My Home Worth?", href: "/sell/whats-my-home-worth" },
+      { label: "Top Dollar Tips", href: "/sell/top-dollar-tips" },
     ],
   },
-  {
-    title: "Social",
-    links: siteConfig.socials,
-  },
+  { title: "Social", links: siteConfig.socials },
 ];
 
 export const pageCopy = {
   home: {
-    eyebrow: "Construction-Led Property Services",
-    title: "One-call property care, managed with construction discipline.",
-    description: "ERE CARE coordinates maintenance, renovation, pool care, lawn service, landscaping, site work, cleaning, and exterior repairs through one trusted property team.",
+    eyebrow: "Coastal Property Specialist · RE/MAX Signature",
+    title: "Claire Sells The Coast",
+    description:
+      "Claire Swartzlander guides buyers and sellers through Palm Coast's premier waterfront and golf communities, from first showing to closing day.",
   },
-  services: {
-    title: "Every property scope, organized under one field standard.",
-    description: "From drywall and concrete to pool equipment, pavers, grading, mowing, and cleaning, each service is planned with construction-level discipline.",
+  buy: {
+    title: "Find your place on the coast.",
+    description:
+      "Explore Palm Coast's most sought-after communities, from marina and Intracoastal addresses to gated golf and oceanfront living, with guidance built around how you actually want to live.",
   },
   about: {
-    title: "A property services partner, grounded in construction control.",
-    description: "We bring contractor thinking to the everyday demands of property care: clear scope, reliable crews, practical sequencing, and sharp finish standards.",
+    title: "Coastal Property Specialist",
+    description:
+      "With a multimillion-dollar sales volume, Claire Swartzlander has positioned herself as a highly regarded and well-known real estate expert in the Northeast Florida coastal region.",
   },
-  projects: {
-    title: "Completed property work, from site prep to final polish.",
-    description: "A cross-section of renovation, exterior repair, pool care, grounds programs, hardscape, cleaning, and heavy site support.",
+  sell: {
+    title: "Sell with a clear plan and a firm number.",
+    description:
+      "From a same-week cash offer to a fully marketed listing, Claire builds a selling strategy around your timeline, your home, and the price you actually want to walk away with.",
   },
   reviews: {
-    title: "Client confidence, earned through steady field delivery.",
-    description: "Owners, managers, and property teams depend on clear communication, careful work areas, and crews that close the loop.",
-  },
-  careers: {
-    title: "Build a trade career, where property work is done properly.",
-    description: "Join a field-minded team that values ownership, practical skill, and pride in the details across construction and property services.",
-  },
-  serviceAreas: {
-    title: "Local coverage, coordinated for real property demands.",
-    description: "Responsive service coverage for recurring care, one-time repairs, exterior upgrades, renovations, cleaning, and site preparation.",
+    title: "What buyers and sellers say after closing.",
+    description: "Real feedback from the people Claire has guided through buying, selling, and everything in between.",
   },
   contact: {
-    title: "Start with the property, then build the right scope.",
-    description: "Tell us what needs attention, from urgent repairs to recurring maintenance or a multi-trade upgrade, and we will help define the next step.",
+    title: "Start the conversation about your next move.",
+    description: "Whether you're buying, selling, or just exploring the coast, tell Claire what you're working toward and she'll help map the next step.",
+  },
+  bookAppointment: {
+    title: "Book time with Claire.",
+    description: "Pick a time that works for a call, a video walkthrough, or an in-person meeting to talk through your buying or selling goals.",
   },
 };
 
+export const homeCommunityPreviews: HomeCommunityPreview[] = communities.slice(0, 5).map((community) => ({
+  title: community.name,
+  href: community.href,
+  image: community.image,
+  region: community.region,
+  highlights: community.highlights.slice(0, 2),
+}));
+
+export const homeListingPreviews: HomeListingPreview[] = [
+  { title: "Waterfront Estate", category: "Marina Del Palma", image: { src: "/placeholders/listing.svg", alt: "Placeholder waterfront estate listing", label: "Waterfront Estate" } },
+  { title: "Golf Course Retreat", category: "Grand Haven", image: { src: "/placeholders/listing.svg", alt: "Placeholder golf course retreat listing", label: "Golf Course Retreat" } },
+  { title: "Oceanfront Residence", category: "Hammock Dunes", image: { src: "/placeholders/listing.svg", alt: "Placeholder oceanfront residence listing", label: "Oceanfront Residence" } },
+  { title: "Coastal Family Home", category: "Palm Harbor", image: { src: "/placeholders/listing.svg", alt: "Placeholder coastal family home listing", label: "Coastal Family Home" } },
+  { title: "Gated Golf Villa", category: "The Conservatory at Hammock Beach", image: { src: "/placeholders/listing.svg", alt: "Placeholder gated golf villa listing", label: "Gated Golf Villa" } },
+  { title: "Marsh-View Cottage", category: "Tidelands", image: { src: "/placeholders/listing.svg", alt: "Placeholder marsh-view cottage listing", label: "Marsh-View Cottage" } },
+];
+
 export const homePagePreviews: HomePagePreview[] = [
   {
-    label: "Services",
-    href: "/services",
-    kicker: "Full-Service Property Care",
-    title: "One property team, structured across the trades that matter.",
-    description: "Pool care, lawn maintenance, renovation, construction, landscaping, site support, and cleaning are organized so owners can find the right scope quickly.",
-    layout: "services-bento",
+    label: "Buy",
+    href: "/buy",
+    kicker: "Explore The Coast",
+    title: "One place to explore every coastal community Claire covers.",
+    description:
+      "Marina and Intracoastal addresses, gated golf communities, and quieter marsh-front pockets are organized so buyers can find the right fit fast.",
+    layout: "communities-bento",
     images: [
-      {
-        src: "/project/erecare-project-01.jpeg",
-        alt: "ERE CARE services preview image",
-        label: "Coordinated Services",
-      },
-      {
-        src: "/project/erecare-project-02.jpeg",
-        alt: "ERE CARE services detail image",
-        label: "Field Support",
-      },
+      { src: "/placeholders/community.svg", alt: "Palm Coast communities preview image", label: "Coastal Communities" },
+      { src: "/placeholders/community.svg", alt: "Palm Coast communities detail image", label: "Local Coverage" },
     ],
-    details: ["Construction", "Grounds", "Cleaning"],
+    details: ["Waterfront", "Golf Communities", "Gated"],
   },
   {
-    label: "About ERE CARE",
+    label: "About Claire",
     href: "/about",
-    kicker: "Management & Maintenance",
-    title: "Refined Property Care with Unwavering Dedication",
-    description: "Nestled in the heart of Flagler County, our esteemed establishment has been a beacon of excellence for over 19 illustrious years. As guardians of your property's integrity, we stand ready to serve with grace and precision.\n\nIndulge in the seamless convenience of our renowned motto: \"One call does it all.\" Within moments, your concerns are met with swift resolution, leaving you to revel in the tranquility of knowing that your property is in the most capable hands.",
+    kicker: "RE/MAX Signature",
+    title: "Coastal Property Specialist, RE/MAX Signature",
+    description:
+      "With a multimillion-dollar sales volume, Claire Swartzlander is a highly regarded, well-known real estate expert in the Northeast Florida coastal region.\n\nHer mission is simple: every client feels uniquely valued, knowing they are her sole focus.",
     layout: "about-editorial",
     images: [
-      {
-        src: "/hero/hero-2.jpeg",
-        alt: "ERE CARE about preview image",
-        label: "Company Standard",
-      },
-      {
-        src: "/hero/hero-3.jpeg",
-        alt: "ERE CARE about detail image",
-        label: "Property Care",
-      },
+      { src: "/about/claire-about.png", alt: "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature", label: "Claire Swartzlander" },
+      { src: "/placeholders/hero-2.svg", alt: "Palm Coast waterfront placeholder", label: "The Coast" },
     ],
-    details: ["0 Years Serving", "0 Days In Business", "0 Completed Projects", "0 Team Members"],
+    details: aboutHighlights,
   },
   {
-    label: "Project Work",
-    href: "/projects",
-    kicker: "Field Work Examples",
-    title: "Real property improvements, shown by scope and condition.",
-    description: "The portfolio can support quick repairs, recurring programs, and larger upgrades without forcing every job into the same project format.",
-    layout: "projects-editorial",
+    label: "Featured Listings",
+    href: "/buy",
+    kicker: "Placeholder Listings",
+    title: "A first look at the kind of homes Claire places buyers in.",
+    description:
+      "These are placeholder listings standing in for real inventory. Once live listings are connected, this band can pull directly from active MLS data.",
+    layout: "listings-editorial",
     images: [
-      {
-        src: "/project/erecare-project-03.jpeg",
-        alt: "ERE CARE projects preview image",
-        label: "Project Overview",
-      },
-      {
-        src: "/project/erecare-project-04.jpeg",
-        alt: "ERE CARE projects detail image",
-        label: "Work Detail",
-      },
+      { src: "/placeholders/listing.svg", alt: "Featured listings preview image", label: "Featured Listings" },
+      { src: "/placeholders/listing.svg", alt: "Featured listings detail image", label: "Listing Detail" },
     ],
-    details: ["Repairs", "Upgrades", "Maintenance"],
+    details: ["Waterfront", "Golf", "Family"],
+  },
+  {
+    label: "Sell",
+    href: "/sell",
+    kicker: "Ready To List",
+    title: "A clear path from listing day to closing table.",
+    description:
+      "Whether you want a fast, no-showings cash offer or a fully marketed listing built for top dollar, the plan starts with an honest read on your home and your timeline.",
+    layout: "offset",
+    images: [
+      { src: "/placeholders/interior.svg", alt: "Home selling preview image", label: "Ready To List" },
+      { src: "/placeholders/listing.svg", alt: "Home selling detail image", label: "Sold" },
+    ],
+    details: ["Cash Offer", "Full Listing", "Home Valuation"],
   },
   {
     label: "Client Reviews",
     href: "/reviews",
-    kicker: "Trusted By Property Owners",
-    title: "A homeowner’s words after ERE CARE fence work.",
-    description: "Pablo and his team did a great job installing a vinyl fence around my home. They removed shrubs and old fencing from inside the property line making my yard appear larger. Pablo went above and beyond to make sure the installation was perfect. Pablo is communicative and prompt to respond. He kept me updated and is always professional and so is his crew.",
+    kicker: "Buyer & Seller Feedback",
+    title: "Client trust, built one closing at a time.",
+    description: testimonials[0].quote,
     layout: "review-feature",
     images: [
-      {
-        src: "/placeholders/office.svg",
-        alt: "ERE CARE reviews preview image",
-        label: "Client Confidence",
-      },
-      {
-        src: "/placeholders/team.svg",
-        alt: "ERE CARE reviews portrait image",
-        label: "Service Experience",
-      },
+      { src: "/placeholders/office.svg", alt: "Client reviews preview image", label: "Client Trust" },
+      { src: "/placeholders/agent.svg", alt: "Client reviews portrait image", label: "Client Experience" },
     ],
-    details: ["Service", "Trust", "Results"],
-  },
-  {
-    label: "Careers With ERE CARE",
-    href: "/careers",
-    kicker: "Trade Careers",
-    title: "A place for people who take property work seriously.",
-    description: "The careers page is ready for trade roles, crew leadership, estimating, maintenance operations, and project coordination.",
-    layout: "split",
-    images: [
-      {
-        src: "/placeholders/team.svg",
-        alt: "ERE CARE careers preview image",
-        label: "Field Team",
-      },
-      {
-        src: "/placeholders/office.svg",
-        alt: "ERE CARE careers workplace image",
-        label: "Work Standard",
-      },
-    ],
-    details: ["Trades", "Leadership", "Open Roles"],
-  },
-  {
-    label: "Service Areas",
-    href: "/service-areas",
-    kicker: "Local Service Coverage",
-    title: "Local routes, equipment access, and accountable response.",
-    description: "Coverage language is built for real service areas, not vague regional promises, with room for recurring routes and special project calls.",
-    layout: "stacked",
-    images: [
-      {
-        src: "/placeholders/map.svg",
-        alt: "ERE CARE service areas preview image",
-        label: "Coverage Map",
-      },
-      {
-        src: "/placeholders/site.svg",
-        alt: "ERE CARE service areas detail image",
-        label: "Local Response",
-      },
-    ],
-    details: ["Routes", "Regions", "Availability"],
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-    kicker: "Start Your Scope",
-    title: "Start with the site condition, then define the work.",
-    description: "The contact path is direct: share the property need, timing, and scope so the next conversation can move quickly.",
-    layout: "offset",
-    images: [
-      {
-        src: "/placeholders/office.svg",
-        alt: "ERE CARE contact preview image",
-        label: "Inquiry Desk",
-      },
-      {
-        src: "/placeholders/map.svg",
-        alt: "ERE CARE contact map image",
-        label: "Service Location",
-      },
-    ],
-    details: ["Inquiry", "Walkthrough", "Scope"],
+    details: [testimonials[0].name, testimonials[0].role],
   },
 ];
 
 export const pageMetadata = {
   home: {
-    title: "Construction-Led Property Services",
-    description: "Premium full-property services website for construction, renovation, lawn care, pool care, landscaping, site services, and cleaning.",
+    title: "Coastal Property Specialist | RE/MAX Signature",
+    description: "Claire Swartzlander helps buyers and sellers navigate Palm Coast's waterfront and golf communities.",
     path: "/",
   },
-  services: {
-    title: "Property Services",
-    description: "Construction-led service categories for renovation, exterior systems, pool care, lawn care, landscaping, site work, and cleaning.",
-    path: "/services",
+  buy: {
+    title: "Buy A Home On The Coast",
+    description:
+      "Explore Palm Coast communities including Marina Del Palma, Palm Harbor, Grand Haven, The Conservatory at Hammock Beach, Hammock Dunes, and Tidelands.",
+    path: "/buy",
   },
   about: {
-    title: "About The Company",
-    description: "Company story, values, process, and field standards for a full-service construction and property care brand.",
+    title: "About Claire Swartzlander",
+    description: "Coastal property specialist with RE/MAX Signature, serving buyers and sellers across Palm Coast, FL.",
     path: "/about",
   },
-  projects: {
-    title: "Featured Property Work",
-    description: "Project showcase for renovation, exterior repair, pool work, site preparation, landscaping, and recurring property services.",
-    path: "/projects",
+  sell: {
+    title: "Sell Your Home",
+    description: "Sell your Palm Coast home with a clear pricing strategy, professional marketing, and an optional cash offer path.",
+    path: "/sell",
   },
   reviews: {
     title: "Client Reviews",
-    description: "Client confidence sections for a construction-led property services company.",
+    description: "Feedback from buyers and sellers who worked with Claire Swartzlander.",
     path: "/reviews",
   },
-  careers: {
-    title: "Construction & Property Careers",
-    description: "Careers page for field crews, trade roles, maintenance operations, and project coordination.",
-    path: "/careers",
-  },
-  serviceAreas: {
-    title: "Service Areas",
-    description: "Local service coverage page for construction, maintenance, cleaning, landscaping, pool care, and site support.",
-    path: "/service-areas",
-  },
   contact: {
-    title: "Contact The Company",
-    description: "Contact page for property inspections, service requests, recurring maintenance, and construction-led scopes.",
+    title: "Contact Claire",
+    description: "Get in touch about buying, selling, or exploring Palm Coast real estate.",
     path: "/contact",
+  },
+  bookAppointment: {
+    title: "Book An Appointment",
+    description: "Schedule time with Claire Swartzlander to talk through your real estate goals.",
+    path: "/book-an-appointment",
   },
 };

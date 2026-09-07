@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900"><rect width="1200" height="900" fill="#1a2028"/><rect x="160" y="140" width="880" height="560" fill="#efe7d8" opacity=".1"/><g stroke="#c09a4a" stroke-width="4" opacity=".7"><path d="M260 250h680M260 360h680M260 470h680M260 580h680"/><path d="M360 180v480M520 180v480M760 180v480"/></g><text x="70" y="810" fill="#f6efe4" font-family="Arial" font-size="30" font-weight="700" letter-spacing="5">DESIGN STUDIO</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#171b21"/>
+  <rect x="160" y="140" width="880" height="560" fill="#f6efe4" opacity="0.05"/>
+  <g stroke="#c9a05a" stroke-width="1.6" opacity="0.4">
+    <path d="M260 250h680M260 380h680M260 510h680M260 640h680"/>
+    <path d="M400 180v480M600 180v480M800 180v480"/>
+  </g>
+</svg>
