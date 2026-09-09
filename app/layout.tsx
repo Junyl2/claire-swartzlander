@@ -6,6 +6,7 @@ import { LenisProvider } from "@/components/interactive/LenisProvider";
 import { Navigation } from "@/components/site/Navigation";
 import { Footer } from "@/components/site/Footer";
 import { siteConfig } from "@/data/site";
+import { createRealEstateAgentSchema } from "@/lib/metadata";
 
 const display = Playfair_Display({
   subsets: ["latin"],
@@ -40,6 +41,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body className={`${display.variable} ${body.variable} ${script.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(createRealEstateAgentSchema()) }}
+        />
         <LenisProvider>
           <Navigation />
           {children}

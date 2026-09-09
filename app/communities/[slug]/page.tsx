@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { CommunityDirectoryDetailPage } from "@/components/sections/CommunityDirectoryDetailPage";
 import { communityDirectory } from "@/data/site";
-import { createPageMetadata } from "@/lib/metadata";
+import { createBreadcrumbSchema, createPageMetadata } from "@/lib/metadata";
 
 const internalCommunities = communityDirectory.filter((item) => item.href.startsWith("/communities/"));
 
@@ -35,5 +35,16 @@ export default async function CommunitySlugPage({ params }: PageProps) {
     notFound();
   }
 
-  return <CommunityDirectoryDetailPage community={community} />;
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Communities", path: "/communities" },
+    { name: community.name, path: `/communities/${community.slug}` },
+  ]);
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <CommunityDirectoryDetailPage community={community} />
+    </>
+  );
 }

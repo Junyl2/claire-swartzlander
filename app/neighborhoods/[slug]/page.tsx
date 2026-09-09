@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 
 import { NeighborhoodDetailPage } from "@/components/sections/NeighborhoodDetailPage";
 import { neighborhoods } from "@/data/site";
-import { createPageMetadata } from "@/lib/metadata";
+import { createBreadcrumbSchema, createPageMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
   return neighborhoods.map((neighborhood) => ({ slug: neighborhood.slug }));
@@ -33,5 +33,16 @@ export default async function NeighborhoodSlugPage({ params }: PageProps) {
     notFound();
   }
 
-  return <NeighborhoodDetailPage neighborhood={neighborhood} />;
+  const breadcrumbSchema = createBreadcrumbSchema([
+    { name: "Home", path: "/" },
+    { name: "Neighborhoods", path: "/neighborhoods" },
+    { name: neighborhood.name, path: `/neighborhoods/${neighborhood.slug}` },
+  ]);
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <NeighborhoodDetailPage neighborhood={neighborhood} />
+    </>
+  );
 }

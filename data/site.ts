@@ -98,16 +98,16 @@ export const siteConfig = {
   name: "Claire Swartzlander",
   tagline: "Coastal Property Specialist",
   brokerage: "RE/MAX Signature",
-  url: "https://example.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://clairesellsthecoast.com",
   phone: "+17249542787",
   email: "clairesellsthecoast@gmail.com",
   web3FormsAccessKey: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "",
-  address: "000 Ocean Palm Way, Palm Coast, FL 32137",
+  address: "1134 W Granada Blvd, Ormond Beach, FL 32174",
   hours: "By Appointment — 7 Days A Week",
   socials: [
     { label: "LinkedIn", href: "https://example.com" },
     { label: "Instagram", href: "https://example.com" },
-    { label: "Facebook", href: "https://example.com" },
+    { label: "Facebook", href: "https://www.facebook.com/Clairesellsthecoast" },
   ],
 };
 
@@ -318,8 +318,13 @@ export const neighborhoods: Neighborhood[] = [
     slug: "woodlands",
     sections: ["BL"],
     overview:
-      "Woodlands was one of the first sections built in Palm Coast, with many homes dating to the 1970s and '80s, sandwiched between Old Kings Road and Colbert Lane. It borders the roughly 3,500-acre Woodlands Conservation Area and has convenient access to Old Kings Road, Interstate 95, and the Hammock Dunes Bridge to the beach.",
-    landmarks: ["Woodlands Conservation Area (~3,500 acres)", "One of Palm Coast's original sections (1970s-80s)"],
+      "Woodlands sits between Old Kings Road and Colbert Lane on the eastern end of Palm Coast Parkway, and ranks among the city's earliest developed sections, with much of its housing stock dating to the 1970s and '80s. The neighborhood takes its name from the roughly 3,500-acre Woodlands Conservation Area it borders, and sits just south of Palm Harbor, home to a public golf course and marina. Because the area has been built out for decades, most homes on the market here are resales rather than new construction, and the nearby Hammock Dunes Bridge gives residents a direct route across A1A toward Flagler Beach.",
+    landmarks: [
+      "Woodlands Conservation Area (~3,500 acres)",
+      "Oak Trails Boulevard (neighborhood's main thoroughfare)",
+      "One of Palm Coast's original sections (1970s-80s homes)",
+      "Near Palm Harbor's golf course and marina",
+    ],
   },
 ];
 

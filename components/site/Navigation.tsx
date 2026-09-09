@@ -52,12 +52,20 @@ export function Navigation() {
   };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      const cinematicHero = document.querySelector<HTMLElement>("[data-cinematic-hero]");
+      const threshold = cinematicHero ? cinematicHero.offsetHeight - window.innerHeight : 24;
+      setScrolled(window.scrollY > Math.max(threshold, 24));
+    };
 
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [pathname]);
 
   useEffect(() => {
     return () => {
