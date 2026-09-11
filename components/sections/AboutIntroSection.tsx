@@ -1,29 +1,9 @@
-import { CheckCircle2, HeartHandshake, ShieldCheck } from "lucide-react";
-
 import { Reveal } from "@/components/interactive/Reveal";
 import { BrokerageBadge } from "@/components/ui/BrokerageBadge";
 import { Container } from "@/components/ui/Container";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { MixedTitle } from "@/components/ui/MixedTitle";
 import { aboutHighlights } from "@/data/site";
-
-const pillars = [
-  {
-    title: "Hard Work & Integrity",
-    icon: CheckCircle2,
-    text: "Claire carries the values of hard work, integrity, and outstanding client service into everything she does, prioritizing your needs at every step of the journey.",
-  },
-  {
-    title: "Stress-Free Assurances",
-    icon: ShieldCheck,
-    text: "Her unwavering dedication to exceptional customer service surpasses expectations in every transaction, alleviating the stress of buying or selling.",
-  },
-  {
-    title: "Deep Community Roots",
-    icon: HeartHandshake,
-    text: "Claire lives and works in the community she serves, giving her an implicit understanding of what local buyers and sellers actually need.",
-  },
-];
 
 const stackedImages = [
   { src: "/about/claire-about.png", alt: "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature", label: "Claire Swartzlander" },
@@ -98,38 +78,6 @@ export function AboutIntroSection() {
             </div>
           </Reveal>
         </div>
-
-        <Reveal className="mt-16 border-t border-primary/15 pt-10" delay={0.12}>
-          <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
-            <div>
-              <p className="eyebrow supporting-kicker">Why Buyers &amp; Sellers Choose Claire</p>
-              <MixedTitle
-                text="Hard Work, Integrity, and Peace of Mind"
-                as="h3"
-                className="editorial-title display-title mt-4 text-balance text-3xl leading-[0.92] text-ink md:text-5xl"
-              />
-              <p className="supporting-copy mt-5 max-w-xl text-base text-slate">
-                Every buyer and seller relationship is handled with the same standard, whether it&apos;s a first
-                coastal home or a long-planned move.
-              </p>
-            </div>
-            <div className="grid gap-5 md:grid-cols-3">
-              {pillars.map((pillar) => {
-                const Icon = pillar.icon;
-
-                return (
-                  <article key={pillar.title} className="group border-t border-primary/18 bg-white p-6 shadow-[var(--shadow-soft)] transition duration-500 hover:-translate-y-1">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-[var(--radius-sharp)] bg-primary/10 text-primary transition duration-500 group-hover:bg-primary group-hover:text-white">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h4 className="mt-5 text-xl font-bold text-ink">{pillar.title}</h4>
-                    <p className="supporting-copy mt-3 text-sm leading-7 text-slate">{pillar.text}</p>
-                  </article>
-                );
-              })}
-            </div>
-          </div>
-        </Reveal>
       </Container>
     </section>
   );

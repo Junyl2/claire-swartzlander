@@ -16,6 +16,13 @@
   --shadow-soft: 0 24px 70px hsl(215 19% 10% / 0.14);
   --shadow-line: inset 0 0 0 1px hsl(25 27% 59% / 0.16);
   --container: 1400px;
+  --header-height: 112px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-height: 176px;
+  }
 }
 
 @theme inline {

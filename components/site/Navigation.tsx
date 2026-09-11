@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronDown, Menu, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -29,6 +30,7 @@ export function Navigation() {
   const [megaMenuTop, setMegaMenuTop] = useState<number | null>(null);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navbarRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const megaTriggerRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   const openDropdownNow = (href: string) => {
@@ -90,6 +92,20 @@ export function Navigation() {
   useEffect(() => {
     setOpenDropdown(null);
   }, [pathname]);
+
+  useEffect(() => {
+    const headerEl = headerRef.current;
+    if (!headerEl) return;
+
+    const setHeaderHeight = () => {
+      document.documentElement.style.setProperty("--header-height", `${headerEl.getBoundingClientRect().height}px`);
+    };
+
+    setHeaderHeight();
+    const observer = new ResizeObserver(setHeaderHeight);
+    observer.observe(headerEl);
+    return () => observer.disconnect();
+  }, []);
 
   const isActive = (href: string, children?: { href: string }[]) =>
     pathname === href || Boolean(children?.some((item) => item.href === pathname));
@@ -296,7 +312,7 @@ export function Navigation() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-40">
+      <header ref={headerRef} className="fixed inset-x-0 top-0 z-40">
         <div
           data-header-shell="true"
           className={cn(
@@ -374,14 +390,14 @@ export function Navigation() {
                   aria-label={`${siteConfig.tagline} ${siteConfig.name}`}
                   className="justify-self-center flex flex-col items-center gap-1.5"
                 >
-                  <span
-                    className={cn(
-                      "inline-flex h-5 items-center justify-center border border-dashed px-3 text-[9px] font-bold uppercase tracking-[0.16em] opacity-60",
-                      transparentOverlay ? "border-white/50" : "border-ink/30",
-                    )}
-                  >
-                    RE/MAX Logo
-                  </span>
+                  <Image
+                    src={transparentOverlay ? "/remax-logo-white.png" : "/remax-logo-black.png"}
+                    alt="RE/MAX"
+                    width={200}
+                    height={54}
+                    className="h-8 w-auto"
+                    priority
+                  />
                   <span className="brand-title-script text-3xl leading-none xl:text-4xl">{siteConfig.name}</span>
                 </Link>
 

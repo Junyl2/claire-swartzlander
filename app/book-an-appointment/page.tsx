@@ -11,7 +11,7 @@ export default function BookAppointmentPage() {
   return (
     <main>
       <PageHero
-        kicker="About · Book An Appointment"
+        kicker="Let's Connect"
         title={pageCopy.bookAppointment.title}
         description={pageCopy.bookAppointment.description}
         image={{ src: "/placeholders/agent.svg", alt: "Book an appointment placeholder", label: "Meet With Claire" }}

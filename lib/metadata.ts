@@ -13,7 +13,7 @@ export function createRealEstateAgentSchema() {
     email: siteConfig.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "1134 W Granada Blvd",
+      streetAddress: "775 W Granada Blvd STE 201",
       addressLocality: "Ormond Beach",
       addressRegion: "FL",
       postalCode: "32174",

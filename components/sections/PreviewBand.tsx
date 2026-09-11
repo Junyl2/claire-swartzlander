@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, CircleUserRound, Star } from "lucide-react";
 import Image from "next/image";
 
 import { MotionItem, StaggerGroup } from "@/components/interactive/MotionSequence";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { Button } from "@/components/ui/Button";
 import { MixedTitle } from "@/components/ui/MixedTitle";
-import { homeCommunityPreviews, homeListingPreviews, siteConfig } from "@/data/site";
+import { homeCommunityPreviews, homeListingPreviews, reviewStats, siteConfig, testimonials } from "@/data/site";
 
 type PreviewBandProps = {
   kicker: string;
@@ -227,42 +227,51 @@ function AboutEditorialPreview({
   );
 }
 
-function ReviewFeaturePreview({
-  kicker,
-  title,
-  description,
-  href,
-  details,
-}: Pick<PreviewBandProps, "kicker" | "title" | "description" | "href" | "details">) {
-  const [reviewerName = "Client Name", reviewerRole = "Client"] = details;
+function ReviewFeaturePreview({ kicker, title, href }: Pick<PreviewBandProps, "kicker" | "title" | "href">) {
+  const highlight = testimonials.find((review) => review.name === "robert ratcliff") ?? testimonials[0];
 
   return (
     <article className="border-t border-primary/15 py-10 first:border-t-0">
-      <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+      <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
         <StaggerGroup className="max-w-md" stagger={0.08}>
           <MotionItem><p className="eyebrow supporting-kicker">{kicker}</p></MotionItem>
           <MotionItem><MixedTitle text={title} as="h3" className="editorial-title display-title mt-4 text-balance text-3xl leading-[0.92] text-ink md:text-5xl" /></MotionItem>
           <MotionItem>
-            <div className="mt-7 flex gap-1 border-y border-primary/15 py-5 text-primary" aria-label="5 star review">
-              {Array.from({ length: 5 }).map((_, index) => (
-                <Star key={index} className="h-5 w-5 fill-current" />
-              ))}
+            <div className="mt-7 flex items-center gap-4 border-y border-primary/15 py-5">
+              <div className="flex gap-1 text-primary" aria-label={`${reviewStats.rating} star rating`}>
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} className="h-5 w-5 fill-current" />
+                ))}
+              </div>
+              <p className="ui-title text-sm text-ink">
+                {reviewStats.rating.toFixed(1)} <span className="text-slate">&middot; {reviewStats.count} {reviewStats.source} reviews</span>
+              </p>
             </div>
           </MotionItem>
           <MotionItem>
-            <Button href={href} variant="secondary">
-              View All Reviews
-            </Button>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Button href={reviewStats.sourceUrl} variant="secondary" external ariaLabel="View reviews on Zillow">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/zillow.svg" alt="" className="h-4 w-auto" />
+              </Button>
+              <Button href={href} variant="primary">
+                Reviews Page
+              </Button>
+            </div>
           </MotionItem>
         </StaggerGroup>
+
         <MotionItem distance={26}>
-          <figure className="relative border-l border-primary/18 pl-6 md:pl-8 lg:pl-10">
-            <blockquote className="supporting-copy max-w-4xl text-2xl leading-10 text-ink md:text-3xl md:leading-[1.45]">
-              &ldquo;{description}&rdquo;
+          <figure className="relative border-l border-primary/18 pl-6 md:pl-10 lg:pl-14">
+            <span aria-hidden="true" className="display-title pointer-events-none absolute -left-3 -top-14 select-none text-[9rem] leading-none text-primary/10 md:text-[11rem]">
+              &ldquo;
+            </span>
+            <blockquote className="supporting-copy relative max-w-4xl text-2xl leading-10 text-ink md:text-4xl md:leading-[1.35]">
+              {highlight.quote}
             </blockquote>
-            <figcaption className="ui-title mt-7 text-sm text-ink">
-              {reviewerName}
-              <span className="ui-title ml-3 text-primary">{reviewerRole}</span>
+            <figcaption className="mt-8 flex items-center gap-3">
+              <CircleUserRound className="h-10 w-10 shrink-0 text-primary" aria-hidden="true" />
+              <span className="ui-title text-sm text-ink">{highlight.name}</span>
             </figcaption>
           </figure>
         </MotionItem>
@@ -375,13 +384,7 @@ export function PreviewBand({ kicker, title, description, href, index, layout, i
 
   if (layout === "review-feature") {
     return (
-      <ReviewFeaturePreview
-        kicker={kicker}
-        title={title}
-        description={description}
-        href={href}
-        details={details}
-      />
+      <ReviewFeaturePreview kicker={kicker} title={title} href={href} />
     );
   }
 

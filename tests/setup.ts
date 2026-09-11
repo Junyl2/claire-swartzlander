@@ -13,6 +13,17 @@ Object.defineProperty(globalThis, "IntersectionObserver", {
   value: MockIntersectionObserver,
 });
 
+class MockResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+
+Object.defineProperty(globalThis, "ResizeObserver", {
+  writable: true,
+  value: MockResizeObserver,
+});
+
 vi.mock("next/image", () => ({
   default: (incomingProps: Record<string, unknown>) => {
     const props = { ...incomingProps };

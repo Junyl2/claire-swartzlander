@@ -11,8 +11,8 @@ export function SharedContactSection() {
     <section className="section-y bg-paper">
       <Container className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
         <ImagePlaceholder
-          src="/placeholders/office.svg"
-          alt="Claire Swartzlander contact preview image"
+          src="/new-contact.jpg"
+          alt="Aerial view of an oceanfront condo community along the Flagler County coastline"
           label="Reach Claire"
           ratio="cinema"
           className="min-h-[18rem] md:min-h-[24rem] lg:min-h-[36rem]"

@@ -22,7 +22,6 @@ export function NeighborhoodCinematicHero({ kicker, title, description, caption,
   });
 
   const scale = useTransform(scrollYProgress, [0, 0.6], [0.56, 1]);
-  const radius = useTransform(scrollYProgress, [0, 0.6], [32, 0]);
   const overlay = useTransform(scrollYProgress, [0, 0.6], [0.5, 0.22]);
 
   const introOpacity = useTransform(scrollYProgress, [0, 0.16], [1, 0]);
@@ -36,7 +35,7 @@ export function NeighborhoodCinematicHero({ kicker, title, description, caption,
   return (
     <section ref={containerRef} data-cinematic-hero="true" className="relative h-[220vh] bg-ink">
       <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden">
-        <motion.div style={{ scale, borderRadius: radius }} className="relative h-full w-full overflow-hidden will-change-transform">
+        <motion.div style={{ scale }} className="relative h-full w-full overflow-hidden will-change-transform">
           <Image src={image.src} alt={image.alt} fill priority sizes="100vw" className="object-cover" />
           <motion.div aria-hidden="true" style={{ opacity: overlay }} className="absolute inset-0 bg-ink" />
           <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-ink/25" />
@@ -44,9 +43,9 @@ export function NeighborhoodCinematicHero({ kicker, title, description, caption,
 
         <motion.div
           style={{ opacity: introOpacity, y: introY }}
-          className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-paper"
+          className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center px-6 pt-[var(--header-height)] text-center text-paper"
         >
-          <p className="eyebrow mb-5">{kicker}</p>
+          <p className="eyebrow mb-5 text-paper!">{kicker}</p>
           <MixedTitle
             text={title}
             as="h1"

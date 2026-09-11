@@ -8,7 +8,7 @@ import { MixedTitle } from "@/components/ui/MixedTitle";
 
 export function HomeHero() {
   return (
-    <section className="relative flex h-screen items-center justify-center overflow-hidden bg-ink text-paper">
+    <section className="relative flex h-screen items-center justify-center overflow-hidden bg-ink pt-[var(--header-height)] text-paper">
       <video
         aria-hidden="true"
         autoPlay
@@ -21,7 +21,7 @@ export function HomeHero() {
       >
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
-      <div aria-hidden="true" className="absolute inset-0 bg-ink/30" />
+      <div aria-hidden="true" className="absolute inset-0 bg-ink/12" />
 
       <Container className="relative z-10">
         <StaggerGroup className="mx-auto max-w-3xl text-center" delay={0.08} stagger={0.11}>

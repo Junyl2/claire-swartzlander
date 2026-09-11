@@ -35,6 +35,7 @@ export type Neighborhood = {
   sections: string[];
   overview: string;
   landmarks: string[];
+  image?: { src: string; alt: string };
 };
 
 export type CommunityDirectoryItem = {
@@ -47,8 +48,6 @@ export type CommunityDirectoryItem = {
 export type Testimonial = {
   quote: string;
   name: string;
-  company: string;
-  role: string;
   rating: number;
 };
 
@@ -102,7 +101,7 @@ export const siteConfig = {
   phone: "+17249542787",
   email: "clairesellsthecoast@gmail.com",
   web3FormsAccessKey: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "",
-  address: "1134 W Granada Blvd, Ormond Beach, FL 32174",
+  address: "775 W Granada Blvd STE 201, Ormond Beach, FL 32174",
   hours: "By Appointment — 7 Days A Week",
   socials: [
     { label: "LinkedIn", href: "https://example.com" },
@@ -116,22 +115,22 @@ export const navigation: NavItem[] = [
   { label: "Buy", href: "/buy" },
   { label: "Communities", href: "/communities" },
   { label: "Neighborhoods", href: "/neighborhoods" },
+  { label: "Reviews", href: "/reviews" },
   { label: "About", href: "/about" },
   { label: "Sell", href: "/sell" },
   { label: "Contact", href: "/contact" },
 ];
 
 export const primaryNavigation: NavItem[] = [
-  { label: "Home", href: "/" },
   { label: "Communities", href: "/communities" },
   { label: "Neighborhoods", href: "/neighborhoods" },
+  { label: "Reviews", href: "/reviews" },
   {
     label: "About",
     href: "/about",
     children: [
       { label: "Contact", href: "/contact" },
       { label: "Book an Appointment", href: "/book-an-appointment" },
-      { label: "Reviews", href: "/reviews" },
     ],
   },
   {
@@ -238,16 +237,31 @@ export const neighborhoods: Neighborhood[] = [
     slug: "belle-terre",
     sections: ["P North"],
     overview:
-      "Belle Terre is centered on Belle Terre Parkway, one of Palm Coast's main north-south corridors, which keeps the neighborhood well connected to schools, healthcare, and recreation across the city. It draws a mix of long-time residents and young families, and it's home to some of the city's better-maintained recreational facilities.",
-    landmarks: ["Belle Terre Park", "Palm Coast Aquatic Center", "Belle Terre Swim & Racquet Facility", "Island Walk Shopping Center", "European Village"],
+      "Belle Terre — Palm Coast's \"P North\" Section — sits closer to Palm Coast Parkway and its Interstate 95 access ramps than its counterpart, the \"P South\" Section that makes up neighboring Pine Grove. Nearly every street here starts with \"Pa,\" \"Pe,\" or \"Pr,\" and the neighborhood is home to Lewis E. Wadsworth Elementary and Buddy Taylor Middle School, both directly on Belle Terre Parkway. Just behind those two schools sits the Palm Coast Aquatics Center, home to the outdoor, heated Frieda Zamba Pool — named for the Flagler Beach surfer who won four world surfing titles — along with the lighted tennis courts at the adjoining Belle Terre Swim & Racquet Facility. Depending on which end of the neighborhood a home sits, residents reach U.S. Route 1 either by Palm Coast Parkway or by Whiteview Parkway, a 3.4-mile corridor connecting Belle Terre Parkway to U.S. 1. Homes here are mostly well-maintained resales, and the neighborhood's central location keeps the beach, Town Center, and the rest of Palm Coast within easy reach.",
+    landmarks: [
+      "Lewis E. Wadsworth Elementary School (4550 Belle Terre Pkwy)",
+      "Buddy Taylor Middle School (4500 Belle Terre Pkwy)",
+      "Palm Coast Aquatics Center — Frieda Zamba Pool (339 Parkview Dr)",
+      "Belle Terre Swim & Racquet Facility (73 Patricia Dr)",
+      "Island Walk Shopping Center",
+    ],
+    image: {
+      src: "/neighborhood/belle-tere.webp",
+      alt: "Aerial view of a home in Belle Terre, Palm Coast, Florida",
+    },
   },
   {
     name: "Cypress Knoll",
     slug: "cypress-knoll",
     sections: ["E"],
     overview:
-      "Cypress Knoll is a non-gated neighborhood built around Cypress Knoll Golf & Country Club, a public course originally designed by Gary Player that opened in 1989. Of Palm Coast's neighborhoods, it sits closest to Flagler Beach, and U.S. Census data puts the population at roughly 5,700 residents.",
-    landmarks: ["Cypress Knoll Golf & Country Club (Gary Player design, 1989)", "Closest neighborhood to Flagler Beach"],
+      "Cypress Knoll — the \"E\" Section — sits where Belle Terre Parkway meets State Road 100, built around Cypress Knoll Golf & Country Club, a public course Gary Player designed in 1989 at 53 Easthampton Boulevard, reached by heading west on Easthampton just before Belle Terre Parkway crosses SR 100. The course winds through the wetlands and natural lakes found throughout Palm Coast. Only Quail Hollow and Seminole Woods sit closer to Flagler Executive Airport, and that same stretch of SR 100 gives Cypress Knoll residents a direct route to Flagler Beach as well as Bunnell, the county seat, about eight miles west. Flagler Palm Coast High School and the Flagler Auditorium — Flagler County's main performing arts venue, sharing the high school's campus across from the airport — sit along that route too, along with the Target- and Publix-anchored Palm Coast Town Center on Belle Terre Parkway, which has put everyday shopping only minutes away rather than requiring a drive out to Palm Coast Parkway. U.S. Census data puts Cypress Knoll's population at roughly 5,700, making it, of Palm Coast's neighborhoods, the one closest to Flagler Beach.",
+    landmarks: [
+      "Cypress Knoll Golf & Country Club (Gary Player design, 1989)",
+      "Closest neighborhood to Flagler Beach",
+      "Palm Coast Town Center — Target & Publix (Belle Terre Pkwy)",
+      "Flagler Palm Coast High School & Flagler Auditorium",
+    ],
   },
   {
     name: "Indian Trails",
@@ -262,56 +276,95 @@ export const neighborhoods: Neighborhood[] = [
     slug: "lehigh-woods",
     sections: ["R"],
     overview:
-      "Lehigh Woods sits on the south side of Palm Coast, backing up to the Graham Swamp Conservation Area and connecting to the Lehigh Trail, a paved path built along the bed of an old railroad spur that once served the Lehigh Portland Cement Company.",
-    landmarks: ["Ralph Carter Park", "Lehigh Trailhead & dog park", "Lehigh Trail (6.7 miles)", "Graham Swamp Conservation Area"],
+      "Lehigh Woods — the \"R\" Section — forms a square block bordered by U.S. Route 1 to the west, Whiteview Parkway to the north, Belle Terre Parkway to the east, and Royal Palms Parkway to the south, with Rymfire Drive running through it as the main street. Rymfire Elementary School sits at 1425 Rymfire Drive, right alongside Ralph Carter Park, a 13.1-acre neighborhood park named for a former city council member, with a playground, two lighted multi-purpose fields, a mini skate park, and a lighted basketball court. The park also connects to the 6.7-mile Lehigh Trail, a paved path built along the bed of an old railroad spur that once linked the Lehigh Portland Cement Company to the Florida East Coast Railroad; it runs parallel to the Lehigh Canal for much of its length, passing through Graham Swamp Preserve on one end and reaching Palm Coast Town Center on the other. Cypress Knoll and its Gary Player-designed golf course sit directly across Belle Terre Parkway to the east.",
+    landmarks: [
+      "Rymfire Elementary School (1425 Rymfire Dr)",
+      "Ralph Carter Park (13.1 acres)",
+      "Lehigh Trail (6.7 miles, to Palm Coast Town Center)",
+      "Graham Swamp Preserve",
+    ],
   },
   {
     name: "Matanzas Woods",
     slug: "matanzas-woods",
     sections: ["L"],
     overview:
-      "Matanzas Woods is anchored by Matanzas Woods Parkway, which connects residents to schools, shopping, and neighboring areas like Palm Harbor and Indian Trails. The neighborhood is home to Matanzas Woods Golf Club, an Arnold Palmer signature course that opened in the late 1980s, and U.S. Census data counts roughly 4,800 residents here.",
-    landmarks: ["Matanzas Woods Golf Club (Arnold Palmer design)", "Matanzas Woods Park"],
+      "Matanzas Woods — the \"L\" Section — sits on the north side of Matanzas Woods Parkway, which runs east from U.S. Route 1 to meet Old Kings Road, a route that continues on toward Palm Harbor and eastern Palm Coast Parkway. Of Palm Coast's neighborhoods, it sits closest to St. Augustine, the country's oldest city, a short drive north on U.S. Route 1. Its own interchange with Interstate 95 opened in 2016 at Exit 293, giving the L Section quicker highway access than many older sections of the city. Families here are zoned for Belle Terre Elementary, Indian Trails Middle, and Matanzas High School, all within a few miles. The neighborhood's golf course, once an Arnold Palmer-designed signature course, closed in 2007 and has changed hands several times since without reopening, so it's a scenic backdrop today rather than a functioning amenity. Inventory is a mix of resale homes and vacant lots, and U.S. Census data counts roughly 4,800 residents.",
+    landmarks: [
+      "I-95 Exit 293 interchange (opened 2016)",
+      "Closest Palm Coast neighborhood to St. Augustine",
+      "Zoned for Belle Terre Elementary, Indian Trails Middle & Matanzas High",
+      "Former Matanzas Woods Golf Club (Arnold Palmer design, closed 2007)",
+    ],
   },
   {
     name: "Palm Harbor",
     slug: "palm-harbor",
     sections: ["C", "F"],
     overview:
-      "Palm Harbor is one of Palm Coast's earliest and most established neighborhoods, built along a network of saltwater canals that connect directly to the Intracoastal Waterway — a draw for boaters and waterfront buyers. It's also home to some of the city's longest-standing shopping and dining, including the European Village complex.",
-    landmarks: ["Direct Intracoastal Waterway canal access", "European Village", "Waterfront Park", "Palm Coast Linear Park & St. Joe's Walkway"],
+      "Palm Harbor was among Palm Coast's first neighborhoods developed and remains one of its most established, covering the C and F Sections along a stretch of the city's saltwater canal system that connects directly to the Intracoastal Waterway — a defining draw for boaters and waterfront buyers. Its amenities reflect that head start: the European Village shopping and dining complex, Waterfront Park, the 18-hole Palm Harbor Golf Club, and the members-only Palm Coast Yacht Club, founded in 1979, all sit within its borders. Getting around is easy, too — Palm Harbor sits just off Interstate 95's Exit 289 by way of Palm Coast Parkway, with Palm Harbor Parkway, Old Kings Road, and Forest Grove Drive forming the neighborhood's own main thoroughfares, while Palm Coast Parkway continues on to the Hammock Dunes Bridge, a 65-foot toll span that opened in 1988 en route to the beach. Because the area has been built out for decades, most homes here are resale, and the Woodlands section sits just across Palm Coast Parkway to the north.",
+    landmarks: [
+      "Direct Intracoastal Waterway canal access",
+      "Palm Harbor Golf Club (18-hole, par 72)",
+      "Palm Coast Yacht Club (est. 1979)",
+      "European Village",
+      "Waterfront Park",
+      "Palm Coast Linear Park & St. Joe's Walkway",
+    ],
   },
   {
     name: "Pine Grove",
     slug: "pine-grove",
     sections: ["P South"],
     overview:
-      "Pine Grove makes up the southern half of Palm Coast's original \"P\" Section, with Belle Terre forming the northern half. It sits closer to Town Center than any other Palm Coast neighborhood, putting Flagler Hospital, Flagler Palm Coast High School, and the Flagler County Municipal Airport within easy reach.",
-    landmarks: ["Closest neighborhood to Town Center", "Near Flagler Hospital & Flagler Palm Coast High School"],
+      "Pine Grove makes up the southern half of Palm Coast's original \"P\" Section, with Belle Terre forming the northern half — Belle Terre's streets start with \"Pa,\" \"Pe,\" and \"Pr,\" while Pine Grove's begin with \"Pi,\" \"Po,\" and \"Ph.\" The neighborhood sits close to the amenities of both Belle Terre and nearby Pine Lakes, and State Road 100 runs straight through it to Flagler Beach, where the highway ends at the Atlantic Ocean along A1A. Pine Grove also sits closer to Palm Coast Town Center than any other neighborhood — home to Epic Theatres and Imagine Charter School among its newer additions — which puts AdventHealth Palm Coast, Flagler Palm Coast High School, and the Flagler Executive Airport within easy reach as well.",
+    landmarks: [
+      "Closest neighborhood to Palm Coast Town Center",
+      "Near AdventHealth Palm Coast & Flagler Palm Coast High School",
+      "Palm Coast Town Center — Epic Theatres & Imagine Charter School",
+      "State Road 100 — direct route to Flagler Beach & the Atlantic",
+    ],
   },
   {
     name: "Pine Lakes",
     slug: "pine-lakes",
     sections: ["W"],
     overview:
-      "Pine Lakes is built around Pine Lakes Golf Club, a public, par-72 course designed in 1980 by Arnold Palmer, Ed Seay, and Robert Walker, with an 18,000-square-foot clubhouse and a full-service restaurant overlooking the fairways.",
-    landmarks: ["Pine Lakes Golf Club (Arnold Palmer design, 1980)"],
+      "Pine Lakes — the \"W\" Section — runs along Pine Lakes Parkway from end to end and is bordered by Indian Trails, Lehigh Woods, and Belle Terre. It's built around Pine Lakes Golf Club, a public, par-72 course spanning just over 7,000 yards, originally designed in 1980 by Arnold Palmer, Ed Seay, and Robert Walker and then personally redesigned by Palmer in 2007, who returned to the course for its rededication; the clubhouse spans 18,000 square feet with a full-service restaurant overlooking the fairways. The neighborhood is also home to the Arlington and Hamptons subdivisions — the Hamptons alone has roughly 97 homes gathered around a central lake. One end of Pine Lakes Parkway meets the western end of Palm Coast Parkway, close to U.S. Route 1, while the other meets Belle Terre Parkway for a quick run to Interstate 95.",
+    landmarks: [
+      "Pine Lakes Golf Club (Arnold Palmer design, 1980; redesigned 2007)",
+      "Arlington subdivision",
+      "Hamptons subdivision (~97 homes around a lake)",
+      "Bordered by Indian Trails, Lehigh Woods & Belle Terre",
+    ],
   },
   {
     name: "Quail Hollow",
     slug: "quail-hollow",
     sections: ["K", "Z", "LL"],
     overview:
-      "Quail Hollow spans three sections — K, Z, and LL — south of State Road 100 near U.S. Route 1, and is known for its spring-fed lakes and a quieter, old-Florida feel despite being close to shopping and schools.",
-    landmarks: ["Heroes Memorial Park (built 2006)", "Birds of Paradise Nature Preserve"],
+      "Quail Hollow spans the K, Z, and LL Sections south of State Road 100, a large, quieter pocket of Palm Coast set among still-undeveloped parcels and bordered by U.S. Route 1. The K Section is reached from U.S. Route 1 south of Bunnell, the Z Section from Belle Terre Parkway south of SR 100, and Belle Terre Parkway runs as the main road through the neighborhood as a whole. Despite its more rural feel, Quail Hollow sits only about two miles from Flagler Executive Airport, AdventHealth Palm Coast, a Target-anchored shopping center, and Flagler Palm Coast High School, and its position along U.S. Route 1 makes it one of the quicker starting points in Palm Coast for a run up to Ormond Beach or Daytona Beach. Cypress Knoll, home to Palm Coast's Gary Player-designed public golf course, sits just to the north. It's also one of the more accessible spots in Palm Coast for canal and waterfront lots specifically, with vacant parcels regularly available alongside the resale homes.",
+    landmarks: [
+      "Belle Terre Parkway (main thoroughfare)",
+      "Borders U.S. Route 1, south of Bunnell",
+      "~2 miles from Flagler Executive Airport & AdventHealth Palm Coast",
+      "Near Cypress Knoll Golf & Country Club (Gary Player design)",
+      "Waterfront & canal lots regularly available",
+    ],
   },
   {
     name: "Seminole Woods",
     slug: "seminole-woods",
     sections: ["S", "U"],
     overview:
-      "Seminole Woods is anchored by Seminole Woods Neighborhood Park, one of the newer neighborhood parks built in Palm Coast, with a half-mile perimeter walking trail, a lighted tennis court, and a multi-purpose sports field.",
-    landmarks: ["Seminole Woods Neighborhood Park", "Half-mile perimeter walking trail"],
+      "Seminole Woods — the \"S\" and \"U\" Sections, named for their street-letter prefixes — sits south of State Road 100 and east of Quail Hollow, with Seminole Woods Boulevard running as its main road from SR 100 near Interstate 95 at its north end down to U.S. Route 1 south of Bunnell. That mix of SR 100, U.S. 1, and I-95 access puts the Target on East Highway 100 and AdventHealth Palm Coast only a few miles away. Much of the community remains open, undeveloped land, making it a draw for buyers who want more room to build. At its center is Seminole Woods Neighborhood Park at 350 Sesame Boulevard, with a half-mile perimeter walking trail, a lighted tennis court, a playground, a basketball court, and a multi-purpose sports field. Its position gives residents a relatively short drive to Flagler Beach as well as to Daytona Beach to the south, and inventory here includes both resale homes and vacant lots for new construction.",
+    landmarks: [
+      "Seminole Woods Neighborhood Park (350 Sesame Blvd)",
+      "Half-mile perimeter walking trail",
+      "Seminole Woods Boulevard (SR 100 to U.S. Route 1)",
+      "Near Target (E Highway 100) & AdventHealth Palm Coast",
+      "South of SR 100, east of Quail Hollow",
+    ],
   },
   {
     name: "Woodlands",
@@ -397,48 +450,151 @@ export const heroSlides: ImageToken[] = [
   { src: "/placeholders/hero-3.svg", alt: "Palm Coast coastal dunes placeholder", label: "The Dunes" },
 ];
 
+export const reviewStats = {
+  rating: 5.0,
+  count: 28,
+  source: "Zillow",
+  sourceUrl: "https://www.zillow.com/profile/clairesellsthecoast#reviews",
+};
+
 export const testimonials: Testimonial[] = [
   {
-    quote: "Claire made the whole process feel manageable. She was clear about timing, realistic about pricing, and available whenever we had questions.",
-    name: "Client Name",
-    company: "Buyer",
-    role: "Home Buyer",
+    name: "robert ratcliff",
     rating: 5,
+    quote:
+      "One word to describe having Claire as my realtor would be PHENOMENAL! Her knowledge of the market, professionalism and negotiating skills are second to no one. Far exceeded all my expectations. I would give her 100 stars if possible.",
   },
   {
-    quote: "She knew the communities we were considering inside and out, which saved us from wasting weekends on the wrong showings.",
-    name: "Client Name",
-    company: "Buyer",
-    role: "Home Buyer",
+    name: "zuser20151107073639346",
     rating: 5,
+    quote:
+      "Claire was very helpful and knowledgeable when we bought our home in Palm Coast. We were new to the area she guided us through the process very thoroughly. Would use again and highly recommend. Thank you.",
   },
   {
-    quote: "From listing to closing, communication never slowed down. We always knew where things stood.",
-    name: "Client Name",
-    company: "Seller",
-    role: "Home Seller",
+    name: "zuser20140518192430925",
     rating: 5,
+    quote:
+      "Clarissa helped sell an estate home for us. We don't live in Florida making it difficult for us to be there. The home sold quickly and she kept us well informed as to what was happening throughout the process. We were happy to have her guidance with this sale.",
   },
   {
-    quote: "Her pricing strategy was on point. We had strong interest in the first week and closed above what we expected.",
-    name: "Client Name",
-    company: "Seller",
-    role: "Home Seller",
+    name: "Jillianpagan50",
     rating: 5,
+    quote:
+      "Claire was most incredible!! I had an extremely difficult situation and she stuck it out w me around every crazy twist and turn pulling miracle rabbits out of her realtor hat. She worked tirelessly and never gave up.",
   },
   {
-    quote: "As out-of-state buyers, we needed someone we could trust completely. Claire walked us through every detail remotely and in person.",
-    name: "Client Name",
-    company: "Buyer",
-    role: "Relocation Buyer",
+    name: "rachelspear25",
     rating: 5,
+    quote:
+      "I can't say enough good about Clarissa! She knows her job, she got us the best house in our budget for the best price! She worked hard to get us in to see every house in our budget within a week! She was always available within a reasonable time.",
   },
   {
-    quote: "She handled a complicated negotiation with a level head and got us a result we were happy with.",
-    name: "Client Name",
-    company: "Seller",
-    role: "Home Seller",
+    name: "accounting125",
     rating: 5,
+    quote:
+      "Thank you so much for assisting us with this out of state purchase! The transaction was made easier with your expertise and we appreciate the open line of communication between all parties involved. It was a pleasure working with you!",
+  },
+  {
+    name: "gallagheraw",
+    rating: 5,
+    quote:
+      "Working with Clarissa was a great experience. She is both professional and personable. She took time to get to know me and what I was looking for. She was very responsive throughout the entire process. I always knew that she had my best interests in mind and stood behind me when going through the process of buying my home. Not only was she very knowledgeable about all aspects of the buying process but she was a great help to me getting settled into a new city. I have no doubt that I will have Clarissa as my realtor in the future if the need arises.",
+  },
+  {
+    name: "Kristin Newsome",
+    rating: 5,
+    quote:
+      "Claire was so helpful and responsive from Day One. I had some pretty specific things I was looking for and not a ton of budget to work with, but she was patient with me and provided wise counsel as we narrowed down my search and eventually found the perfect place.",
+  },
+  {
+    name: "yvonnelcollins1957",
+    rating: 5,
+    quote:
+      "I found Clarissa on one of her bill boards for the house next door to the one we wanted to see, I am a Realtor and knew duel agency is frowned upon. From the first phone call I knew she was a professional, she responded quickly.",
+  },
+  {
+    name: "ljohnson224",
+    rating: 5,
+    quote:
+      "I had a wonderful experience working with Claire. She was extremely knowledgeable and dedicated to finding my perfect home! I can't imagine finding another realtor as exceptional as Claire. She is by far, the best in the business!",
+  },
+  {
+    name: "fallenseravee",
+    rating: 5,
+    quote:
+      "When it comes to the life-altering experience of buying a home, the journey can often feel overwhelming and stressful. However, with Clare as my real estate agent, the process was not just simplified; it became a joyous adventure.",
+  },
+  {
+    name: "1pootster",
+    rating: 5,
+    quote:
+      "Clarissa did a fantastic job for us. Our home sold and we needed to find a house immediately. She went way and above any other realtor that we have ever used.",
+  },
+  {
+    name: "houseberg",
+    rating: 5,
+    quote:
+      "Claire was amazing and went above and beyond. I was in California the whole time and she kept me informed and updated daily. Our agent's experience and deep understanding of the market were invaluable. She provided exceptional service, was always punctual, and was incredibly responsive.",
+  },
+  {
+    name: "jaj5402",
+    rating: 5,
+    quote:
+      "Clarissa was very professional and knowledgeable. She was very responsive to my calls and needs. She has a lot of expertise in getting a house ready to sell. Her knowledge and assistance was very good.",
+  },
+  {
+    name: "zuser20190802081516406",
+    rating: 5,
+    quote:
+      "Claire was amazing. She went above and beyond what a Realtor would do. From the start she was right on top of finding us exactly what we needed to move our daughter to Florida for college. Knowing we were over 800 miles away, she made sure she took care of every aspect of finding the perfect place and consistently made sure everything was being done right during the purchase. She is a Winner in every way. I would highly recommend Claire for all your home purchases.",
+  },
+  {
+    name: "Kiarra Strickland",
+    rating: 5,
+    quote:
+      "I gave Clarissa a set of goals when selling my home and she did executed them precisely. She is super proficient in what she does. Her core beliefs are what really drew me into her. She sold my home and I will definitely use her when it is time to buy again.",
+  },
+  {
+    name: "Selina Ahmed",
+    rating: 5,
+    quote:
+      "Clarissa was outstanding throughout the whole process. I highly recommend her for all your real estate needs. She will go above and beyond. I was always in the loop throughout and was able to get hold of her anytime I needed.",
+  },
+  {
+    name: "Denise Pindar",
+    rating: 5,
+    quote:
+      "Clarissa did a fantastic job finding my dream home. She listened and took the time and care to make it her mission to find exactly what I was looking for. Come negotiation time she was a pit bull in making sure that we were not taken advantage of.",
+  },
+  {
+    name: "thedonkrueger8",
+    rating: 5,
+    quote:
+      "Clarissa (Claire) is an outstanding realtor. We sold our property while out of the State. She is a consummate professional. She helped us establish a competitive price. She then developed a comprehensive marketing plan. We immediately found a buyer.",
+  },
+  {
+    name: "Julie Christiansen",
+    rating: 5,
+    quote:
+      "Clarissa exceeded my expectations! This is my 3rd home purchase and she was by far the best I've ever worked with! She was there for me beginning to end and in constant contact. I really can't believe I was so lucky to have her as she worked nonstop for me and was so committed.",
+  },
+  {
+    name: "Samantha Weite",
+    rating: 5,
+    quote:
+      "As a couple flying in from out of state with no knowledge of the area, we were concerned we would miss out on the perfect house simply because we were unaware. Not to mention the unrealistically short deadline we had to find a home in the area (1 day).",
+  },
+  {
+    name: "alexandersera11",
+    rating: 5,
+    quote:
+      "Clarissa was great in helping us buy a new property. Very detail-oriented, efficient, and professional. A wonderful asset to her company. I highly recommend her for your next real estate needs! Overall, a completely seamless and outstanding experience.",
+  },
+  {
+    name: "Brian Bowman",
+    rating: 5,
+    quote:
+      "Claire was awesome. I was relocating from Hawaii to Florida not sure the distance nationally could have been any greater. The home we offered on was in probate and required a tremendous amount of back and forth over four months with not just the sellers but also probate attorneys.",
   },
 ];
 
@@ -466,8 +622,12 @@ export const contactItems = [
 export const footerLinks: FooterGroup[] = [
   { title: "Pages", links: navigation },
   {
+    title: "Neighborhoods",
+    links: neighborhoods.map((neighborhood) => ({ label: neighborhood.name, href: `/neighborhoods/${neighborhood.slug}` })),
+  },
+  {
     title: "Communities",
-    links: communities.map((community) => ({ label: community.name, href: community.href })),
+    links: communityDirectory.map((community) => ({ label: community.name, href: community.href })),
   },
   {
     title: "Sell",
@@ -666,7 +826,7 @@ export const homePagePreviews: HomePagePreview[] = [
       { src: "/placeholders/office.svg", alt: "Client reviews preview image", label: "Client Trust" },
       { src: "/placeholders/agent.svg", alt: "Client reviews portrait image", label: "Client Experience" },
     ],
-    details: [testimonials[0].name, testimonials[0].role],
+    details: [testimonials[0].name, "Verified Zillow Review"],
   },
 ];
 

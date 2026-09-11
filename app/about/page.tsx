@@ -2,6 +2,7 @@ import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { Container } from "@/components/ui/Container";
 import { Timeline } from "@/components/ui/Timeline";
 import { AboutIntroSection } from "@/components/sections/AboutIntroSection";
+import { SpecialtySection } from "@/components/sections/SpecialtySection";
 import { PageHero } from "@/components/sections/PageHero";
 import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import { pageCopy, pageMetadata, processSteps } from "@/data/site";
@@ -17,12 +18,18 @@ export default function AboutPage() {
         kicker="About"
         title={pageCopy.about.title}
         description={pageCopy.about.description}
-        image={{ src: "/placeholders/hero-2.svg", alt: "Palm Coast coastal placeholder", label: "The Coast" }}
+        image={{
+          src: "/about-banner.jpg",
+          alt: "Aerial view of the Flagler County coastline, with beach, dunes, and a Palm Coast area neighborhood beyond",
+          label: "The Flagler Coast",
+        }}
         primaryCta={{ href: "/contact", label: "Get In Touch" }}
         secondaryCta={{ href: "/book-an-appointment", label: "Book An Appointment" }}
       />
 
       <AboutIntroSection />
+
+      <SpecialtySection />
 
       <section className="section-y bg-white">
         <Container className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">

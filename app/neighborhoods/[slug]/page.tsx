@@ -12,15 +12,24 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
+const MAX_META_DESCRIPTION_LENGTH = 155;
+
+function buildMetaDescription(overview: string) {
+  if (overview.length <= MAX_META_DESCRIPTION_LENGTH) {
+    return overview;
+  }
+
+  const truncated = overview.slice(0, MAX_META_DESCRIPTION_LENGTH);
+  return `${truncated.slice(0, truncated.lastIndexOf(" "))}…`;
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const neighborhood = neighborhoods.find((item) => item.slug === slug);
 
   return createPageMetadata({
-    title: neighborhood ? neighborhood.name : "Neighborhood",
-    description: neighborhood
-      ? `Homes for sale in ${neighborhood.name}, Palm Coast.`
-      : "Palm Coast neighborhood.",
+    title: neighborhood ? `${neighborhood.name} Homes For Sale` : "Neighborhood",
+    description: neighborhood ? buildMetaDescription(neighborhood.overview) : "Palm Coast neighborhood.",
     path: `/neighborhoods/${slug}`,
   });
 }

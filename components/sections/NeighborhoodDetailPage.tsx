@@ -18,6 +18,10 @@ export function NeighborhoodDetailPage({ neighborhood }: NeighborhoodDetailPageP
   const sectionList = neighborhood.sections.join(", ");
   const sectionGlyph = neighborhood.sections[0].charAt(0);
   const mapQuery = encodeURIComponent(`${neighborhood.name}, Palm Coast, FL`);
+  const heroImage = neighborhood.image ?? {
+    src: "/neighborhoods/palm-coast.jpg",
+    alt: "Aerial view of the Flagler Coast, Florida",
+  };
 
   return (
     <main>
@@ -26,7 +30,7 @@ export function NeighborhoodDetailPage({ neighborhood }: NeighborhoodDetailPageP
         title={neighborhood.name}
         description={`${neighborhood.name} is one of Palm Coast's original platted neighborhoods, covering the ${sectionList} ${sectionLabel}.`}
         caption={`${neighborhood.name} — ${sectionList} ${sectionLabel}, Palm Coast, FL`}
-        image={{ src: "/neighborhoods/palm-coast.jpg", alt: "Aerial view of the Flagler Coast, Florida" }}
+        image={{ src: heroImage.src, alt: heroImage.alt }}
       />
 
       <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-paper py-20 md:py-24">

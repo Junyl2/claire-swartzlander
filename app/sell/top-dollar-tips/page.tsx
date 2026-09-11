@@ -11,7 +11,7 @@ export const metadata = createPageMetadata({
 export default function TopDollarTipsPage() {
   return (
     <TipsPage
-      kicker="Sell · Seller Tips"
+      kicker="Before You List"
       title="Top Dollar Tips"
       description="Small, practical steps that make a real difference in how fast your home sells and what it sells for."
       image={{ src: "/placeholders/listing.svg", alt: "Top dollar tips placeholder", label: "Seller Guidance" }}

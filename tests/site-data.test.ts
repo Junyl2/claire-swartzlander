@@ -23,6 +23,7 @@ describe("centralized site content", () => {
       "/buy",
       "/communities",
       "/neighborhoods",
+      "/reviews",
       "/about",
       "/sell",
       "/contact",
@@ -31,9 +32,9 @@ describe("centralized site content", () => {
 
   it("builds the primary navigation with the required hierarchy", () => {
     expect(primaryNavigation.map((item) => item.label)).toEqual([
-      "Home",
       "Communities",
       "Neighborhoods",
+      "Reviews",
       "About",
       "Buy",
       "Sell",
@@ -60,8 +61,12 @@ describe("centralized site content", () => {
     expect(neighborhoodsNav?.href).toBe("/neighborhoods");
     expect(neighborhoodsNav?.children).toBeUndefined();
 
+    const reviewsNav = primaryNavigation.find((item) => item.label === "Reviews");
+    expect(reviewsNav?.href).toBe("/reviews");
+    expect(reviewsNav?.children).toBeUndefined();
+
     const about = primaryNavigation.find((item) => item.label === "About");
-    expect(about?.children?.map((item) => item.label)).toEqual(["Contact", "Book an Appointment", "Reviews"]);
+    expect(about?.children?.map((item) => item.label)).toEqual(["Contact", "Book an Appointment"]);
 
     const sell = primaryNavigation.find((item) => item.label === "Sell");
     expect(sell?.children?.map((item) => item.label)).toEqual(["Sell My Home", "Home Valuation"]);

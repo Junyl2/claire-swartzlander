@@ -24,7 +24,7 @@ export default function CashOfferPage() {
   return (
     <main>
       <PageHero
-        kicker="Sell · Cash Offer"
+        kicker="A Faster Way To Sell"
         title="Request a no-obligation cash offer."
         description="Skip the showings and the staging. Share a few details about your home and get a straightforward cash offer evaluation from Claire's team."
         image={{ src: "/placeholders/listing.svg", alt: "Cash offer placeholder", label: "Cash Offer Program" }}

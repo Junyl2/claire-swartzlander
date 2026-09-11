@@ -96,7 +96,6 @@ describe("core UI components", () => {
     expect(buyDropdown).toHaveAttribute("data-state", "closed");
 
     expect(screen.getByRole("link", { name: "Book an Appointment" })).toHaveAttribute("href", "/book-an-appointment");
-    expect(screen.getByRole("link", { name: "Reviews" })).toHaveAttribute("href", "/reviews");
   });
 
   it("opens the Sell dropdown and lists Sell My Home and Home Valuation", () => {
@@ -127,14 +126,12 @@ describe("core UI components", () => {
     render(<MobileMenu items={primaryNavigation} open onClose={() => undefined} />);
 
     expect(screen.queryByText("Marina Del Palma")).not.toBeInTheDocument();
-    expect(screen.queryByText("Reviews")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /buy/i }));
     expect(screen.getByText("Marina Del Palma")).toBeInTheDocument();
-    expect(screen.queryByText("Reviews")).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /about/i }));
-    expect(screen.getByText("Reviews")).toBeInTheDocument();
+    expect(screen.getByText("Book an Appointment")).toBeInTheDocument();
     expect(screen.getByText("Marina Del Palma")).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /sell/i }));
@@ -188,7 +185,11 @@ describe("page rendering", () => {
     expect(screen.getAllByRole("heading", { name: pageCopy.home.title }).length).toBeGreaterThan(0);
     expect(screen.getByRole("link", { name: "View All Communities" })).toHaveAttribute("href", "/buy");
     expect(screen.getByRole("heading", { name: /coastal property specialist, re\/max signature/i })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "View All Reviews" })).toHaveAttribute("href", "/reviews");
+    expect(screen.getByRole("link", { name: "View reviews on Zillow" })).toHaveAttribute(
+      "href",
+      "https://www.zillow.com/profile/clairesellsthecoast#reviews",
+    );
+    expect(screen.getByRole("link", { name: "Reviews Page" })).toHaveAttribute("href", "/reviews");
   });
 
   it("renders the Buy landing page with every community linked", () => {
@@ -248,12 +249,12 @@ describe("page rendering", () => {
     render(await ContactPage({ searchParams: Promise.resolve({}) }));
 
     expect(screen.getByRole("heading", { name: pageCopy.contact.title })).toBeInTheDocument();
-    expect(screen.queryByAltText("Claire Swartzlander contact preview image")).not.toBeInTheDocument();
+    expect(screen.queryByAltText("Aerial view of an oceanfront condo community along the Flagler County coastline")).not.toBeInTheDocument();
   });
 
   it("renders the shared contact endcap on non-contact pages", () => {
     render(<AboutPage />);
 
-    expect(screen.getByAltText("Claire Swartzlander contact preview image")).toBeInTheDocument();
+    expect(screen.getByAltText("Aerial view of an oceanfront condo community along the Flagler County coastline")).toBeInTheDocument();
   });
 });

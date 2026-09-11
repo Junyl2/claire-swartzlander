@@ -26,7 +26,9 @@ type PageHeroProps = {
 
 export function PageHero({ kicker, title, description, image, primaryCta, secondaryCta }: PageHeroProps) {
   return (
-    <section className="relative flex h-[64vh] min-h-[480px] items-center justify-center overflow-hidden bg-ink text-paper md:h-[70vh] md:min-h-[560px]">
+    <section
+      className="relative flex h-[64vh] min-h-[480px] items-center justify-center overflow-hidden bg-ink pt-[var(--header-height)] text-paper md:h-[70vh] md:min-h-[560px]"
+    >
       <Image
         src={image.src}
         alt={image.alt}
@@ -39,7 +41,7 @@ export function PageHero({ kicker, title, description, image, primaryCta, second
 
       <Container className="relative z-10">
         <StaggerGroup className="mx-auto max-w-3xl text-center" delay={0.06} stagger={0.1}>
-          <MotionItem><p className="eyebrow mb-5">{kicker}</p></MotionItem>
+          <MotionItem><p className="eyebrow mb-5 text-paper!">{kicker}</p></MotionItem>
           <MotionItem>
             <MixedTitle text={title} as="h1" className="editorial-title display-title text-balance text-4xl leading-[1.05] md:text-6xl" />
           </MotionItem>
