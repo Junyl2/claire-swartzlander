@@ -1,5 +1,3 @@
-import { ArrowDown } from "lucide-react";
-
 import { MotionItem, StaggerGroup } from "@/components/interactive/MotionSequence";
 import { heroSlides, pageCopy } from "@/data/site";
 import { Button } from "@/components/ui/Button";
@@ -43,15 +41,6 @@ export function HomeHero() {
           </MotionItem>
         </StaggerGroup>
       </Container>
-
-      <MotionItem delay={0.45} className="absolute inset-x-0 bottom-8 z-10 flex justify-center sm:bottom-12">
-        <a href="#introduction" className="ui-title inline-flex items-center gap-3 text-xs text-paper">
-          <span className="grid h-12 w-12 place-items-center rounded-[var(--radius-sharp)] border border-white/15 transition-transform duration-500 hover:translate-y-1">
-            <ArrowDown className="h-4 w-4" />
-          </span>
-          Scroll To Explore
-        </a>
-      </MotionItem>
     </section>
   );
 }

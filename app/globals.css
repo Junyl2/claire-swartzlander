@@ -40,64 +40,66 @@
   --color-paper: hsl(var(--color-paper));
 }
 
-* {
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-html {
-  background: hsl(var(--color-paper));
-}
+  html {
+    background: hsl(var(--color-paper));
+  }
 
-body {
-  margin: 0;
-  color: hsl(var(--color-ink));
-  background:
-    linear-gradient(90deg, hsl(var(--color-ink) / 0.035) 1px, transparent 1px),
-    hsl(var(--color-paper));
-  background-size: 10vw 10vw;
-  font-family: var(--font-body), Arial, sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.65;
-  letter-spacing: 0;
-}
+  body {
+    margin: 0;
+    color: hsl(var(--color-ink));
+    background:
+      linear-gradient(90deg, hsl(var(--color-ink) / 0.035) 1px, transparent 1px),
+      hsl(var(--color-paper));
+    background-size: 10vw 10vw;
+    font-family: var(--font-body), Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.65;
+    letter-spacing: 0;
+  }
 
-html.lenis,
-html.lenis body {
-  height: auto;
-}
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
+  .lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
 
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
 
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-button,
-input,
-textarea {
-  font: inherit;
-}
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
 
-::selection {
-  background: hsl(var(--color-primary));
-  color: white;
-}
+  ::selection {
+    background: hsl(var(--color-primary));
+    color: white;
+  }
 
-:focus-visible {
-  outline: 2px solid hsl(var(--color-primary));
-  outline-offset: 4px;
+  :focus-visible {
+    outline: 2px solid hsl(var(--color-primary));
+    outline-offset: 4px;
+  }
 }
 
 .container-shell {

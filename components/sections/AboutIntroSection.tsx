@@ -7,8 +7,8 @@ import { aboutHighlights } from "@/data/site";
 
 const stackedImages = [
   { src: "/about/claire-about.png", alt: "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature", label: "Claire Swartzlander" },
-  { src: "/placeholders/community.svg", alt: "Palm Coast community placeholder", label: "Coastal Communities" },
-  { src: "/placeholders/hero-2.svg", alt: "Palm Coast Intracoastal waterway placeholder", label: "The Intracoastal" },
+  { src: "/neighborhoods/palm-coast.jpg", alt: "Aerial view of waves breaking along a Palm Coast beach", label: "Palm Coast, FL" },
+  { src: "/value/value.JPG", alt: "A palm-lined walkway leading toward a Palm Coast home at sunset", label: "Coastal Living" },
 ];
 
 export function AboutIntroSection() {
