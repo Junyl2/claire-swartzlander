@@ -25,7 +25,11 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
         kicker="Contact"
         title={pageCopy.contact.title}
         description={pageCopy.contact.description}
-        image={{ src: "/placeholders/office.svg", alt: "Contact Claire Swartzlander placeholder", label: "Contact & Inquiry" }}
+        image={{
+          src: "/contact-banner.jpg",
+          alt: "Aerial dusk view of a palm-lined Palm Coast home with a dramatic sunset sky",
+          label: "Palm Coast, FL",
+        }}
         primaryCta={{ href: "#contact-form", label: "Send An Inquiry" }}
       />
 
@@ -61,11 +65,16 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
 
       <section className="section-y bg-white">
         <Container className="grid gap-12 lg:grid-cols-[1.06fr_0.94fr]">
-          <ImagePlaceholder src="/placeholders/map.svg" alt="Palm Coast coverage map" label="Coastal Coverage Map" ratio="cinema" />
+          <ImagePlaceholder
+            src="/sell-home.jpg"
+            alt="Aerial view of an oceanfront home along the Palm Coast, FL coastline"
+            label="Palm Coast, FL"
+            ratio="cinema"
+          />
           <div className="rounded-[var(--radius-panel)] border border-primary/12 bg-paper p-8 shadow-[var(--shadow-soft)]">
-            <p className="eyebrow">Meet</p>
+            <p className="eyebrow">Office</p>
             <MixedTitle
-              text="Visit, plan, or schedule your next conversation."
+              text={`${siteConfig.brokerage} — Ormond Beach, FL`}
               as="h2"
               className="editorial-title display-title mt-4 text-4xl leading-[0.92]"
             />

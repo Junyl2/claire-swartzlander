@@ -5,11 +5,17 @@ import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { MixedTitle } from "@/components/ui/MixedTitle";
 import { aboutHighlights } from "@/data/site";
 
-const stackedImages = [
-  { src: "/about/claire-about.png", alt: "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature", label: "Claire Swartzlander" },
-  { src: "/neighborhoods/palm-coast.jpg", alt: "Aerial view of waves breaking along a Palm Coast beach", label: "Palm Coast, FL" },
-  { src: "/value/value.JPG", alt: "A palm-lined walkway leading toward a Palm Coast home at sunset", label: "Coastal Living" },
-];
+const sceneImage = {
+  src: "/neighborhoods/palm-coast.jpg",
+  alt: "Aerial view of waves breaking along a Palm Coast beach",
+  label: "Palm Coast, FL",
+};
+
+const claireImage = {
+  src: "/about/claire-about.png",
+  alt: "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature",
+  label: "Claire Swartzlander",
+};
 
 export function AboutIntroSection() {
   return (
@@ -17,27 +23,23 @@ export function AboutIntroSection() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
           <Reveal className="relative min-h-[34rem] md:min-h-[42rem]">
-            {stackedImages.map((image, index) => (
-              <div
-                key={image.label}
-                className={[
-                  "absolute w-[72%] max-w-[30rem]",
-                  index === 0 ? "left-0 top-0 z-20" : "",
-                  index === 1 ? "right-0 top-[22%] z-10" : "",
-                  index === 2 ? "bottom-0 left-[12%] z-30 w-[66%]" : "",
-                ].join(" ")}
-              >
-                <ImagePlaceholder
-                  src={image.src}
-                  alt={image.alt}
-                  label={image.label}
-                  ratio={index === 0 ? "tall" : index === 1 ? "portrait" : "cinema"}
-                  className="shadow-[var(--shadow-soft)]"
-                />
-              </div>
-            ))}
-            <div className="absolute left-6 top-6 z-40">
+            <ImagePlaceholder
+              src={sceneImage.src}
+              alt={sceneImage.alt}
+              label={sceneImage.label}
+              className="h-full shadow-[var(--shadow-soft)]"
+            />
+            <div className="absolute left-6 top-6 z-30">
               <BrokerageBadge className="bg-ink" />
+            </div>
+            <div className="absolute bottom-6 right-6 z-20 w-[45%] max-w-[15rem] border-4 border-paper shadow-[0_30px_70px_hsl(215_19%_10%_/_0.28)] sm:bottom-8 sm:right-8">
+              <ImagePlaceholder
+                src={claireImage.src}
+                alt={claireImage.alt}
+                label={claireImage.label}
+                ratio="portrait"
+                objectPosition="center 20%"
+              />
             </div>
           </Reveal>
 
