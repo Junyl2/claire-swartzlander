@@ -50,7 +50,7 @@ export function ValuePillarsSection() {
               src={sceneImage.src}
               alt={sceneImage.alt}
               label={sceneImage.label}
-              className="h-full shadow-[var(--shadow-soft)]"
+              className="!absolute !inset-0 !aspect-auto shadow-[var(--shadow-soft)]"
             />
             <div className="absolute bottom-6 right-6 z-20 w-[45%] max-w-[16rem] border-4 border-paper shadow-[0_30px_70px_hsl(215_19%_10%_/_0.28)] sm:bottom-8 sm:right-8">
               <ImagePlaceholder

@@ -445,7 +445,7 @@ export const topDollarTips: Tip[] = [
 ];
 
 export const heroSlides: ImageToken[] = [
-  { src: "/placeholders/hero-1.svg", alt: "Palm Coast waterfront at dusk placeholder", label: "Coastal Living" },
+  { src: "/home-valuation.jpg", alt: "Aerial view of an oceanfront estate with a pool, directly on the beach in Palm Coast, FL", label: "Oceanfront Living" },
   { src: "/placeholders/hero-2.svg", alt: "Palm Coast Intracoastal waterway placeholder", label: "The Intracoastal" },
   { src: "/placeholders/hero-3.svg", alt: "Palm Coast coastal dunes placeholder", label: "The Dunes" },
 ];
