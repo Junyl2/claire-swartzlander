@@ -21,7 +21,11 @@ export default function CommunitiesPage() {
         kicker="Communities"
         title="Palm Coast Gated Communities"
         description="A full directory of Palm Coast's gated and master-planned communities, from established neighborhoods to newer developments."
-        image={{ src: "/placeholders/community.svg", alt: "Palm Coast communities placeholder", label: "Communities" }}
+        image={{
+          src: "/about-banner.jpg",
+          alt: "Aerial view of the Flagler County coastline, with beach, dunes, and a Palm Coast area neighborhood beyond",
+          label: "The Flagler Coast",
+        }}
       />
 
       <section className="section-y bg-paper">
