@@ -97,7 +97,7 @@ export const siteConfig = {
   name: "Claire Swartzlander",
   tagline: "Coastal Property Specialist",
   brokerage: "RE/MAX Signature",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://clairesellsthecoast.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://clairesellsthecoast.com",
   phone: "+17249542787",
   email: "clairesellsthecoast@gmail.com",
   web3FormsAccessKey: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "",
