@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { HomeHero } from "@/components/sections/HomeHero";
-import { OneCallValuesSection } from "@/components/sections/OneCallValuesSection";
+import { HighlightVideoSection } from "@/components/sections/HighlightVideoSection";
+import { ValuePillarsSection } from "@/components/sections/ValuePillarsSection";
 import { PreviewBand } from "@/components/sections/PreviewBand";
 import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import {
@@ -16,14 +17,16 @@ export default function HomePage() {
     <main>
       <HomeHero />
 
-      <OneCallValuesSection />
+      <HighlightVideoSection />
+
+      <ValuePillarsSection />
 
       <section className="section-y bg-white">
         <Container>
           <div>
-            {homePagePreviews.filter((page) => page.href !== "/contact").map((page, index) => (
+            {homePagePreviews.map((page, index) => (
               <PreviewBand
-                key={page.href}
+                key={page.label}
                 kicker={page.kicker}
                 title={page.title}
                 description={page.description}

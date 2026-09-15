@@ -5,3 +5,7 @@ node_modules
 coverage
 dist
 *.log
+*.tsbuildinfo
+.env
+.env.local
+.env*.local

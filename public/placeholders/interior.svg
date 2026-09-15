@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900"><rect width="1200" height="900" fill="#201d19"/><path d="M130 120h430v660H130z" fill="#efe7d8" opacity=".16"/><path d="M650 170h360v520H650z" fill="#c09a4a" opacity=".2"/><path d="M710 240h240v380H710z" fill="#0f141a" opacity=".45"/><path d="M0 740h1200v160H0z" fill="#0f141a" opacity=".75"/><text x="70" y="810" fill="#f6efe4" font-family="Arial" font-size="30" font-weight="700" letter-spacing="5">RESIDENTIAL CRAFT</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#1a1e24"/>
+  <rect x="140" y="160" width="420" height="320" fill="#f6efe4" opacity="0.08"/>
+  <rect x="620" y="260" width="440" height="220" fill="#f6efe4" opacity="0.06"/>
+  <g stroke="#c9a05a" stroke-width="2" opacity="0.5">
+    <path d="M140 480h420M140 160v320M560 160v320"/>
+    <path d="M620 480h440M620 260v220M1060 260v220"/>
+  </g>
+  <rect x="220" y="560" width="760" height="10" fill="#c9a05a" opacity="0.35"/>
+</svg>
