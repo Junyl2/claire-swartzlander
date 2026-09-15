@@ -27,7 +27,11 @@ export default function SellPage() {
         kicker="Sell"
         title={pageCopy.sell.title}
         description={pageCopy.sell.description}
-        image={{ src: "/placeholders/interior.svg", alt: "Home selling placeholder", label: "Ready To List" }}
+        image={{
+          src: "/value/value.JPG",
+          alt: "A palm-lined walkway leading toward a Palm Coast home at sunset",
+          label: "Coastal Living",
+        }}
         primaryCta={{ href: "/sell/whats-my-home-worth", label: "Get A Home Valuation" }}
         secondaryCta={{ href: "/sell/cash-offer", label: "Request A Cash Offer" }}
       />

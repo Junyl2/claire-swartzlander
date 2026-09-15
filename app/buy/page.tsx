@@ -18,7 +18,11 @@ export default function BuyPage() {
         kicker="Buy"
         title={pageCopy.buy.title}
         description={pageCopy.buy.description}
-        image={{ src: "/placeholders/community.svg", alt: "Palm Coast communities placeholder", label: "Coastal Communities" }}
+        image={{
+          src: "/contact/contact-section.JPG",
+          alt: "Screened pool and lanai at dusk at a Palm Coast area home",
+          label: "Backyard Living",
+        }}
         primaryCta={{ href: "#communities", label: "Explore Communities" }}
         secondaryCta={{ href: "/buy/top-buyer-tips", label: "Top Buyer Tips" }}
       />

@@ -21,7 +21,11 @@ export default function NeighborhoodsPage() {
         kicker="Neighborhoods"
         title="Palm Coast Neighborhoods"
         description="Two ways to find your part of the coast: browse by neighborhood name, or look up a section you already know."
-        image={{ src: "/placeholders/map.svg", alt: "Palm Coast neighborhoods placeholder", label: "Neighborhoods" }}
+        image={{
+          src: "/sell-home.jpg",
+          alt: "Aerial view of an oceanfront neighborhood in Palm Coast, FL",
+          label: "Palm Coast, FL",
+        }}
       />
 
       <section className="section-y bg-paper">
