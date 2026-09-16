@@ -38,7 +38,7 @@ export function CommunityDirectoryDetailPage({ community }: CommunityDirectoryDe
           <SectionHeading
             kicker="Overview"
             title={`Living In ${community.name}`}
-            description={`${community.name} sits within Palm Coast, Florida${community.parent ? `, as part of ${community.parent}` : ""}. Current listings, pricing, and availability are confirmed directly with Claire, since inventory changes often.`}
+            description={`${community.name} sits within Palm Coast, Florida${community.parent ? `, as part of ${community.parent}` : ""}. Current listings, pricing, and availability are confirmed directly with Clarissa, since inventory changes often.`}
           />
         </Container>
       </section>

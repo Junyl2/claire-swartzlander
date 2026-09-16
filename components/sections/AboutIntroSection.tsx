@@ -13,8 +13,8 @@ const sceneImage = {
 
 const claireImage = {
   src: "/about/claire-about.png",
-  alt: "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature",
-  label: "Claire Swartzlander",
+  alt: "Clarissa Swartzlander, Coastal Property Specialist with RE/MAX Signature",
+  label: "Clarissa Swartzlander",
 };
 
 export function AboutIntroSection() {
@@ -44,7 +44,7 @@ export function AboutIntroSection() {
           </Reveal>
 
           <Reveal delay={0.08}>
-            <p className="eyebrow supporting-kicker">About Claire Swartzlander</p>
+            <p className="eyebrow supporting-kicker">About Clarissa Swartzlander</p>
             <MixedTitle
               text="Highly Regarded In The Northeast Florida Coastal Region"
               as="h2"
@@ -53,26 +53,28 @@ export function AboutIntroSection() {
             <div className="supporting-copy mt-7 grid gap-5 text-base text-slate md:text-lg">
               <p>
                 With her passion towards educating buyers and sellers on the real estate process when looking for the
-                Florida Coastal Lifestyle, Claire is committed to carrying her values of hard work, integrity, and
+                Florida Coastal Lifestyle, Clarissa is committed to carrying her values of hard work, integrity, and
                 outstanding client service into everything she does. Her success stems from prioritizing her
                 clients&apos; needs at every step of the home buying and selling journey.
               </p>
               <p>
                 Her unwavering dedication to exceptional customer service surpasses expectations in every
-                transaction. Claire alleviates the stress of home transactions by offering various assurances.
+                transaction. Clarissa alleviates the stress of home transactions by offering various assurances.
               </p>
               <p>
-                Claire&apos;s mission is to ensure each client feels uniquely valued, knowing they are her sole focus.
-                With deep roots in the community, both living and working here, you can rely on Claire Swartzlander
+                Clarissa&apos;s mission is to ensure each client feels uniquely valued, knowing they are her sole focus.
+                With deep roots in the community, both living and working here, you can rely on Clarissa Swartzlander
                 to understand your needs implicitly.
               </p>
             </div>
 
             <div className="mt-9 flex flex-wrap gap-2 border-y border-primary/15 py-6">
-              {aboutHighlights.map((highlight) => (
+              {aboutHighlights.map((highlight, index) => (
                 <span
                   key={highlight}
-                  className="rounded-[var(--radius-sharp)] border border-primary/15 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-ink"
+                  className={`border-y border-r border-primary/15 bg-white py-2 pl-3 pr-3 text-xs font-bold uppercase tracking-[0.12em] text-ink ${
+                    index % 2 === 0 ? "border-l-4 border-l-primary" : "border-l-4 border-l-secondary"
+                  }`}
                 >
                   {highlight}
                 </span>

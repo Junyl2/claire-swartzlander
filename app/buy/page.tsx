@@ -31,8 +31,8 @@ export default function BuyPage() {
         <Container>
           <SectionHeading
             kicker="Coastal Communities"
-            title="Every community Claire covers, from marina addresses to gated golf living."
-            description="Each community has its own pace, price point, and lifestyle. Explore each one, or reach out and Claire will help narrow it down."
+            title="Every community Clarissa covers, from marina addresses to gated golf living."
+            description="Each community has its own pace, price point, and lifestyle. Explore each one, or reach out and Clarissa will help narrow it down."
           />
           <StaggerGroup className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
             {communities.map((community) => (

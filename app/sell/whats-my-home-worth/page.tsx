@@ -33,7 +33,7 @@ export default function HomeValuationPage() {
               addressPlaceholder="123 Ocean Palm Way, Palm Coast, FL"
               helperText="We'll send your personalized home value estimate to this email. There's no cost or obligation."
               interestType="Home Valuation"
-              successMessage="Thanks — your home valuation request is on its way to Claire. She typically replies within one business day."
+              successMessage="Thanks — your home valuation request is on its way to Clarissa. She typically replies within one business day."
             />
           </Reveal>
 

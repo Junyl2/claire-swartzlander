@@ -93,7 +93,7 @@ function CommunitiesBentoCta({ href }: { href: string }) {
             <p className="ui-title text-[11px] text-primary/72">Full Community Index</p>
             <MixedTitle text="Every Coastal Community" as="h4" className="editorial-title display-title mt-4 max-w-[12rem] text-3xl leading-[0.9] text-ink" />
             <p className="supporting-copy mt-4 max-w-xs text-sm text-slate">
-              Review every community Claire covers, from marina and Intracoastal addresses to gated golf living.
+              Review every community Clarissa covers, from marina and Intracoastal addresses to gated golf living.
             </p>
           </div>
           <div className="pt-5">
@@ -171,6 +171,7 @@ function AboutEditorialPreview({
     <div className="py-16 lg:flex lg:items-center lg:gap-20">
       <MotionItem distance={26} className="relative mx-auto max-w-md lg:mx-0 lg:w-1/2 lg:max-w-none lg:shrink-0">
         <div aria-hidden="true" className="absolute -bottom-5 -right-5 -z-10 hidden h-full w-full border border-primary/30 lg:block" />
+        <div aria-hidden="true" className="absolute -top-4 -left-4 -z-10 hidden h-24 w-24 border-l-2 border-t-2 border-secondary/55 lg:block" />
         <Image
           src={images[0].src}
           alt={images[0].alt}
@@ -183,8 +184,9 @@ function AboutEditorialPreview({
 
       <StaggerGroup className="mt-14 max-w-xl lg:mt-0" stagger={0.08}>
         <MotionItem>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <span aria-hidden="true" className="h-px w-10 bg-primary" />
+            <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-secondary" />
             <p className="eyebrow supporting-kicker">{kicker}</p>
           </div>
         </MotionItem>
@@ -201,13 +203,21 @@ function AboutEditorialPreview({
           </div>
         </MotionItem>
         <MotionItem>
-          <p className="brand-title-script mt-6 text-3xl text-ink/80 md:text-4xl">{siteConfig.name}</p>
+          <div className="mt-6 flex items-center gap-3">
+            <span aria-hidden="true" className="h-px w-8 bg-secondary/60" />
+            <p className="brand-title-script text-3xl text-ink/80 md:text-4xl">{siteConfig.name}</p>
+          </div>
         </MotionItem>
         <MotionItem>
           <div className="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
             {details.map((detail, detailIndex) => (
               <span key={detail} className="flex items-center gap-3">
-                {detailIndex > 0 ? <span aria-hidden="true" className="h-1 w-1 shrink-0 bg-primary/50" /> : null}
+                {detailIndex > 0 ? (
+                  <span
+                    aria-hidden="true"
+                    className={`h-1 w-1 shrink-0 ${detailIndex % 2 === 0 ? "bg-primary/50" : "bg-secondary/50"}`}
+                  />
+                ) : null}
                 <span className="ui-title text-[11px] text-slate">{detail}</span>
               </span>
             ))}
@@ -292,7 +302,7 @@ function PreviewMedia({
           <ImagePlaceholder src={images[1].src} alt={images[1].alt} label={images[1].label} ratio="wide" />
           <div className="rounded-[var(--radius-panel)] border border-primary/12 bg-ink p-6 text-paper">
             <p className="eyebrow">Local Coverage</p>
-            <MixedTitle text="A layered view of the communities and coastline Claire serves." as="h4" className="editorial-title display-title mt-4 text-3xl leading-[0.92]" />
+            <MixedTitle text="A layered view of the communities and coastline Clarissa serves." as="h4" className="editorial-title display-title mt-4 text-3xl leading-[0.92]" />
           </div>
         </div>
       </div>

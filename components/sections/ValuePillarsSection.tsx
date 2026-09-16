@@ -36,8 +36,8 @@ const sceneImage = {
 
 const claireImage = {
   src: "/value/claire.jpg",
-  alt: "Claire Swartzlander, Coastal Property Specialist",
-  label: "It's Claire.",
+  alt: "Clarissa Swartzlander, Coastal Property Specialist",
+  label: "It's Clarissa.",
 };
 
 export function ValuePillarsSection() {
@@ -63,15 +63,18 @@ export function ValuePillarsSection() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.08} className="bg-secondary px-8 py-10 text-paper shadow-[var(--shadow-soft)] md:px-12 md:py-14">
-            <p className="eyebrow supporting-kicker">Why Work With Claire</p>
+          <Reveal
+            delay={0.08}
+            className="bg-[linear-gradient(135deg,hsl(220_85%_14%)_0%,hsl(218_100%_32%)_35%,hsl(354_60%_32%)_65%,hsl(354_77%_46%)_100%)] px-8 py-10 text-paper shadow-[var(--shadow-soft)] md:px-12 md:py-14"
+          >
+            <p className="eyebrow supporting-kicker text-paper!">Why Work With Clarissa</p>
             <MixedTitle
               text="A coastal specialist who knows every community by name."
               as="h2"
               className="editorial-title display-title mt-4 max-w-4xl text-balance text-4xl leading-[0.92] text-paper md:text-6xl"
             />
             <p className="supporting-copy mt-6 max-w-3xl text-base text-paper/70 md:text-lg">
-              Buying and selling on the coast comes with its own pace and priorities. Claire built her practice around
+              Buying and selling on the coast comes with its own pace and priorities. Clarissa built her practice around
               understanding both, so every recommendation fits how you actually want to live.
             </p>
 
@@ -82,7 +85,7 @@ export function ValuePillarsSection() {
                 return (
                   <Reveal key={pillar.title} delay={index * 0.06}>
                     <div className="group flex items-start gap-6 py-7">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/40 text-primary transition duration-500 group-hover:border-primary group-hover:bg-primary group-hover:text-white">
+                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-paper/50 text-paper transition duration-500 group-hover:border-paper group-hover:bg-paper group-hover:text-primary">
                         <Icon className="h-5 w-5" />
                       </div>
                       <div className="min-w-0 pt-1">

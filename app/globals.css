@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary: 25 27% 59%;
-  --color-secondary: 22 24% 42%;
+  --color-primary: 218 100% 32%;
+  --color-secondary: 354 77% 49%;
   --color-ink: 215 19% 10%;
   --color-charcoal: 215 18% 15%;
   --color-graphite: 210 13% 23%;
@@ -14,7 +14,7 @@
   --radius-sharp: 0px;
   --radius-panel: 0px;
   --shadow-soft: 0 24px 70px hsl(215 19% 10% / 0.14);
-  --shadow-line: inset 0 0 0 1px hsl(25 27% 59% / 0.16);
+  --shadow-line: inset 0 0 0 1px hsl(218 100% 32% / 0.16);
   --container: 1400px;
   --header-height: 112px;
 }

@@ -65,7 +65,7 @@ export function ContactForm({ defaultInterest, defaultMessage }: ContactFormProp
       <StaggerGroup className="rounded-[var(--radius-panel)] border border-primary/15 bg-paper p-6 shadow-[var(--shadow-soft)] md:p-8" stagger={0.07}>
         <p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">Message Sent</p>
         <p className="mt-3 text-lg leading-8 text-ink">
-          Thanks — your inquiry is on its way to Claire. She typically replies within one business day.
+          Thanks — your inquiry is on its way to Clarissa. She typically replies within one business day.
         </p>
       </StaggerGroup>
     );

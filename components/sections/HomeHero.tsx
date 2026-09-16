@@ -35,7 +35,7 @@ export function HomeHero() {
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Button href="/buy">Explore Communities</Button>
               <Button href="/contact" variant="ghost">
-                Contact Claire
+                Contact Clarissa
               </Button>
             </div>
           </MotionItem>

@@ -16,7 +16,7 @@ export default function SellMyHomePage() {
   return (
     <main>
       <PageHero
-        kicker="List With Claire"
+        kicker="List With Clarissa"
         title="Sell My Home"
         description="We love working with sellers and look forward to sharing our home-selling plan with you!"
         image={{ src: "/sell-home.jpg", alt: "Coastal home for sale with Clarissa Swartzlander", label: "Sell My Home" }}
@@ -33,7 +33,7 @@ export default function SellMyHomePage() {
               addressPlaceholder="123 Ocean Palm Way, Palm Coast, FL"
               helperText="We'll use this to start building your personalized home-selling plan."
               interestType="Selling My Home"
-              successMessage="Thanks — your home-selling plan request is on its way to Claire. She typically replies within one business day."
+              successMessage="Thanks — your home-selling plan request is on its way to Clarissa. She typically replies within one business day."
             />
           </Reveal>
 

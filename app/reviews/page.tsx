@@ -32,7 +32,7 @@ export default function ReviewsPage() {
               <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border-4 border-white shadow-[var(--shadow-soft)] lg:mx-0">
                 <Image
                   src="/about/claire-about.png"
-                  alt="Claire Swartzlander"
+                  alt="Clarissa Swartzlander"
                   fill
                   sizes="144px"
                   className="object-cover"
@@ -47,7 +47,7 @@ export default function ReviewsPage() {
                 ))}
               </div>
               <p className="supporting-copy mt-4 max-w-xs text-base leading-7 text-slate">
-                Based on {reviewStats.count} verified {reviewStats.source} reviews from buyers and sellers Claire has
+                Based on {reviewStats.count} verified {reviewStats.source} reviews from buyers and sellers Clarissa has
                 worked with directly.
               </p>
               <div className="mt-8">
