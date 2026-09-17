@@ -241,7 +241,7 @@ function ReviewFeaturePreview({ kicker, title, href }: Pick<PreviewBandProps, "k
   const highlight = testimonials.find((review) => review.name === "robert ratcliff") ?? testimonials[0];
 
   return (
-    <article className="border-t border-primary/15 py-10 first:border-t-0">
+    <article className="relative border-t border-primary/15 py-10 first:border-t-0">
       <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
         <StaggerGroup className="max-w-md" stagger={0.08}>
           <MotionItem><p className="eyebrow supporting-kicker">{kicker}</p></MotionItem>
@@ -273,6 +273,17 @@ function ReviewFeaturePreview({ kicker, title, href }: Pick<PreviewBandProps, "k
 
         <MotionItem distance={26}>
           <figure className="relative border-l border-primary/18 pl-6 md:pl-10 lg:pl-14">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-x-6 -inset-y-10 -z-10 opacity-90 blur-2xl md:-inset-x-10 md:-inset-y-14 [background-image:radial-gradient(closest-side_at_28%_22%,hsl(354_80%_58%_/_0.55),transparent_70%),radial-gradient(closest-side_at_68%_55%,hsl(354_75%_46%_/_0.5),transparent_68%),radial-gradient(closest-side_at_42%_82%,hsl(354_85%_62%_/_0.45),transparent_72%),radial-gradient(closest-side_at_88%_15%,hsl(0_70%_50%_/_0.35),transparent_65%)]"
+            />
+            <div aria-hidden="true" className="pointer-events-none absolute -z-10">
+              <span className="absolute right-10 top-0 h-2.5 w-2.5 rounded-full bg-secondary/45 blur-[1px]" />
+              <span className="absolute right-24 top-16 h-2 w-2 rounded-full bg-secondary/60" />
+              <span className="absolute right-4 top-28 h-1.5 w-1.5 rounded-full bg-secondary/70" />
+              <span className="absolute right-32 top-4 h-1.5 w-1.5 rounded-full bg-secondary/50" />
+              <span className="absolute right-16 top-40 h-2.5 w-2.5 rounded-full bg-secondary/35 blur-[1px]" />
+            </div>
             <span aria-hidden="true" className="display-title pointer-events-none absolute -left-3 -top-14 select-none text-[9rem] leading-none text-primary/10 md:text-[11rem]">
               &ldquo;
             </span>

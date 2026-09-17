@@ -654,7 +654,7 @@ export const pageCopy = {
   about: {
     title: "Coastal Property Specialist",
     description:
-      "With a multimillion-dollar sales volume, Clarissa Swartzlander has positioned herself as a highly regarded and well-known real estate expert in the Northeast Florida coastal region.",
+      "Clarissa Swartzlander has closed a multimillion-dollar volume of sales across Palm Coast's coastal and golf communities, work she's built by knowing these neighborhoods from the inside, not just the MLS.",
   },
   sell: {
     title: "Sell with a clear plan and a firm number.",
@@ -779,7 +779,7 @@ export const homePagePreviews: HomePagePreview[] = [
     kicker: "RE/MAX Signature",
     title: "Coastal Property Specialist, RE/MAX Signature",
     description:
-      "With a multimillion-dollar sales volume, Clarissa Swartzlander is a highly regarded, well-known real estate expert in the Northeast Florida coastal region.\n\nHer mission is simple: every client feels uniquely valued, knowing they are her sole focus.",
+      "Clarissa Swartzlander has closed a multimillion-dollar volume of sales across Palm Coast's waterfront and golf communities.\n\nShe works under RE/MAX Signature and lives locally, so her read on a neighborhood comes from experience, not a listing sheet.",
     layout: "about-editorial",
     images: [
       { src: "/about/claire-about.png", alt: "Clarissa Swartzlander, Coastal Property Specialist with RE/MAX Signature", label: "Clarissa Swartzlander" },

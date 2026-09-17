@@ -9,25 +9,25 @@ const specialties = [
     byline: "Clarissa Swartzlander Realtor",
     title: "Coastal Homes",
     icon: Waves,
-    text: "I know the ins and outs of the local coastal market, from oceanfront condos to canal front getaways, and I will guide you through every step of the process, ensuring a seamless and successful real estate experience.",
+    text: "I spend as much time on the water as I do at open houses. Oceanfront condos, canal-front lots, Intracoastal addresses, I know what each one is actually worth to live in, not just what it's listed for.",
   },
   {
     byline: "Clarissa Swartzlander Realtor",
     title: "Listings",
     icon: Building2,
-    text: "Embrace a life where the ocean is your backdrop and elegance is your standard. Explore our exquisite listings and embark on a journey to discover your dream coastal property. The art of living awaits.",
+    text: "My listings are priced from real comparable sales, not wishful thinking, and marketed with photography and copy built to get serious buyers through the door quickly.",
   },
   {
     byline: "Clarissa Swartzlander Realtor",
     title: "Relocation",
     icon: MapPinned,
-    text: "I am a trusted relocation specialist offering bespoke services to clients moving from other areas. If you're looking to move to the coast, I'm here to provide essential local information, housing assistance, and logistical support. I thrive on making every transition seamless.",
+    text: "Clients relocating from out of state lean on me for the groundwork, flood zones, HOA rules, commute realities, so a move here starts with facts instead of guesswork.",
   },
   {
     byline: "Clarissa Swartzlander, PA",
     title: "Buyer Services",
     icon: Users,
-    text: "I excel as a buyer's specialist, expertly guiding clients through the home buying process with personalized property searches, strategic negotiations, and comprehensive market insights to secure your dream home.",
+    text: "I build every buyer search around how someone actually wants to live on the coast, then negotiate hard once we find the right property.",
   },
 ];
 

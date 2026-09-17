@@ -9,22 +9,22 @@ const pillars = [
   {
     title: "Coastal Homes",
     icon: Waves,
-    text: "I know the ins and outs of the local coastal market, from oceanfront condos to canal front getaways, and I will guide you through every step of the process, ensuring a seamless and successful real estate experience.",
+    text: "From canal-front lots to oceanfront condos, Clarissa reads the coastal market by neighborhood, not by zip code, so pricing and offers reflect what a specific street is actually doing.",
   },
   {
     title: "Listings",
     icon: Building2,
-    text: "Embrace a life where the ocean is your backdrop and elegance is your standard. Explore our exquisite listings and embark on a journey to discover your dream coastal property.",
+    text: "Every listing gets professional photography, a pricing strategy grounded in recent local sales, and marketing built for buyers who are searching for exactly this kind of property.",
   },
   {
     title: "Relocation",
     icon: MapPinned,
-    text: "I am a trusted relocation specialist offering bespoke services to clients moving from other areas, with essential local information, housing assistance, and logistical support every step of the way.",
+    text: "Moving from out of state adds its own logistics. Clarissa handles the local groundwork, school zones, flood zones, HOA rules, so relocating clients can decide with confidence instead of guesswork.",
   },
   {
     title: "Buyer Services",
     icon: Users,
-    text: "I excel as a buyer's specialist, expertly guiding clients through the home buying process with personalized property searches, strategic negotiations, and comprehensive market insights.",
+    text: "Buyers get a search built around how they actually want to live, not just listing criteria, paired with clear-eyed negotiation once the right property is found.",
   },
 ];
 

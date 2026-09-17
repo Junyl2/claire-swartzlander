@@ -46,25 +46,26 @@ export function AboutIntroSection() {
           <Reveal delay={0.08}>
             <p className="eyebrow supporting-kicker">About Clarissa Swartzlander</p>
             <MixedTitle
-              text="Highly Regarded In The Northeast Florida Coastal Region"
+              text="Rooted In The Coast She Calls Home"
               as="h2"
               className="editorial-title display-title mt-5 max-w-4xl text-balance text-4xl leading-[0.92] text-ink md:text-6xl"
             />
             <div className="supporting-copy mt-7 grid gap-5 text-base text-slate md:text-lg">
               <p>
-                With her passion towards educating buyers and sellers on the real estate process when looking for the
-                Florida Coastal Lifestyle, Clarissa is committed to carrying her values of hard work, integrity, and
-                outstanding client service into everything she does. Her success stems from prioritizing her
-                clients&apos; needs at every step of the home buying and selling journey.
+                Clarissa Swartzlander built her practice around one idea: the coast isn&apos;t just a backdrop, it&apos;s the
+                reason people move here in the first place. She spends as much time walking canal-front lots and
+                gated golf communities as she does at the negotiating table, so when she tells a buyer a neighborhood
+                is right for them, it&apos;s because she&apos;s actually stood in it.
               </p>
               <p>
-                Her unwavering dedication to exceptional customer service surpasses expectations in every
-                transaction. Clarissa alleviates the stress of home transactions by offering various assurances.
+                That local knowledge pairs with a straightforward approach to the transaction itself. Clients get
+                direct answers about pricing, timelines, and paperwork instead of vague reassurance, and Clarissa
+                stays available through every stage of a deal, not just the parts that are easy to schedule around.
               </p>
               <p>
-                Clarissa&apos;s mission is to ensure each client feels uniquely valued, knowing they are her sole focus.
-                With deep roots in the community, both living and working here, you can rely on Clarissa Swartzlander
-                to understand your needs implicitly.
+                She works under RE/MAX Signature and has closed a multimillion-dollar volume of sales across Palm
+                Coast and the surrounding Northeast Florida coast. Just as importantly, she lives here too, which
+                means the recommendations she makes for clients are the same ones she&apos;d make to a neighbor.
               </p>
             </div>
 
