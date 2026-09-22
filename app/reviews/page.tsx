@@ -32,7 +32,7 @@ export default function ReviewsPage() {
               <div className="relative mx-auto h-36 w-36 overflow-hidden rounded-full border-4 border-white shadow-[var(--shadow-soft)] lg:mx-0">
                 <Image
                   src="/about/claire-about.png"
-                  alt="Claire Swartzlander"
+                  alt="Clarissa Swartzlander"
                   fill
                   sizes="144px"
                   className="object-cover"
@@ -47,7 +47,7 @@ export default function ReviewsPage() {
                 ))}
               </div>
               <p className="supporting-copy mt-4 max-w-xs text-base leading-7 text-slate">
-                Based on {reviewStats.count} verified {reviewStats.source} reviews from buyers and sellers Claire has
+                Based on {reviewStats.count} verified {reviewStats.source} reviews from buyers and sellers Clarissa has
                 worked with directly.
               </p>
               <div className="mt-8">
@@ -61,10 +61,10 @@ export default function ReviewsPage() {
 
           <div className="grid gap-6">
             <Reveal>
-              <figure className="flex flex-col justify-between border border-primary/18 bg-ink p-8 text-paper shadow-[var(--shadow-soft)] md:p-10">
+              <figure className="flex flex-col justify-between bg-[linear-gradient(135deg,hsl(354_70%_14%)_0%,hsl(354_72%_26%)_40%,hsl(354_77%_38%)_70%,hsl(354_82%_50%)_100%)] p-8 text-paper shadow-[var(--shadow-soft)] md:p-10">
                 <div>
-                  <p className="eyebrow text-primary">Featured Review</p>
-                  <div className="mt-4 flex gap-1 text-primary" aria-label="5 star review">
+                  <p className="eyebrow text-paper!">Featured Review</p>
+                  <div className="mt-4 flex gap-1 text-paper" aria-label="5 star review">
                     {Array.from({ length: highlight.rating }).map((_, index) => (
                       <Star key={index} className="h-5 w-5 fill-current" />
                     ))}
@@ -74,7 +74,7 @@ export default function ReviewsPage() {
                   </blockquote>
                 </div>
                 <figcaption className="mt-8 flex items-center gap-3 border-t border-paper/15 pt-6">
-                  <CircleUserRound className="h-9 w-9 shrink-0 text-primary" aria-hidden="true" />
+                  <CircleUserRound className="h-9 w-9 shrink-0 text-paper" aria-hidden="true" />
                   <span className="ui-title text-sm text-paper">{highlight.name}</span>
                 </figcaption>
               </figure>

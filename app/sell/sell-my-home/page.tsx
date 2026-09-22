@@ -16,13 +16,28 @@ export default function SellMyHomePage() {
   return (
     <main>
       <PageHero
-        kicker="List With Claire"
+        kicker="List With Clarissa"
         title="Sell My Home"
         description="We love working with sellers and look forward to sharing our home-selling plan with you!"
         image={{ src: "/sell-home.jpg", alt: "Coastal home for sale with Clarissa Swartzlander", label: "Sell My Home" }}
       />
 
-      <section className="section-y bg-paper">
+      <section className="section-y relative overflow-hidden bg-paper">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 800 800"
+          className="pointer-events-none absolute -left-48 -top-48 -z-10 h-[36rem] w-[36rem] opacity-[0.07]"
+        >
+          <circle cx="400" cy="400" r="400" fill="hsl(var(--color-primary))" />
+        </svg>
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 800 800"
+          className="pointer-events-none absolute -bottom-56 -right-56 -z-10 h-[40rem] w-[40rem] opacity-[0.07]"
+        >
+          <circle cx="400" cy="400" r="400" fill="hsl(var(--color-secondary))" />
+        </svg>
+
         <Container className="grid gap-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-24">
           <Reveal>
             <AddressLeadForm
@@ -33,7 +48,7 @@ export default function SellMyHomePage() {
               addressPlaceholder="123 Ocean Palm Way, Palm Coast, FL"
               helperText="We'll use this to start building your personalized home-selling plan."
               interestType="Selling My Home"
-              successMessage="Thanks — your home-selling plan request is on its way to Claire. She typically replies within one business day."
+              successMessage="Thanks — your home-selling plan request is on its way to Clarissa. She typically replies within one business day."
             />
           </Reveal>
 

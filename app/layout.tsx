@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description:
-    "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature, helps buyers and sellers navigate Palm Coast's waterfront and golf communities.",
+    "Clarissa Swartzlander, Coastal Property Specialist with RE/MAX Signature, helps buyers and sellers navigate Palm Coast's waterfront and golf communities.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

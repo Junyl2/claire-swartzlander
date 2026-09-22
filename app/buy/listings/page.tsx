@@ -14,7 +14,7 @@ export default function ListingsPage() {
     <main>
       <PageHero
         kicker="Featured Listings"
-        title="A first look at the kind of homes Claire places buyers in."
+        title="A first look at the kind of homes Clarissa places buyers in."
         description="These are sample listings standing in for live inventory. Reach out for current availability, pricing, and showings in any Palm Coast community."
         image={{ src: "/placeholders/listing.svg", alt: "Featured listings placeholder", label: "Featured Listings" }}
         primaryCta={{ href: "/contact", label: "Ask About Current Inventory" }}
@@ -26,7 +26,7 @@ export default function ListingsPage() {
           <SectionHeading
             kicker="Sample Inventory"
             title="Waterfront, golf, and family homes across Palm Coast."
-            description="Every home below is a placeholder standing in for real inventory. Tap Request Info on any card and it goes straight to Claire."
+            description="Every home below is a placeholder standing in for real inventory. Tap Request Info on any card and it goes straight to Clarissa."
           />
           <StaggerGroup className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-3" stagger={0.06}>
             {listings.map((listing) => (

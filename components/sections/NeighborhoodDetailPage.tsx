@@ -1,12 +1,13 @@
 import { MapPin } from "lucide-react";
 
 import { Container } from "@/components/ui/Container";
+import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { MixedTitle } from "@/components/ui/MixedTitle";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { NeighborhoodCinematicHero } from "@/components/sections/NeighborhoodCinematicHero";
 import { SharedContactSection } from "@/components/sections/SharedContactSection";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/interactive/Reveal";
-import { ScrollPull } from "@/components/interactive/ScrollPull";
 import type { Neighborhood } from "@/data/site";
 
 type NeighborhoodDetailPageProps = {
@@ -33,7 +34,7 @@ export function NeighborhoodDetailPage({ neighborhood }: NeighborhoodDetailPageP
         image={{ src: heroImage.src, alt: heroImage.alt }}
       />
 
-      <section className="relative flex min-h-[100dvh] items-center overflow-hidden bg-paper py-20 md:py-24">
+      <section className="relative overflow-hidden bg-paper py-20 md:py-28">
         <span
           aria-hidden="true"
           className="display-title pointer-events-none absolute -right-[8vw] top-1/2 hidden -translate-y-1/2 select-none text-[46vw] leading-none text-primary/[0.04] xl:block"
@@ -42,41 +43,58 @@ export function NeighborhoodDetailPage({ neighborhood }: NeighborhoodDetailPageP
         </span>
 
         <Container className="relative">
-          <ScrollPull>
-            <div className="grid gap-12 lg:grid-cols-[minmax(0,0.3fr)_minmax(0,0.7fr)] lg:items-center lg:gap-16">
-              <div className="mx-auto flex w-full max-w-[15rem] flex-col items-center border border-primary/15 bg-white px-8 py-12 text-center shadow-[var(--shadow-soft)] lg:mx-0">
-                <p className="ui-title text-[11px] text-slate">{sectionLabel}</p>
-                <p className="display-title mt-4 text-8xl leading-none text-primary">{sectionGlyph}</p>
-                <span aria-hidden="true" className="mt-6 h-px w-12 bg-primary/40" />
-                <p className="ui-title mt-6 text-[11px] text-ink">{neighborhood.name}</p>
-                <p className="mt-1 text-[11px] text-slate">Palm Coast, FL</p>
+          <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-20">
+            <Reveal className="relative min-h-[26rem] md:min-h-[36rem]">
+              <ImagePlaceholder
+                src={heroImage.src}
+                alt={heroImage.alt}
+                label={neighborhood.name}
+                className="h-full shadow-[var(--shadow-soft)]"
+              />
+              <div className="absolute left-6 top-6 z-20 flex w-32 flex-col items-center bg-[linear-gradient(135deg,hsl(220_85%_16%)_0%,hsl(218_100%_32%)_45%,hsl(354_60%_34%)_75%,hsl(354_77%_46%)_100%)] px-5 py-6 text-center text-paper shadow-[0_20px_45px_hsl(215_19%_10%_/_0.35)] sm:w-36">
+                <p className="ui-title text-[9px] text-paper/70">{sectionLabel}</p>
+                <p className="display-title mt-2 text-5xl leading-none text-paper">{sectionGlyph}</p>
+                <span aria-hidden="true" className="mt-3 h-px w-8 bg-paper/40" />
+                <p className="ui-title mt-3 text-[9px] text-paper/85">Palm Coast, FL</p>
               </div>
+            </Reveal>
 
-              <div className="max-w-2xl">
-                <SectionHeading kicker="Overview" title={`Living In ${neighborhood.name}`} description={neighborhood.overview} />
-
-                <p className="mt-10 text-[11px] font-bold uppercase tracking-[0.16em] text-primary">Notable Nearby</p>
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {neighborhood.landmarks.map((landmark) => (
-                    <li
-                      key={landmark}
-                      className="flex items-start gap-3 rounded-[var(--radius-sharp)] border border-primary/12 bg-white px-4 py-3 text-sm font-semibold leading-6 text-ink shadow-[var(--shadow-soft)]"
-                    >
-                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <span>{landmark}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Button href="/contact">{`Ask About ${neighborhood.name}`}</Button>
-                  <Button href="/neighborhoods" variant="secondary">
-                    View All Neighborhoods
-                  </Button>
-                </div>
+            <Reveal delay={0.08}>
+              <div className="flex items-center gap-3">
+                <span aria-hidden="true" className="h-px w-10 bg-primary" />
+                <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-secondary" />
+                <p className="eyebrow supporting-kicker">Overview</p>
               </div>
-            </div>
-          </ScrollPull>
+              <MixedTitle
+                text={`Living In ${neighborhood.name}`}
+                as="h2"
+                className="editorial-title display-title mt-5 max-w-2xl text-balance text-4xl leading-[0.92] text-ink md:text-6xl"
+              />
+              <p className="supporting-copy mt-6 max-w-2xl text-base text-slate md:text-lg">{neighborhood.overview}</p>
+
+              <p className="mt-10 text-[11px] font-bold uppercase tracking-[0.16em] text-primary">Notable Nearby</p>
+              <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                {neighborhood.landmarks.map((landmark, index) => (
+                  <li
+                    key={landmark}
+                    className={`flex items-start gap-3 rounded-[var(--radius-sharp)] border border-primary/12 bg-white px-4 py-3 text-sm font-semibold leading-6 text-ink shadow-[var(--shadow-soft)] ${
+                      index % 2 === 0 ? "border-l-4 border-l-primary" : "border-l-4 border-l-secondary"
+                    }`}
+                  >
+                    <MapPin className={`mt-0.5 h-4 w-4 shrink-0 ${index % 2 === 0 ? "text-primary" : "text-secondary"}`} />
+                    <span>{landmark}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Button href="/contact">{`Ask About ${neighborhood.name}`}</Button>
+                <Button href="/neighborhoods" variant="secondary">
+                  View All Neighborhoods
+                </Button>
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </section>
 

@@ -48,23 +48,45 @@ export function HighlightVideoSection() {
   return (
     <section
       ref={sectionRef}
-      className="section-y relative z-20 bg-white text-ink"
+      className="section-y relative z-20 overflow-hidden bg-white text-ink"
     >
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 800 800"
+        className="pointer-events-none absolute -left-48 -top-48 -z-10 h-[36rem] w-[36rem] opacity-[0.06]"
+      >
+        <circle cx="400" cy="400" r="400" fill="hsl(var(--color-primary))" />
+      </svg>
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 800 800"
+        className="pointer-events-none absolute -bottom-48 -right-48 -z-10 h-[36rem] w-[36rem] opacity-[0.06]"
+      >
+        <circle cx="400" cy="400" r="400" fill="hsl(var(--color-secondary))" />
+      </svg>
+
       <Container>
-        <motion.div
-          style={{ scale, opacity }}
-          className="mx-auto aspect-video w-full max-w-6xl origin-center overflow-hidden border border-primary/15 shadow-[var(--shadow-soft)] max-h-[calc(100vh-8rem)]"
-        >
-          <iframe
-            ref={iframeRef}
-            src={YOUTUBE_EMBED_URL}
-            title="Claire Swartzlander highlight video"
-            className="h-full w-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
-        </motion.div>
+        <div className="relative mx-auto w-full max-w-6xl">
+          <div aria-hidden="true" className="pointer-events-none absolute -left-3 -top-3 h-10 w-10 border-l-4 border-t-4 border-primary" />
+          <div aria-hidden="true" className="pointer-events-none absolute -right-3 -top-3 h-10 w-10 border-r-4 border-t-4 border-secondary" />
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-3 -left-3 h-10 w-10 border-b-4 border-l-4 border-secondary" />
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-3 -right-3 h-10 w-10 border-b-4 border-r-4 border-primary" />
+
+          <motion.div
+            style={{ scale, opacity }}
+            className="aspect-video w-full origin-center overflow-hidden border border-primary/15 shadow-[var(--shadow-soft)] max-h-[calc(100vh-8rem)]"
+          >
+            <iframe
+              ref={iframeRef}
+              src={YOUTUBE_EMBED_URL}
+              title="Clarissa Swartzlander highlight video"
+              className="h-full w-full"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </motion.div>
+        </div>
       </Container>
     </section>
   );

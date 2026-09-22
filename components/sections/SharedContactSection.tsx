@@ -13,7 +13,7 @@ export function SharedContactSection() {
         <ImagePlaceholder
           src="/new-contact.jpg"
           alt="Aerial view of an oceanfront condo community along the Flagler County coastline"
-          label="Reach Claire"
+          label="Reach Clarissa"
           ratio="cinema"
           className="min-h-[18rem] md:min-h-[24rem] lg:min-h-[36rem]"
         />

@@ -14,7 +14,7 @@ export default function BookAppointmentPage() {
         kicker="Let's Connect"
         title={pageCopy.bookAppointment.title}
         description={pageCopy.bookAppointment.description}
-        image={{ src: "/placeholders/agent.svg", alt: "Book an appointment placeholder", label: "Meet With Claire" }}
+        image={{ src: "/placeholders/agent.svg", alt: "Book an appointment placeholder", label: "Meet With Clarissa" }}
         primaryCta={{ href: "#appointment-form", label: "Request A Time" }}
       />
 
@@ -22,9 +22,9 @@ export default function BookAppointmentPage() {
         <Container className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
             <SectionHeading
-              kicker="Meet With Claire"
+              kicker="Meet With Clarissa"
               title="Request a call, video walkthrough, or in-person meeting."
-              description="Share your preferred day and time along with what you'd like to talk through, and Claire will confirm a slot that works."
+              description="Share your preferred day and time along with what you'd like to talk through, and Clarissa will confirm a slot that works."
             />
             <div className="mt-10 grid gap-4">
               {contactItems.map((item) => {

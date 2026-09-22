@@ -1,3 +1,8 @@
+"use client";
+
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+
 import { Reveal } from "@/components/interactive/Reveal";
 import { BrokerageBadge } from "@/components/ui/BrokerageBadge";
 import { Container } from "@/components/ui/Container";
@@ -13,66 +18,86 @@ const sceneImage = {
 
 const claireImage = {
   src: "/about/claire-about.png",
-  alt: "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature",
-  label: "Claire Swartzlander",
+  alt: "Clarissa Swartzlander, Coastal Property Specialist with RE/MAX Signature",
+  label: "Clarissa Swartzlander",
 };
 
 export function AboutIntroSection() {
+  const cinematicRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cinematicRef,
+    offset: ["start end", "end start"],
+  });
+  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1]);
+
   return (
-    <section id="introduction" className="section-y overflow-hidden bg-paper">
-      <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
-          <Reveal className="relative min-h-[34rem] md:min-h-[42rem]">
-            <ImagePlaceholder
-              src={sceneImage.src}
-              alt={sceneImage.alt}
-              label={sceneImage.label}
-              className="h-full shadow-[var(--shadow-soft)]"
-            />
-            <div className="absolute left-6 top-6 z-30">
-              <BrokerageBadge className="bg-ink" />
+    <section id="introduction" className="relative overflow-hidden bg-paper pb-20 md:pb-28">
+      <Reveal>
+        <div ref={cinematicRef} className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden">
+          <div className="relative h-[56vh] max-h-[600px] min-h-[380px] w-full overflow-hidden md:h-[74vh]">
+            <motion.div style={{ scale }} className="absolute inset-0 will-change-transform">
+              <ImagePlaceholder
+                src={sceneImage.src}
+                alt={sceneImage.alt}
+                label={sceneImage.label}
+                className="!absolute !inset-0 !aspect-auto h-full"
+              />
+            </motion.div>
+
+            <div className="absolute left-6 top-6 z-30 md:left-10 md:top-10">
+              <BrokerageBadge className="bg-ink/70 backdrop-blur-md" />
             </div>
-            <div className="absolute bottom-6 right-6 z-20 w-[45%] max-w-[15rem] border-4 border-paper shadow-[0_30px_70px_hsl(215_19%_10%_/_0.28)] sm:bottom-8 sm:right-8">
+          </div>
+        </div>
+      </Reveal>
+
+      <Container className="relative">
+        <div className="grid gap-10 lg:grid-cols-[0.4fr_0.6fr] lg:items-start lg:gap-16 -mt-20 sm:-mt-28 md:-mt-36">
+          <Reveal delay={0.05} className="relative z-20 mx-auto w-full max-w-xs sm:max-w-sm lg:mx-0">
+            <div className="overflow-hidden border-4 border-paper shadow-[0_40px_110px_hsl(215_19%_10%_/_0.32)]">
               <ImagePlaceholder
                 src={claireImage.src}
                 alt={claireImage.alt}
                 label={claireImage.label}
                 ratio="portrait"
-                objectPosition="center 20%"
+                objectPosition="center 18%"
               />
             </div>
           </Reveal>
 
-          <Reveal delay={0.08}>
-            <p className="eyebrow supporting-kicker">About Claire Swartzlander</p>
+          <Reveal delay={0.12} className="relative z-10 lg:pt-10">
+            <p className="eyebrow supporting-kicker">About Clarissa Swartzlander</p>
             <MixedTitle
-              text="Highly Regarded In The Northeast Florida Coastal Region"
+              text="Rooted In The Coast She Calls Home"
               as="h2"
               className="editorial-title display-title mt-5 max-w-4xl text-balance text-4xl leading-[0.92] text-ink md:text-6xl"
             />
             <div className="supporting-copy mt-7 grid gap-5 text-base text-slate md:text-lg">
               <p>
-                With her passion towards educating buyers and sellers on the real estate process when looking for the
-                Florida Coastal Lifestyle, Claire is committed to carrying her values of hard work, integrity, and
-                outstanding client service into everything she does. Her success stems from prioritizing her
-                clients&apos; needs at every step of the home buying and selling journey.
+                Clarissa Swartzlander built her practice around one idea: the coast isn&apos;t just a backdrop, it&apos;s the
+                reason people move here in the first place. She spends as much time walking canal-front lots and
+                gated golf communities as she does at the negotiating table, so when she tells a buyer a neighborhood
+                is right for them, it&apos;s because she&apos;s actually stood in it.
               </p>
               <p>
-                Her unwavering dedication to exceptional customer service surpasses expectations in every
-                transaction. Claire alleviates the stress of home transactions by offering various assurances.
+                That local knowledge pairs with a straightforward approach to the transaction itself. Clients get
+                direct answers about pricing, timelines, and paperwork instead of vague reassurance, and Clarissa
+                stays available through every stage of a deal, not just the parts that are easy to schedule around.
               </p>
               <p>
-                Claire&apos;s mission is to ensure each client feels uniquely valued, knowing they are her sole focus.
-                With deep roots in the community, both living and working here, you can rely on Claire Swartzlander
-                to understand your needs implicitly.
+                She works under RE/MAX Signature and has closed a multimillion-dollar volume of sales across Palm
+                Coast and the surrounding Northeast Florida coast. Just as importantly, she lives here too, which
+                means the recommendations she makes for clients are the same ones she&apos;d make to a neighbor.
               </p>
             </div>
 
             <div className="mt-9 flex flex-wrap gap-2 border-y border-primary/15 py-6">
-              {aboutHighlights.map((highlight) => (
+              {aboutHighlights.map((highlight, index) => (
                 <span
                   key={highlight}
-                  className="rounded-[var(--radius-sharp)] border border-primary/15 bg-white px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-ink"
+                  className={`border-y border-r border-primary/15 bg-white py-2 pl-3 pr-3 text-xs font-bold uppercase tracking-[0.12em] text-ink ${
+                    index % 2 === 0 ? "border-l-4 border-l-primary" : "border-l-4 border-l-secondary"
+                  }`}
                 >
                   {highlight}
                 </span>

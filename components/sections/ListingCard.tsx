@@ -56,7 +56,7 @@ export function ListingCard({ listing }: ListingCardProps) {
         </div>
 
         <p className="mt-3 text-xs font-medium uppercase tracking-[0.1em] text-slate/70">
-          Sample listing — contact Claire for current inventory
+          Sample listing — contact Clarissa for current inventory
         </p>
 
         <Button href={inquiryHref} variant="secondary" className="mt-6 self-start">

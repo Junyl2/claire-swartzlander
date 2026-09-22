@@ -94,7 +94,7 @@ export type Listing = {
 };
 
 export const siteConfig = {
-  name: "Claire Swartzlander",
+  name: "Clarissa Swartzlander",
   tagline: "Coastal Property Specialist",
   brokerage: "RE/MAX Signature",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://clairesellsthecoast.com",
@@ -642,9 +642,9 @@ export const footerLinks: FooterGroup[] = [
 export const pageCopy = {
   home: {
     eyebrow: "Coastal Property Specialist · RE/MAX Signature",
-    title: "Claire Sells The Coast",
+    title: "Clarissa Sells The Coast",
     description:
-      "Claire Swartzlander guides buyers and sellers through Palm Coast's premier waterfront and golf communities, from first showing to closing day.",
+      "Clarissa Swartzlander guides buyers and sellers through Palm Coast's premier waterfront and golf communities, from first showing to closing day.",
   },
   buy: {
     title: "Find your place on the coast.",
@@ -654,23 +654,23 @@ export const pageCopy = {
   about: {
     title: "Coastal Property Specialist",
     description:
-      "With a multimillion-dollar sales volume, Claire Swartzlander has positioned herself as a highly regarded and well-known real estate expert in the Northeast Florida coastal region.",
+      "Clarissa Swartzlander has closed a multimillion-dollar volume of sales across Palm Coast's coastal and golf communities, work she's built by knowing these neighborhoods from the inside, not just the MLS.",
   },
   sell: {
     title: "Sell with a clear plan and a firm number.",
     description:
-      "From a same-week cash offer to a fully marketed listing, Claire builds a selling strategy around your timeline, your home, and the price you actually want to walk away with.",
+      "From a same-week cash offer to a fully marketed listing, Clarissa builds a selling strategy around your timeline, your home, and the price you actually want to walk away with.",
   },
   reviews: {
     title: "What buyers and sellers say after closing.",
-    description: "Real feedback from the people Claire has guided through buying, selling, and everything in between.",
+    description: "Real feedback from the people Clarissa has guided through buying, selling, and everything in between.",
   },
   contact: {
     title: "Start the conversation about your next move.",
-    description: "Whether you're buying, selling, or just exploring the coast, tell Claire what you're working toward and she'll help map the next step.",
+    description: "Whether you're buying, selling, or just exploring the coast, tell Clarissa what you're working toward and she'll help map the next step.",
   },
   bookAppointment: {
-    title: "Book time with Claire.",
+    title: "Book time with Clarissa.",
     description: "Pick a time that works for a call, a video walkthrough, or an in-person meeting to talk through your buying or selling goals.",
   },
 };
@@ -763,7 +763,7 @@ export const homePagePreviews: HomePagePreview[] = [
     label: "Buy",
     href: "/buy",
     kicker: "Explore The Coast",
-    title: "One place to explore every coastal community Claire covers.",
+    title: "One place to explore every coastal community Clarissa covers.",
     description:
       "Marina and Intracoastal addresses, gated golf communities, and quieter marsh-front pockets are organized so buyers can find the right fit fast.",
     layout: "communities-bento",
@@ -774,15 +774,15 @@ export const homePagePreviews: HomePagePreview[] = [
     details: ["Waterfront", "Golf Communities", "Gated"],
   },
   {
-    label: "About Claire",
+    label: "About Clarissa",
     href: "/about",
     kicker: "RE/MAX Signature",
     title: "Coastal Property Specialist, RE/MAX Signature",
     description:
-      "With a multimillion-dollar sales volume, Claire Swartzlander is a highly regarded, well-known real estate expert in the Northeast Florida coastal region.\n\nHer mission is simple: every client feels uniquely valued, knowing they are her sole focus.",
+      "Clarissa Swartzlander has closed a multimillion-dollar volume of sales across Palm Coast's waterfront and golf communities.\n\nShe works under RE/MAX Signature and lives locally, so her read on a neighborhood comes from experience, not a listing sheet.",
     layout: "about-editorial",
     images: [
-      { src: "/about/claire-about.png", alt: "Claire Swartzlander, Coastal Property Specialist with RE/MAX Signature", label: "Claire Swartzlander" },
+      { src: "/about/claire-about.png", alt: "Clarissa Swartzlander, Coastal Property Specialist with RE/MAX Signature", label: "Clarissa Swartzlander" },
       { src: "/placeholders/hero-2.svg", alt: "Palm Coast waterfront placeholder", label: "The Coast" },
     ],
     details: aboutHighlights,
@@ -791,7 +791,7 @@ export const homePagePreviews: HomePagePreview[] = [
     label: "Featured Listings",
     href: "/buy/listings",
     kicker: "Placeholder Listings",
-    title: "A first look at the kind of homes Claire places buyers in.",
+    title: "A first look at the kind of homes Clarissa places buyers in.",
     description:
       "These are placeholder listings standing in for real inventory. Once live listings are connected, this band can pull directly from active MLS data.",
     layout: "listings-editorial",
@@ -833,7 +833,7 @@ export const homePagePreviews: HomePagePreview[] = [
 export const pageMetadata = {
   home: {
     title: "Coastal Property Specialist | RE/MAX Signature",
-    description: "Claire Swartzlander helps buyers and sellers navigate Palm Coast's waterfront and golf communities.",
+    description: "Clarissa Swartzlander helps buyers and sellers navigate Palm Coast's waterfront and golf communities.",
     path: "/",
   },
   buy: {
@@ -844,11 +844,11 @@ export const pageMetadata = {
   },
   listings: {
     title: "Featured Listings",
-    description: "A look at the kind of Palm Coast homes Claire places buyers in, across waterfront, golf, and family communities.",
+    description: "A look at the kind of Palm Coast homes Clarissa places buyers in, across waterfront, golf, and family communities.",
     path: "/buy/listings",
   },
   about: {
-    title: "About Claire Swartzlander",
+    title: "About Clarissa Swartzlander",
     description: "Coastal property specialist with RE/MAX Signature, serving buyers and sellers across Palm Coast, FL.",
     path: "/about",
   },
@@ -859,17 +859,17 @@ export const pageMetadata = {
   },
   reviews: {
     title: "Client Reviews",
-    description: "Feedback from buyers and sellers who worked with Claire Swartzlander.",
+    description: "Feedback from buyers and sellers who worked with Clarissa Swartzlander.",
     path: "/reviews",
   },
   contact: {
-    title: "Contact Claire",
+    title: "Contact Clarissa",
     description: "Get in touch about buying, selling, or exploring Palm Coast real estate.",
     path: "/contact",
   },
   bookAppointment: {
     title: "Book An Appointment",
-    description: "Schedule time with Claire Swartzlander to talk through your real estate goals.",
+    description: "Schedule time with Clarissa Swartzlander to talk through your real estate goals.",
     path: "/book-an-appointment",
   },
 };

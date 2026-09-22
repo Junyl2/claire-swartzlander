@@ -12,34 +12,38 @@ export function Footer() {
   const directoryGroups = footerLinks.filter((group) => !utilityGroupTitles.includes(group.title));
 
   return (
-    <footer className="bg-paper pb-8 pt-20 text-ink">
-      <Container>
-        <div className="grid gap-10 border-b border-primary/15 pb-12 lg:grid-cols-[0.65fr_1.05fr] lg:items-center">
-          <div className="hidden justify-self-start lg:block">
-            <Image
-              src="/footer-profile.png"
-              alt="Claire Swartzlander"
-              width={500}
-              height={500}
-              className="h-64 w-auto object-contain xl:h-80"
-            />
-          </div>
-          <div>
-            <Image src="/remax-logo-black.png" alt="RE/MAX" width={300} height={80} className="h-14 w-auto sm:h-16" />
-            <Link href="/" aria-label={`${siteConfig.tagline} ${siteConfig.name}`} className="mt-6 inline-flex">
-              <SiteLogo className="text-2xl sm:text-3xl lg:text-4xl" />
-            </Link>
-            <p className="supporting-copy mt-6 max-w-xl text-base text-slate">
-              {siteConfig.tagline}, {siteConfig.brokerage}. Guiding buyers and sellers through Palm Coast&apos;s waterfront and golf communities from first showing to closing day.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm leading-7 text-slate">
-              <p>{siteConfig.phone}</p>
-              <p>{siteConfig.email}</p>
-              <p>{siteConfig.address}</p>
+    <footer className="bg-paper text-ink">
+      <div className="bg-[#000e35] py-16 text-white">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[0.65fr_1.05fr] lg:items-center">
+            <div className="hidden justify-self-start lg:block">
+              <Image
+                src="/footer-profile.png"
+                alt="Clarissa Swartzlander"
+                width={500}
+                height={500}
+                className="h-64 w-auto object-contain xl:h-80"
+              />
+            </div>
+            <div>
+              <Image src="/remax-logo-white.png" alt="RE/MAX" width={300} height={80} className="h-14 w-auto sm:h-16" />
+              <Link href="/" aria-label={`${siteConfig.tagline} ${siteConfig.name}`} className="mt-6 inline-flex">
+                <SiteLogo className="text-2xl sm:text-3xl lg:text-4xl" />
+              </Link>
+              <p className="supporting-copy mt-6 max-w-xl text-base text-white/70">
+                {siteConfig.tagline}, {siteConfig.brokerage}. Guiding buyers and sellers through Palm Coast&apos;s waterfront and golf communities from first showing to closing day.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-x-8 gap-y-2 text-sm leading-7 text-white/70">
+                <p>{siteConfig.phone}</p>
+                <p>{siteConfig.email}</p>
+                <p>{siteConfig.address}</p>
+              </div>
             </div>
           </div>
-        </div>
+        </Container>
+      </div>
 
+      <Container>
         <div className="py-12">
           <div className="grid gap-8 sm:grid-cols-3">
             {utilityGroups.map((group) => (
@@ -75,11 +79,16 @@ export function Footer() {
             ))}
           </div>
         </div>
-        <div className="flex flex-col gap-3 border-t border-primary/15 pt-6 text-xs font-medium uppercase tracking-[0.12em] text-slate sm:flex-row sm:justify-between">
-          <p>Copyright 2026 {siteConfig.name}</p>
-          <p>{siteConfig.tagline}, {siteConfig.brokerage}</p>
-        </div>
       </Container>
+
+      <div className="bg-[#0043ff] py-5 text-white">
+        <Container>
+          <div className="flex flex-col gap-3 text-xs font-medium uppercase tracking-[0.12em] sm:flex-row sm:justify-between">
+            <p>Copyright 2026 {siteConfig.name}</p>
+            <p>{siteConfig.tagline}, {siteConfig.brokerage}</p>
+          </div>
+        </Container>
+      </div>
     </footer>
   );
 }

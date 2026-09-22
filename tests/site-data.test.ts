@@ -106,7 +106,7 @@ describe("centralized site content", () => {
   });
 
   it("keeps replaceable placeholder content outside component logic", () => {
-    expect(siteConfig.name).toBe("Claire Swartzlander");
+    expect(siteConfig.name).toBe("Clarissa Swartzlander");
     expect(siteConfig.brokerage).toBe("RE/MAX Signature");
     expect(testimonials.length).toBeGreaterThanOrEqual(6);
     expect(aboutHighlights.length).toBeGreaterThanOrEqual(4);
