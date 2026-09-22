@@ -66,12 +66,7 @@ export function HighlightVideoSection() {
       </svg>
 
       <Container>
-        <div className="relative mx-auto w-full max-w-6xl">
-          <div aria-hidden="true" className="pointer-events-none absolute -left-3 -top-3 h-10 w-10 border-l-4 border-t-4 border-primary" />
-          <div aria-hidden="true" className="pointer-events-none absolute -right-3 -top-3 h-10 w-10 border-r-4 border-t-4 border-secondary" />
-          <div aria-hidden="true" className="pointer-events-none absolute -bottom-3 -left-3 h-10 w-10 border-b-4 border-l-4 border-secondary" />
-          <div aria-hidden="true" className="pointer-events-none absolute -bottom-3 -right-3 h-10 w-10 border-b-4 border-r-4 border-primary" />
-
+        <div className="relative mx-auto w-full max-w-5xl">
           <motion.div
             style={{ scale, opacity }}
             className="aspect-video w-full origin-center overflow-hidden border border-primary/15 shadow-[var(--shadow-soft)] max-h-[calc(100vh-8rem)]"

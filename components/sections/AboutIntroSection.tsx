@@ -1,8 +1,3 @@
-"use client";
-
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-
 import { Reveal } from "@/components/interactive/Reveal";
 import { BrokerageBadge } from "@/components/ui/BrokerageBadge";
 import { Container } from "@/components/ui/Container";
@@ -23,38 +18,21 @@ const claireImage = {
 };
 
 export function AboutIntroSection() {
-  const cinematicRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: cinematicRef,
-    offset: ["start end", "end start"],
-  });
-  const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1]);
-
   return (
-    <section id="introduction" className="relative overflow-hidden bg-paper pb-20 md:pb-28">
-      <Reveal>
-        <div ref={cinematicRef} className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden">
-          <div className="relative h-[56vh] max-h-[600px] min-h-[380px] w-full overflow-hidden md:h-[74vh]">
-            <motion.div style={{ scale }} className="absolute inset-0 will-change-transform">
-              <ImagePlaceholder
-                src={sceneImage.src}
-                alt={sceneImage.alt}
-                label={sceneImage.label}
-                className="!absolute !inset-0 !aspect-auto h-full"
-              />
-            </motion.div>
-
-            <div className="absolute left-6 top-6 z-30 md:left-10 md:top-10">
-              <BrokerageBadge className="bg-ink/70 backdrop-blur-md" />
+    <section id="introduction" className="section-y bg-paper">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+          <Reveal className="relative min-h-[28rem] md:min-h-[36rem] lg:min-h-[42rem]">
+            <ImagePlaceholder
+              src={sceneImage.src}
+              alt={sceneImage.alt}
+              label={sceneImage.label}
+              className="!absolute !inset-0 !aspect-auto shadow-[var(--shadow-soft)]"
+            />
+            <div className="absolute left-6 top-6 z-30">
+              <BrokerageBadge className="bg-ink/80 backdrop-blur-md" />
             </div>
-          </div>
-        </div>
-      </Reveal>
-
-      <Container className="relative">
-        <div className="grid gap-10 lg:grid-cols-[0.4fr_0.6fr] lg:items-start lg:gap-16 -mt-20 sm:-mt-28 md:-mt-36">
-          <Reveal delay={0.05} className="relative z-20 mx-auto w-full max-w-xs sm:max-w-sm lg:mx-0">
-            <div className="overflow-hidden border-4 border-paper shadow-[0_40px_110px_hsl(215_19%_10%_/_0.32)]">
+            <div className="absolute bottom-6 right-6 z-20 w-[45%] max-w-[15rem] border-4 border-paper shadow-[0_30px_70px_hsl(215_19%_10%_/_0.28)] sm:bottom-8 sm:right-8">
               <ImagePlaceholder
                 src={claireImage.src}
                 alt={claireImage.alt}
@@ -65,7 +43,7 @@ export function AboutIntroSection() {
             </div>
           </Reveal>
 
-          <Reveal delay={0.12} className="relative z-10 lg:pt-10">
+          <Reveal delay={0.08}>
             <p className="eyebrow supporting-kicker">About Clarissa Swartzlander</p>
             <MixedTitle
               text="Rooted In The Coast She Calls Home"
